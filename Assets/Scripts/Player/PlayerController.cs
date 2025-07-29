@@ -12,6 +12,7 @@ public class PlayerController : BaseController
         _camera = Camera.main;
     }
 
+    // === 방향 찾기 ===
     protected override void HandleAction()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");

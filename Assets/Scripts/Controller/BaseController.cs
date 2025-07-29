@@ -13,7 +13,7 @@ public class BaseController : MonoBehaviour
     // === 움직임 제어 ===
     protected Vector2 movementDirection = Vector2.zero;
     public Vector2 MovementDirection { get { return movementDirection; } }
-    [SerializeField] private float _baseMovement = 3;
+    [SerializeField] private float _baseMovement = 3; // 기본 속도
 
     // === 마우스에 따라 바라보는 방향 제어 ===
     protected Vector2 lookDirection = Vector2.zero;
