@@ -13,6 +13,7 @@ public class BaseController : MonoBehaviour
     // === 움직임 제어 ===
     protected Vector2 movementDirection = Vector2.zero;
     public Vector2 MovementDirection { get { return movementDirection; } }
+    [SerializeField] private float _baseMovement = 3;
 
     // === 마우스에 따라 바라보는 방향 제어 ===
     protected Vector2 lookDirection = Vector2.zero;
@@ -23,14 +24,18 @@ public class BaseController : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>(); // 컴퍼넌트에서 정보를 가져옴
 
     }
+
     protected virtual void Start()
     {
 
     }
+
     protected virtual void Update()
     {
+        HandleAction();
         Rotate(lookDirection);
     }
+
     protected virtual void FixedUpdate()
     {
         Movement(movementDirection);
@@ -39,7 +44,7 @@ public class BaseController : MonoBehaviour
     // === 기본적인 이동 ===
     private void Movement(Vector2 direction)
     {
-        direction = direction * 5;
+        direction = direction * _baseMovement;
 
         _rigidbody2D.velocity = direction;
     }
