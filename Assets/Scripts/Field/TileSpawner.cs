@@ -7,11 +7,11 @@ public class TileSpawner : MonoBehaviour
 {
     public GameObject tilePrefab;
 
-    private int height = 20;
-    private int width = 20;
+    private int height = 10;
+    private int width = 10;
 
-    private float tileWidth = 0.9602f;
-    private float tileHeight = -0.554f;
+    private float tileWidth = 1.9204f;
+    private float tileHeight = -1.108f;
 
     void Start()
     {
@@ -20,7 +20,7 @@ public class TileSpawner : MonoBehaviour
 
     IEnumerator SpawnTiles()
     {
-        Vector3 startPos = new Vector3(transform.position.x, transform.position.y + 5.25f, transform.position.z);
+        Vector3 startPos = new Vector3(transform.position.x, transform.position.y + 4.69f, transform.position.z);
         int i = width * height;
 
         for (int y = width - 1; y >= 0; y--)
