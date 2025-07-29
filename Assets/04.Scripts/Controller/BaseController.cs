@@ -19,9 +19,13 @@ public class BaseController : MonoBehaviour
     protected Vector2 lookDirection = Vector2.zero;
     public Vector2 LookDirection { get { return lookDirection; } }
 
+    // === 캐릭터 애니메이션 ===
+    protected AnimationPlayer animationPlayer;
+
     protected virtual void Awake()
     {
-        _rigidbody2D = GetComponent<Rigidbody2D>(); // 컴퍼넌트에서 정보를 가져옴
+        _rigidbody2D = GetComponent<Rigidbody2D>();        // 컴퍼넌트에서 정보를 가져옴
+        animationPlayer = GetComponent<AnimationPlayer>();  // 플레이어의 애니메이션 컴퍼넌트
 
     }
 
@@ -46,6 +50,7 @@ public class BaseController : MonoBehaviour
         direction = direction * _baseMovement;
 
         _rigidbody2D.velocity = direction;
+        animationPlayer.Move(direction);     // 이동 애니메이션
     }
 
     protected virtual void HandleAction()
