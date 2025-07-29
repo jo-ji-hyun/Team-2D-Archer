@@ -23,18 +23,30 @@ public class BaseController : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>(); // 컴퍼넌트에서 정보를 가져옴
 
     }
+    protected virtual void Start()
+    {
 
+    }
     protected virtual void Update()
     {
         Rotate(lookDirection);
     }
+    protected virtual void FixedUpdate()
+    {
+        Movement(movementDirection);
+    }
 
     // === 기본적인 이동 ===
-    private void MoveMent(Vector2 direction)
+    private void Movement(Vector2 direction)
     {
         direction = direction * 5;
 
         _rigidbody2D.velocity = direction;
+    }
+
+    protected virtual void HandleAction()
+    {
+
     }
 
     // === 마우스 위치에 따라 바라보는 방향 변경 ===
