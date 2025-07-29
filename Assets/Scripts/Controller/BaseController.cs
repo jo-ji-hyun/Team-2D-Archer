@@ -4,8 +4,51 @@ using UnityEngine;
 
 public class BaseController : MonoBehaviour
 {
-    protected Rigidbody2D _rigidbody2D;
+    protected Rigidbody2D _rigidbody2D; // Rigidbody2D  불러오기
 
-    [SerializeField] private SpriteRenderer characterRenderer;
-    [SerializeField] private Transform weaponPivot;
+    // === 캐릭터,무기 캡슐화 === 
+    [SerializeField] private SpriteRenderer _characterRenderer;
+    [SerializeField] private Transform _weaponPivot;
+
+    // === 움직임 제어 ===
+    protected Vector2 movementDirection = Vector2.zero;
+    public Vector2 MovementDirection { get { return movementDirection; } }
+
+    // === 마우스에 따라 바라보는 방향 제어 ===
+    protected Vector2 lookDirection = Vector2.zero;
+    public Vector2 LookDirection { get { return lookDirection; } }
+
+    protected virtual void Awake()
+    {
+        _rigidbody2D = GetComponent<Rigidbody2D>(); // 컴퍼넌트에서 정보를 가져옴
+
+    }
+
+    protected virtual void Update()
+    {
+        Rotate(lookDirection);
+    }
+
+    // === 기본적인 이동 ===
+    private void MoveMent(Vector2 direction)
+    {
+        direction = direction * 5;
+
+        _rigidbody2D.velocity = direction;
+    }
+
+    // === 마우스 위치에 따라 바라보는 방향 변경 ===
+    private void Rotate(Vector2 direction)
+    {
+        float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        bool isLeft = Mathf.Abs(rotZ) > 90f;
+
+        _characterRenderer.flipX = isLeft;
+
+        if (_weaponPivot != null) // 무기를 들었을 경우
+        {
+            _weaponPivot.rotation = Quaternion.Euler(0, 0, rotZ);
+        }
+    }
 }
+
