@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResourceController : MonoBehaviour
+public class EnemyResourceController : MonoBehaviour
 {
     [SerializeField] private float healthChangeDelay = .5f;
 
-    private BaseController baseController;
-    private StatHandler statHandler;
-    private AnimationHandler animationHandler;
+    private EnemyBaseController baseController;
+    private EnemyStatHandler statHandler;
+    private EnemyAnimationHandler animationHandler;
 
     private float timeSinceLastChange = float.MaxValue;
 
@@ -17,9 +17,9 @@ public class ResourceController : MonoBehaviour
 
     private void Awake()
     {
-        statHandler = GetComponent<StatHandler>();
-        animationHandler = GetComponent<AnimationHandler>();
-        baseController = GetComponent<BaseController>();
+        statHandler = GetComponent<EnemyStatHandler>();
+        animationHandler = GetComponent<EnemyAnimationHandler>();
+        baseController = GetComponent<EnemyBaseController>();
     }
 
     private void Start()
@@ -57,9 +57,16 @@ public class ResourceController : MonoBehaviour
 
         }
 
+        if (CurrentHealth <= 0f)
+        {
+            Death();
+        }
 
         return true;
     }
 
+    private void Death()
+    {
+        baseController.Death();
+    }
 }
-

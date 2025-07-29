@@ -2,28 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : BaseController
+public class EnemyController : MonoBehaviour
 {
-    private EnemyManager enemyManager;
-    private Transform target;
-
-    [SerializeField] private float followRange = 15f;
-
-    public void Init(EnemyManager enemyManager, Transform target)
+    // Start is called before the first frame update
+    void Start()
     {
-        this.enemyManager = enemyManager;
-        this.target = target;
+        
     }
 
-    protected float DistanceToTarget()
+    // Update is called once per frame
+    void Update()
     {
-        return Vector3.Distance(transform.position, target.position);
+        
     }
-
-    
-    protected Vector2 DirectionToTarget()
-    {
-        return (target.position - transform.position).normalized;
-    }
-
 }
