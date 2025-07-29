@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class AnimationHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private static readonly int IsMoving = Animator.StringToHash("IsMove");
+    private static readonly int IsDamage = Animator.StringToHash("IsDamage");
+
+    protected Animator animator;
+
+    protected virtual void Awake()
     {
-        
+        animator = GetComponentInChildren<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Move(Vector2 obj)
     {
-        
+        animator.SetBool(IsMoving, obj.magnitude > .5f);
+    }
+
+    public void Damage()
+    {
+        animator.SetBool(IsDamage, true);
+    }
+
+    public void InvincibilityEnd()
+    {
+        animator.SetBool(IsDamage, false);
     }
 }
