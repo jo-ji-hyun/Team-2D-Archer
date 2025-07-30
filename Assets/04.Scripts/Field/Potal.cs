@@ -5,14 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class Potal : MonoBehaviour
 {
-    
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("디버그확인1");
+    public FieldManager UI;
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("디버그확인2");
+            Debug.Log("포탈");
+
+            UI.UIFade();
+
         }
     }
 }

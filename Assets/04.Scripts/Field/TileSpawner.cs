@@ -90,14 +90,6 @@ public class TileSpawner : MonoBehaviour
                     sr = _object.GetComponentInChildren<SpriteRenderer>();
                     sr.sortingOrder = i + 20;
                 }
-
-                //if (UnityEngine.Random.Range(0, 100) <= 2)
-                //{
-                //    spawnPos = startPos + new Vector3(xPos + UnityEngine.Random.Range(-0.3f, 0.3f), yPos + UnityEngine.Random.Range(0.2f, 1f), 0f);
-                //    GameObject _object = Instantiate(objectPrefab[UnityEngine.Random.Range(0, 1)], spawnPos, Quaternion.identity, transform);
-                //    sr = _object.GetComponentInChildren<SpriteRenderer>();
-                //    sr.sortingOrder = i + 20;
-                //}
                 i--;
             }
 
