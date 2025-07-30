@@ -8,7 +8,7 @@ public class EnemyBaseController : MonoBehaviour
 
     [SerializeField] private SpriteRenderer characterRenderer;
 
-    protected Vector2 movementDirection = Vector2.zero;
+    protected Vector2 movementDirection = Vector2.one;
     public Vector2 MovementDirection { get { return movementDirection; } }
 
     protected Vector2 lookDirection = Vector2.zero;
@@ -20,10 +20,10 @@ public class EnemyBaseController : MonoBehaviour
     protected EnemyAnimationHandler animationHandler;
     protected EnemyStatHandler statHandler;
 
-    [SerializeField] public WeaponHandler WeaponPrefab;
+    [SerializeField] protected Transform target;
 
     protected bool isAttacking;
-    private float timeSinceLastAttack = float.MaxValue;
+    public float timeSinceLastAttack = float.MaxValue;
 
     protected virtual void Awake()
     {
@@ -37,9 +37,18 @@ public class EnemyBaseController : MonoBehaviour
         //    weaponHandler = GetComponentInChildren<EnemyWeaponHandler>();
     }
 
-    protected virtual void Start()
+    protected virtual void DealDamageToTarget()
     {
+        if (target == null) return;
 
+        var playerHealth = target.GetComponent<PlayerController>();
+        if (playerHealth != null)
+        {
+
+
+        }
+
+        isAttacking = false; // 공격 끝났다고 판단
     }
 
     protected virtual void FixedUpdate()

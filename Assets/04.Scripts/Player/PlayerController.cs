@@ -5,11 +5,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : BaseController
 {
+    private GameManager gameManager;
     private Camera _camera;
 
-    protected override void Start()
+    public void Init(GameManager gameManager)
     {
-        base.Start();
+        this.gameManager = gameManager;
         _camera = Camera.main;
     }
 
