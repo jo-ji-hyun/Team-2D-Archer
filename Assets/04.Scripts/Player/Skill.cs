@@ -12,6 +12,7 @@ public class Skill
     public Sprite icon; // 스킬 아이콘
     public SkillType type; // 스킬 타입 (공격, 방어, 속도, 치유 등)
     public float value; // 스킬의 효과 수치
+    public GameObject skillPrefab; // 스킬 이펙트 프리팹
 }
 
 // 스킬의 종류를 구분하기 위한.

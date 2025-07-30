@@ -1,18 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using UnityEngine;
 
 public class SkillUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string skillName; // 스킬 이름
 
-    // Update is called once per frame
-    void Update()
+    public void OnClickUseSkill()
     {
-        
+        Skillmanager.Instance.UseSkill(skillName, transform.position); // 예시 위치
     }
 }

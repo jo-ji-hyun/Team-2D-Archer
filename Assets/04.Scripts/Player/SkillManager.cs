@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using System.Diagnostics.Contracts;
 
 public class Skillmanager : MonoBehaviour
 {
@@ -14,12 +15,11 @@ public class Skillmanager : MonoBehaviour
     // 현재 플레이어가 보유중인 스킬 리스트
     public List<Skill> acquiredSkills = new List<Skill>();
 
+    public SkillExecutor executor; // 스킬 사용을 위한 실행기
+
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
+        if (Instance == null) Instance = this; // 싱글톤 인스턴스 설정
     }
 
     // 새로운 스킬을 플레이어에게 부여하는 함수
@@ -52,6 +52,18 @@ public class Skillmanager : MonoBehaviour
 
         return randomSkills;
     }
+
+    // 스킬 사용(이펙트 실행)
+    public void UseSkill(string skillName, Vector3 position)
+    {
+        Skill skill = acquiredSkills.Find(s => s.skillName == skillName);
+        if (skill != null)
+        {
+            executor.skillPrefab = skill.skillPrefab;
+            executor.Use(position);
+        }
+    }
 }
+
 
 
