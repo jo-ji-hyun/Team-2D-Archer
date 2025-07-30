@@ -13,5 +13,10 @@ public class SkillEffect : MonoBehaviour
         Destroy(gameObject, 1f); // 1초 후 이 오브젝트를 씬에서 파괴.
     }
 
+    private void Awake()
+    {
+        if (animator == null)
+            animator = GetComponent<Animator>();
+    }
 
 }

@@ -9,6 +9,6 @@ public class SkillUI : MonoBehaviour
 
     public void OnClickUseSkill()
     {
-        Skillmanager.Instance.UseSkill(skillName, transform.position); // 예시 위치
+        SkillManager.Instance.UseSkill(skillName, transform.position); // 예시 위치
     }
 }

@@ -4,10 +4,10 @@ using UnityEditor;
 using UnityEngine;
 using System.Diagnostics.Contracts;
 
-public class Skillmanager : MonoBehaviour
+public class SkillManager : MonoBehaviour
 {
     // 싱글톤 패턴으로 접근하기 위한 스태틱 인스턴스
-    public static Skillmanager Instance;
+    public static SkillManager Instance;
 
     // 모든 스킬을 저장하는 리스트
     public List<Skill> allSkills = new List<Skill>();
