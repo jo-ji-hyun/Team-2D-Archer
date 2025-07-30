@@ -15,7 +15,7 @@ public class PlayerController : BaseController
 
     protected override void HandleAction()
     {
-      
+        isAttacking = true;
     }
 
     void OnMove(InputValue inputValue)

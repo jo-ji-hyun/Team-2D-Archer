@@ -26,7 +26,7 @@ public class BaseController : MonoBehaviour
     [SerializeField] public WeaponHandler WeaponPrefab;
     protected WeaponHandler weaponHandler;
 
-    protected bool isAttacking;
+    protected bool isAttacking; 
     private float _time_Since_Last_Attack = float.MaxValue;
 
     protected virtual void Awake()
@@ -49,12 +49,15 @@ public class BaseController : MonoBehaviour
     protected virtual void FixedUpdate()
     {
         Movement(movementDirection);
+        HandleAction();
+        HandleAttackDelay();
     }
 
     protected virtual void Update()
     {
+
         Rotate(lookDirection);
-        HandleAttackDelay();
+
     }
 
     // === 기본적인 이동 ===
@@ -69,7 +72,7 @@ public class BaseController : MonoBehaviour
     // === 공격 ===
     protected virtual void HandleAction()
     {
-
+        
     }
 
     // === 마우스 위치에 따라 바라보는 방향 변경 ===
@@ -107,8 +110,13 @@ public class BaseController : MonoBehaviour
 
     protected virtual void AttackCall()
     {
+
         if (lookDirection != Vector2.zero)
+        {
             weaponHandler?.Attack(); // 무기들었으면 공격해라
+            animationPlayer.AttackBehavior();
+        }
+
     }
 
 }

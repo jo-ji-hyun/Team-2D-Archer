@@ -8,7 +8,7 @@ public class WeaponHandler : MonoBehaviour
     private static readonly int IsAttack = Animator.StringToHash("isAtk");
 
     // === 난이도를 위한 무기 딜레이 ===
-    [SerializeField] private float delay = 1f;
+    [SerializeField] private float delay = 1.0f;
     public float Delay { get => delay; set => delay = value; }
 
     // === 무기 사이즈 ===
