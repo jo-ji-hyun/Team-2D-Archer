@@ -8,7 +8,7 @@ public class EnemyBaseController : MonoBehaviour
 
     [SerializeField] private SpriteRenderer characterRenderer;
 
-    protected Vector2 movementDirection = Vector2.one;
+    protected Vector2 movementDirection = Vector2.zero;
     public Vector2 MovementDirection { get { return movementDirection; } }
 
     protected Vector2 lookDirection = Vector2.zero;
@@ -58,6 +58,7 @@ public class EnemyBaseController : MonoBehaviour
         {
             knockbackDuration -= Time.fixedDeltaTime;
         }
+        HandleAction(); // 이걸 호출해야함
     }
 
     protected virtual void HandleAction()

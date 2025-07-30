@@ -19,10 +19,34 @@ public class EnemyManager : MonoBehaviour
 
     private List<EnemyController> activeEnemies = new List<EnemyController>(); // 현재 활성화된 적들
 
-    private bool enemySpawnComplite;
+    // === 경고문 거슬려서 추가
+    private bool _enemy_Spawn_Complete;
+    public bool _is_Enemy_Spawn_Complete 
+    {
+        get { return _enemy_Spawn_Complete; }
+        private set { _enemy_Spawn_Complete = value; } // 내부에서는 설정 가능, 외부에서는 읽기만 가능
+    }
+    // ===========================================
 
     [SerializeField] private float timeBetweenSpawns = 0.2f;
     [SerializeField] private float timeBetweenWaves = 1f;
+
+    private Transform playerTarget; // 추가된거
+
+    private void Awake()
+    {
+        // === 추가된거 ===
+        GameObject playerObject = GameObject.FindWithTag("Player");
+        if (playerObject != null)
+        {
+            playerTarget = playerObject.transform;
+        }
+        else
+        {
+            Debug.LogWarning("EnemyManager: 'Player' 태그를 가진 오브젝트를 찾을 수 없습니다! 플레이어에 태그가 지정되어 있는지 확인하세요.");
+        }
+       // ===============================
+    }
 
     public void StartWave(int waveCount)
     {
@@ -38,7 +62,7 @@ public class EnemyManager : MonoBehaviour
 
     private IEnumerator SpawnWave(int waveCount)
     {
-        enemySpawnComplite = false;
+        _is_Enemy_Spawn_Complete = false;
         yield return new WaitForSeconds(timeBetweenWaves);
         for (int i = 0; i < waveCount; i++)
         {
@@ -46,7 +70,7 @@ public class EnemyManager : MonoBehaviour
             SpawnRandomEnemy();
         }
 
-        enemySpawnComplite = true;
+        _is_Enemy_Spawn_Complete = true;
     }
 
     private void SpawnRandomEnemy()
@@ -72,6 +96,14 @@ public class EnemyManager : MonoBehaviour
         // 적 생성 및 리스트에 추가
         GameObject spawnedEnemy = Instantiate(randomPrefab, new Vector3(randomPosition.x, randomPosition.y), Quaternion.identity);
         EnemyController enemyController = spawnedEnemy.GetComponent<EnemyController>();
+        if (playerTarget == null)
+        {
+            Debug.Log("태그를 못찾음");
+        }
+        else 
+        {
+            enemyController.Init(this, playerTarget); // 추가된거
+        }
 
         activeEnemies.Add(enemyController);
     }

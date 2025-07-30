@@ -11,21 +11,21 @@ public class EnemyController : EnemyBaseController
 
     protected virtual void Start()
     {
-        // "Player" 레이어 가져오기
-        int playerLayer = LayerMask.NameToLayer("Player");
+        //// "Player" 레이어 가져오기
+        //int playerLayer = LayerMask.NameToLayer("Player");
 
-        // 씬에 있는 모든 GameObject를 검사
-        GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
-        foreach (GameObject obj in allObjects)
-        {
-            if (obj.layer == playerLayer)
-            {
-                target = obj.transform;
-                break;
-            }
-        }
-        // 공격 타이밍 시 데미지 전달 함수 등록
-        animationHandler.OnAttackHit += DealDamageToTarget;
+        //// 씬에 있는 모든 GameObject를 검사
+        //GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
+        //foreach (GameObject obj in allObjects)
+        //{
+        //    if (obj.layer == playerLayer)
+        //    {
+        //        target = obj.transform;
+        //        break;
+        //    }
+        //}
+        //// 공격 타이밍 시 데미지 전달 함수 등록
+        //animationHandler.OnAttackHit += DealDamageToTarget;
     }
 
     protected override void FixedUpdate()
@@ -42,7 +42,7 @@ public class EnemyController : EnemyBaseController
 
     protected float DistanceToTarget()
     {
-        return Vector3.Distance(transform.position, target.position);
+        return Vector2.Distance(transform.position, target.position); // 수정 3 -> 2
     }
 
     protected Vector2 DirectionToTarget()
@@ -56,6 +56,7 @@ public class EnemyController : EnemyBaseController
 
         if (target == null)
         {
+            Debug.LogWarning("taget이 비었음");
             movementDirection = Vector2.zero;
             return;
         }
@@ -63,10 +64,12 @@ public class EnemyController : EnemyBaseController
         float distance = DistanceToTarget();
         Vector2 direction = DirectionToTarget();
 
+        lookDirection = direction; // 먼저 쳐다보기
+
         if (distance <= attackRange)
         {
+            // lookDirection = direction; 위에서 처리함
             movementDirection = Vector2.zero;
-            lookDirection = direction;
 
             if (!isAttacking && timeSinceLastAttack >= attackCooldown)
             {
@@ -75,9 +78,21 @@ public class EnemyController : EnemyBaseController
 
             return;
         }
+        // --- ★★★ 여기를 수정합니다! ★★★ ---
+        // movementDirection에 statHandler의 속도를 곱해줍니다.
+        if (statHandler != null)
+        {
+            movementDirection = direction * statHandler.Speed;
+            Debug.Log($"[EnemyController] Moving towards: {movementDirection}, Speed: {statHandler.Speed}");
+        }
+        else
+        {
+            movementDirection = direction; // statHandler 없으면 일단 단위 벡터로 이동 (느리거나 안 움직임)
+            Debug.LogWarning("EnemyController: Stat Handler가 없어 속도 정보를 가져올 수 없습니다!");
+        }
 
-        lookDirection = direction;
-        movementDirection = direction;
+        // lookDirection = direction; 이미 위에서 처리함
+        //movementDirection = direction;
 
     }
 
