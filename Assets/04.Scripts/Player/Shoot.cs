@@ -56,7 +56,7 @@ public class Shoot : MonoBehaviour
             DestroyShoot(collision.ClosestPoint(transform.position), true);
             // === 몬스터의 체력 변화 ===
             EnemyResourceController enemy = collision.GetComponent<EnemyResourceController>();
-            enemy.ChangeHealth(_range_Weapon.Power);
+            enemy.ChangeHealth(-_range_Weapon.Power);
         }
     }
 
