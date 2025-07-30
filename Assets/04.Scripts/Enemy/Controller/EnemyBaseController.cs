@@ -21,7 +21,6 @@ public class EnemyBaseController : MonoBehaviour
     protected EnemyStatHandler statHandler;
 
     [SerializeField] public WeaponHandler WeaponPrefab;
-    protected EnemyWeaponHandler weaponHandler;
 
     protected bool isAttacking;
     private float timeSinceLastAttack = float.MaxValue;
@@ -41,12 +40,6 @@ public class EnemyBaseController : MonoBehaviour
     protected virtual void Start()
     {
 
-    }
-
-    protected virtual void Update()
-    {
-        HandleAction();
-        HandleAttackDelay();
     }
 
     protected virtual void FixedUpdate()
@@ -83,45 +76,10 @@ public class EnemyBaseController : MonoBehaviour
         knockback = -(other.position - transform.position).normalized * power;
     }
 
-    private void HandleAttackDelay()
-    {
-        if (weaponHandler == null)
-            return;
-
-        if (timeSinceLastAttack <= weaponHandler.Delay)
-        {
-            timeSinceLastAttack += Time.deltaTime;
-        }
-
-        if (isAttacking && timeSinceLastAttack > weaponHandler.Delay)
-        {
-            timeSinceLastAttack = 0;
-            Attack();
-        }
-    }
-
-    protected virtual void Attack()
-    {
-        if (lookDirection != Vector2.zero)
-            weaponHandler?.Attack();
-    }
-
     public virtual void Death()
     {
         _rigidbody.velocity = Vector3.zero;
-
-        foreach (SpriteRenderer renderer in transform.GetComponentsInChildren<SpriteRenderer>())
-        {
-            Color color = renderer.color;
-            color.a = 0.3f;
-            renderer.color = color;
-        }
-
-        foreach (Behaviour component in transform.GetComponentsInChildren<Behaviour>())
-        {
-            component.enabled = false;
-        }
-
+        animationHandler.Death();
         Destroy(gameObject, 2f);
     }
 }

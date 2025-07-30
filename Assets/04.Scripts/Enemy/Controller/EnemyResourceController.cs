@@ -32,10 +32,6 @@ public class EnemyResourceController : MonoBehaviour
         if (timeSinceLastChange < healthChangeDelay)
         {
             timeSinceLastChange += Time.deltaTime;
-            if (timeSinceLastChange >= healthChangeDelay)
-            {
-                animationHandler.InvincibilityEnd();
-            }
         }
     }
 
