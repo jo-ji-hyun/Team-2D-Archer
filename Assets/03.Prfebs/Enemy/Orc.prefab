@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2391292315145160780}
   - component: {fileID: 6579788359996186393}
   - component: {fileID: 3115682116164781667}
+  - component: {fileID: 4281668606953340281}
   m_Layer: 6
   m_Name: Orc
   m_TagString: Untagged
@@ -148,6 +149,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   speed: 2
+--- !u!114 &4281668606953340281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3713710080887282524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b1b688f241107848bccc6fea32e11f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterRenderer: {fileID: 5938908763641698710}
+  weaponPivot: {fileID: 0}
+  WeaponPrefab: {fileID: 0}
+  followRange: 15
 --- !u!1 &6689174819530661850
 GameObject:
   m_ObjectHideFlags: 0
