@@ -129,6 +129,9 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
+  _magic_Base_Damage:
+  - 3
+  - 2
 --- !u!1 &8302410682682923472
 GameObject:
   m_ObjectHideFlags: 0

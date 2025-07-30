@@ -19,8 +19,12 @@ public class Shoot : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private SpriteRenderer _sprite_Renderer;
 
+    // === 데미지 처리를 위해 불러옴 ===
     private EnemyResourceController _targetEnemy;
+    // private StatsManager _stat;
 
+    [SerializeField] private float[] _magic_Base_Damage = { 3.0f, 2.0f }; // 마법 프리팹 [0]부터 기본 데미지 추가
+   
     private void Awake()
     {
         _sprite_Renderer = GetComponentInChildren<SpriteRenderer>();
@@ -56,10 +60,30 @@ public class Shoot : MonoBehaviour
             DestroyShoot(collision.ClosestPoint(transform.position), true);
             // === 몬스터의 체력 변화 ===
             EnemyResourceController enemy = collision.GetComponent<EnemyResourceController>();
-            enemy.ChangeHealth(-_range_Weapon.Power);
+            float _total_Damage = FinalMagicDamage();
+            Debug.Log($"최종 데미지 : {_total_Damage}");
+            enemy.ChangeHealth(-_total_Damage);
         }
     }
 
+    // === 최종 마법 데미지 ===
+    private float FinalMagicDamage()
+    {
+        float currentDamage = _range_Weapon.Power;
+
+        if (_range_Weapon.magicIndex >= 0 && _range_Weapon.magicIndex < _magic_Base_Damage.Length)
+        {
+            currentDamage += _magic_Base_Damage[_range_Weapon.magicIndex];
+        }
+
+        // === 플레이어 스텟 참조 ===
+        //if (_stat != null)
+        //{
+        //    currentDamage += _stat.GetMagicDamageBonus(); // 스텟을 찾음
+        //}
+
+        return currentDamage;  // 무기 데미지 + 마법 기본 데미지 + 플레이어 스텟
+    }
 
     public void Init(Vector2 direction, RangeWeapon weaponHandler)
     {
