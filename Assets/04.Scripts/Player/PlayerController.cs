@@ -13,6 +13,13 @@ public class PlayerController : BaseController
         _camera = Camera.main;
     }
 
+    // === 플레이어 공격 로직 ===
+    protected override void HandleAction()
+    {
+        // 나중에 적 탐지시 공격으로 변경 ... 고민중
+        isAttacking = true;
+    }
+
     void OnMove(InputValue inputValue)
     {
         movementDirection = inputValue.Get<Vector2>();

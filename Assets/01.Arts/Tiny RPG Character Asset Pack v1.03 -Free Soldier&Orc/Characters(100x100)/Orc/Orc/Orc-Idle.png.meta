@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -134,7 +134,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Orc-Idle_0
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 43
+        width: 22
+        height: 15
+      alignment: 9
+      pivot: {x: 0.36408043, y: 0.4818774}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1162830193157b4faca13dd60706972
+      internalID: -1018122691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orc-Idle_1
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 43
+        width: 22
+        height: 15
+      alignment: 9
+      pivot: {x: 0.3597412, y: 0.4926529}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cc6440fe1eeb9340833927a996c3e7b
+      internalID: -1389744259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orc-Idle_2
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 43
+        width: 22
+        height: 16
+      alignment: 9
+      pivot: {x: 0.36190936, y: 0.52792263}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b68240e4b2b00b41b153eef3a526c63
+      internalID: -1093586211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orc-Idle_3
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 43
+        width: 22
+        height: 16
+      alignment: 9
+      pivot: {x: 0.37157232, y: 0.52716756}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97a3fb7fb3c1f834c819e5af3954a318
+      internalID: 680368273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orc-Idle_4
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 43
+        width: 22
+        height: 15
+      alignment: 9
+      pivot: {x: 0.3702573, y: 0.49093857}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c8d5dfbd4686c04398131d0ded386e9
+      internalID: -2036267511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orc-Idle_5
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 43
+        width: 22
+        height: 15
+      alignment: 9
+      pivot: {x: 0.37643433, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 484aa93439c8b6a498727cdb7f73245b
+      internalID: -1508344387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +271,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Orc-Idle_0: -1018122691
+      Orc-Idle_1: -1389744259
+      Orc-Idle_2: -1093586211
+      Orc-Idle_3: 680368273
+      Orc-Idle_4: -2036267511
+      Orc-Idle_5: -1508344387
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
