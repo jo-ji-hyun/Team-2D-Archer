@@ -259,10 +259,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f14e582d25b62254097838b64956d93a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefabs: []
-  spawnAreas: []
+  enemyPrefabs:
+  - {fileID: 3713710080887282524, guid: 985aec065c737c2418aabbca177376d7, type: 3}
+  spawnAreas:
+  - serializedVersion: 2
+    x: 0
+    y: 0
+    width: 2
+    height: 2
   gizmoColor: {r: 1, g: 0, b: 0, a: 0.3}
-  timeBetweenSpawns: 0.2
+  timeBetweenSpawns: 0.3
   timeBetweenWaves: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

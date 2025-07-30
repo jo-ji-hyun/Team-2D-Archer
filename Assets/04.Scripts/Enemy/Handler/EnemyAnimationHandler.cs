@@ -5,8 +5,10 @@ using UnityEngine;
 public class EnemyAnimationHandler : MonoBehaviour
 {
     private static readonly int IsMoving = Animator.StringToHash("IsMove");
-    private static readonly int IsDamage = Animator.StringToHash("IsDamage");
-
+    private static readonly int IsDamage = Animator.StringToHash("IsHit");
+    private static readonly int IsAttack = Animator.StringToHash("IsAttack");
+    private static readonly int IsDie = Animator.StringToHash("IsDie");
+   
     protected Animator animator;
 
     protected virtual void Awake()
@@ -21,11 +23,16 @@ public class EnemyAnimationHandler : MonoBehaviour
 
     public void Damage()
     {
-        animator.SetBool(IsDamage, true);
+        animator.SetTrigger(IsDamage);
     }
 
-    public void InvincibilityEnd()
+    public void Attack()
     {
-        animator.SetBool(IsDamage, false);
+        animator.SetTrigger(IsAttack);
+    }
+
+    public void Death()
+    {
+        animator.SetTrigger(IsDie);
     }
 }
