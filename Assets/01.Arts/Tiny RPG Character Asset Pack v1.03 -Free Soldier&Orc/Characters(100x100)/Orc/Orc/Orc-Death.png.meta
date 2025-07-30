@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -134,7 +134,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Orc-Death_0
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 43
+        width: 22
+        height: 15
+      alignment: 9
+      pivot: {x: 0.38889435, y: 0.4837049}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fc27c4c95739ab4282c0ae24bf0f993
+      internalID: 1413653674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orc-Death_1
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 45
+        width: 26
+        height: 14
+      alignment: 9
+      pivot: {x: 0.29763618, y: 0.47250095}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2df8d26d41d685d45baab41447e99997
+      internalID: 1106163715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orc-Death_2
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 48
+        width: 15
+        height: 13
+      alignment: 9
+      pivot: {x: 0.47433472, y: 0.6184566}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0eccdcc75328574c8f5d57a5890dfbb
+      internalID: -715314078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orc-Death_3
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 44
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cddc3ceaf62af5745bf748a539b94ac9
+      internalID: -1549852487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orc-Death_4
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 44
+        width: 15
+        height: 10
+      alignment: 9
+      pivot: {x: 0.5, y: 0.47433433}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42868bb5814a63e49b55851ec1ee8045
+      internalID: -181897411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orc-Death_5
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 44
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71e2a90d2eb657144a23ab28d0c33744
+      internalID: -64058928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +271,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Orc-Death_0: 1413653674
+      Orc-Death_1: 1106163715
+      Orc-Death_2: -715314078
+      Orc-Death_3: -1549852487
+      Orc-Death_4: -181897411
+      Orc-Death_5: -64058928
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
