@@ -7,6 +7,7 @@ public class AnimationPlayer : MonoBehaviour
     // === 애니메이션 트랜짓 bool값 불러오기 ===
     private static readonly int _isRun = Animator.StringToHash("isRun");
     private static readonly int _isAtk = Animator.StringToHash("isAtk");
+    private static readonly int _isSuf = Animator.StringToHash("isSuf");
     private static readonly int _isDie = Animator.StringToHash("isDie");
 
     protected Animator animator;
@@ -26,6 +27,12 @@ public class AnimationPlayer : MonoBehaviour
     public void AttackBehavior()
     {
         animator.SetBool(_isAtk, true);
+    }
+
+    // === 피해를 입을시 ===
+    public void DamageSuffer()
+    {
+        animator.SetBool(_isSuf, true);
     }
 
     // === 사망 ===

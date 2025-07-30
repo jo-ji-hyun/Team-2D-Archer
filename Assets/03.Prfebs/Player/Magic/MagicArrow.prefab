@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 9015191429017421207}
   - component: {fileID: 2881264209041790230}
-  - component: {fileID: 5611337124948974387}
+  - component: {fileID: 8610251357882461123}
   - component: {fileID: 5351978694541468479}
   m_Layer: 0
-  m_Name: MagicShot
+  m_Name: MagicArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,8 +62,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!60 &5611337124948974387
-PolygonCollider2D:
+--- !u!61 &8610251357882461123
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -91,10 +91,10 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0047187693, y: -0.002968561}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -104,15 +104,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.029319875, y: 0.06864218}
-      - {x: -0.06448622, y: 0.09916689}
-      - {x: -0.09593131, y: -0.03177566}
-      - {x: 0.033159822, y: -0.09945937}
-      - {x: 0.08720842, y: -0.025659867}
-      - {x: 0.08603796, y: 0.022060424}
-  m_UseDelaunayMesh: 0
+  serializedVersion: 2
+  m_Size: {x: 0.21278551, y: 0.09340603}
+  m_EdgeRadius: 0
 --- !u!114 &5351978694541468479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,7 +284,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 510
-  m_Sprite: {fileID: 21300000, guid: aec10e508993f1643b6652868f91e53d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6ed9a8d2043915f42808d611a0d61678, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
