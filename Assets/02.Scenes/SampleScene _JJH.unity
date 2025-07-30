@@ -1048,6 +1048,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MagicPrefabs:
   - {fileID: 2671440471566439517, guid: c02291fe69f144e49944c3635715f81e, type: 3}
+  - {fileID: 2671440471566439517, guid: 4c5b89f908b092a40abd143adfa5032c, type: 3}
 --- !u!1 &1246642695
 GameObject:
   m_ObjectHideFlags: 0
