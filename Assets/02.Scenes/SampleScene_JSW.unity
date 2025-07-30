@@ -297,8 +297,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b26406deb5a762f4586382f8c57178ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allSkills: []
-  acquiredSkills: []
+  allSkills:
+  - skillName: '"Flamethrower"'
+    description: "\uAC15\uB825\uD55C \uBD88\uAE38\uC744 \uC804\uBC29\uC73C\uB85C
+      \uBC1C\uC0AC\uD55C\uB2E4"
+    icon: {fileID: -1533502397, guid: ef2c6f2ee7a71c942bfc3a69aa8168e1, type: 3}
+    type: 0
+    value: 0
+    skillPrefab: {fileID: 4976190426854373211, guid: a7c55b79277ab634f953b669f1aeb779, type: 3}
+  acquiredSkills:
+  - skillName: '"Flamethrower"'
+    description: "\uAC15\uB825\uD55C \uBD88\uAE38\uC744 \uC804\uBC29\uC73C\uB85C
+      \uBC1C\uC0AC\uD55C\uB2E4"
+    icon: {fileID: 0}
+    type: 0
+    value: 0
+    skillPrefab: {fileID: 4976190426854373211, guid: a7c55b79277ab634f953b669f1aeb779, type: 3}
   executor: {fileID: 133606631}
 --- !u!4 &515447928
 Transform:
@@ -385,7 +399,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: "\uD50C\uB808\uC784"
 --- !u!222 &772296350
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -516,7 +530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8396226, g: 0.52674437, b: 0.52674437, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
