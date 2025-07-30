@@ -19,6 +19,8 @@ public class Shoot : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private SpriteRenderer _sprite_Renderer;
 
+    private EnemyResourceController _targetEnemy;
+
     private void Awake()
     {
         _sprite_Renderer = GetComponentInChildren<SpriteRenderer>();
@@ -52,7 +54,9 @@ public class Shoot : MonoBehaviour
         if (enemyLayer.value == (enemyLayer.value | (1 << collision.gameObject.layer))) // 몬스터(Layer)와 충돌시 삭제
         {
             DestroyShoot(collision.ClosestPoint(transform.position), true);
-            //
+            // === 몬스터의 체력 변화 ===
+            EnemyResourceController enemy = collision.GetComponent<EnemyResourceController>();
+            enemy.ChangeHealth(_range_Weapon.Power);
         }
     }
 
