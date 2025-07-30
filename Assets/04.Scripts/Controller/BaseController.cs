@@ -55,9 +55,7 @@ public class BaseController : MonoBehaviour
 
     protected virtual void Update()
     {
-
         Rotate(lookDirection);
-
     }
 
     // === 기본적인 이동 ===
@@ -86,6 +84,11 @@ public class BaseController : MonoBehaviour
         if (weapon_Pivot != null) // 무기를 들었을 경우
         {
             weapon_Pivot.rotation = Quaternion.Euler(0, 0, rotZ); // 무기 조준 방향
+
+            // === 지팡이(무기)가 캐릭터 뒤에 있도록 ===
+            float _weapon_Xpos = Mathf.Abs(0.45f);
+            float targetLocalX = isLeft ? _weapon_Xpos : -_weapon_Xpos;
+            weapon_Pivot.localPosition = new Vector3(targetLocalX, weapon_Pivot.localPosition.y, weapon_Pivot.localPosition.z);
         }
 
         weaponHandler?.Rotate(isLeft); // 무기도 캐릭에 맞춰 회전함
