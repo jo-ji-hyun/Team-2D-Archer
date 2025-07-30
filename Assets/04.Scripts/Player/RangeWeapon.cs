@@ -12,11 +12,11 @@ public class RangeWeapon : WeaponHandler
     public int MagicIndex { get { return magicIndex; } }
 
     // === 마법 크기 ===
-    [SerializeField] public float magicSize = 5.0f;
+    [SerializeField] public float magicSize = 3.0f;
     public float MagicSize { get { return magicSize; } }
 
     // === 지속 시간 ===
-    [SerializeField] private float duration = 10.0f;
+    [SerializeField] private float duration = 5.0f;
     public float Duration { get { return duration; } }
 
     // === 구체 속도 ===
@@ -24,7 +24,7 @@ public class RangeWeapon : WeaponHandler
     public float Spread { get { return spread; } }
 
     // === 생성 갯수 ===
-    [SerializeField] private int shotNumber = 0;
+    [SerializeField] private int shotNumber = 1;
     public int ShotNumber { get { return shotNumber; } }
 
     // === 다중샷 각도 ===

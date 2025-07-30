@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
-    // === 충돌체 정의 === (나중에 수정)
-    [SerializeField] private LayerMask levelCollisionLayer;
+    // === 충돌체 정의 === 
+    [SerializeField] private string wallTag = "object";
 
     private RangeWeapon _range_Weapon;
 
@@ -46,14 +46,15 @@ public class Shoot : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (levelCollisionLayer.value == (levelCollisionLayer.value | (1 << collision.gameObject.layer)))
+        if (collision.gameObject.CompareTag(wallTag))
         {
-            DestroyShoot(collision.ClosestPoint(transform.position) - _direction * .2f, fxOnDestory);
+            DestroyShoot(transform.position, true);
         }
-        else if (_range_Weapon.target.value == (_range_Weapon.target.value | (1 << collision.gameObject.layer)))
-        {
-            DestroyShoot(collision.ClosestPoint(transform.position), fxOnDestory);
-        }
+        //else if (collision.gameObject.CompareTag(wallTag)) // 나중에 수정
+        //{
+        //    DestroyShoot(transform.position, true);
+        //    // 적 데미지 로직 추가
+        //}
     }
 
 
