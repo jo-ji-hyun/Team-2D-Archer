@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 323281778}
   - component: {fileID: 323281779}
   m_Layer: 0
-  m_Name: MainSprite
+  m_Name: weaponSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -695,6 +695,7 @@ MonoBehaviour:
   _characterRenderer: {fileID: 5615209}
   _weaponPivot: {fileID: 1445767537}
   _baseMovement: 3
+  WeaponPrefab: {fileID: 0}
 --- !u!114 &1499918152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -789,8 +790,8 @@ MonoBehaviour:
   attackRange: 10
   target:
     serializedVersion: 2
-    m_Bits: 0
-  SpawnPosition: {fileID: 0}
+    m_Bits: 64
+  SpawnPosition: {fileID: 997949023}
   magicIndex: 0
   magicSize: 1
   duration: 10
