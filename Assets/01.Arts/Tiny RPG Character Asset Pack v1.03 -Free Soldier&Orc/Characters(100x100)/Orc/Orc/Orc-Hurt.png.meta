@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -134,7 +134,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Orc-Hurt_0
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 43
+        width: 23
+        height: 15
+      alignment: 9
+      pivot: {x: 0.34984788, y: 0.49147263}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87a0eefc75ac4e5479dc0dc56494a3c2
+      internalID: 1888950594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orc-Hurt_1
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 43
+        width: 23
+        height: 15
+      alignment: 9
+      pivot: {x: 0.34651715, y: 0.49264553}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ef96e20879ad42468ee32f6fef909c3
+      internalID: 1865611997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orc-Hurt_2
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 43
+        width: 23
+        height: 15
+      alignment: 9
+      pivot: {x: 0.3611344, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92f4e52a80da9614399d63a5ae5a98c1
+      internalID: 1353697288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orc-Hurt_3
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 43
+        width: 23
+        height: 15
+      alignment: 9
+      pivot: {x: 0.3744175, y: 0.49999973}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 199804a5495786940bdf59f5ae849a04
+      internalID: -656571733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +229,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Orc-Hurt_0: 1888950594
+      Orc-Hurt_1: 1865611997
+      Orc-Hurt_2: 1353697288
+      Orc-Hurt_3: -656571733
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
