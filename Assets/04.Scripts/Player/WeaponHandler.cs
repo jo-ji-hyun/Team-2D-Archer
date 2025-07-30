@@ -12,7 +12,7 @@ public class WeaponHandler : MonoBehaviour
     public float Delay { get => delay; set => delay = value; }
 
     // === 무기 사이즈 ===
-    [SerializeField] private float weaponSize = 1.0f;
+    [SerializeField] private float weaponSize = 2.0f;
     public float Weaponsize { get => weaponSize; set => weaponSize = value; }
 
     // === 파워 ===
