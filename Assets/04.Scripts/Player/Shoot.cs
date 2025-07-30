@@ -23,6 +23,7 @@ public class Shoot : MonoBehaviour
     private EnemyResourceController _targetEnemy;
     // private StatsManager _stat;
 
+    // === 초기데미지 여기서 수정 ===
     [SerializeField] private float[] _magic_Base_Damage = { 3.0f, 2.0f }; // 마법 프리팹 [0]부터 기본 데미지 추가
    
     private void Awake()
@@ -51,30 +52,29 @@ public class Shoot : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag(wallTag)) // 장애물(Tag)과 충돌시 삭제
-        {
-            DestroyShoot(transform.position, true);
-        }
         if (enemyLayer.value == (enemyLayer.value | (1 << collision.gameObject.layer))) // 몬스터(Layer)와 충돌시 삭제
         {
             DestroyShoot(collision.ClosestPoint(transform.position), true);
             // === 몬스터의 체력 변화 ===
             EnemyResourceController enemy = collision.GetComponent<EnemyResourceController>();
             float _total_Damage = FinalMagicDamage();
-            Debug.Log($"최종 데미지 : {_total_Damage}");
+
             enemy.ChangeHealth(-_total_Damage);
         }
+        else if (collision.gameObject.CompareTag(wallTag)) // 장애물(Tag)과 충돌시 삭제
+        {
+            DestroyShoot(transform.position, true);
+        }
+
     }
 
     // === 최종 마법 데미지 ===
     private float FinalMagicDamage()
     {
-        float currentDamage = _range_Weapon.Power;
+        float currentDamage = _range_Weapon.Power;                      // 무기 데미지 
+        
+        currentDamage += _magic_Base_Damage[_range_Weapon.magicIndex];  // 마법 기초 데미지
 
-        if (_range_Weapon.magicIndex >= 0 && _range_Weapon.magicIndex < _magic_Base_Damage.Length)
-        {
-            currentDamage += _magic_Base_Damage[_range_Weapon.magicIndex];
-        }
 
         // === 플레이어 스텟 참조 ===
         //if (_stat != null)
@@ -85,6 +85,7 @@ public class Shoot : MonoBehaviour
         return currentDamage;  // 무기 데미지 + 마법 기본 데미지 + 플레이어 스텟
     }
 
+    // === 투사체 정보 설정(크기, 방향, 색깔) ===
     public void Init(Vector2 direction, RangeWeapon weaponHandler)
     {
         _range_Weapon = weaponHandler;

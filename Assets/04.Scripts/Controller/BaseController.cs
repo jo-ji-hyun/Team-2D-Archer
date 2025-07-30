@@ -94,6 +94,7 @@ public class BaseController : MonoBehaviour
         weaponHandler?.Rotate(isLeft); // 무기도 캐릭에 맞춰 회전함
     }
 
+    // === 공격 딜레이 ===
     private void HandleAttackDelay()
     {
         if (weaponHandler == null)
@@ -111,15 +112,14 @@ public class BaseController : MonoBehaviour
         }
     }
 
+    // === 공격시 무기 장착 여부 확인 ===
     protected virtual void AttackCall()
     {
-
         if (lookDirection != Vector2.zero)
         {
             weaponHandler?.Attack(); // 무기들었으면 공격해라
             animationPlayer.AttackBehavior();
         }
-
     }
 
 }
