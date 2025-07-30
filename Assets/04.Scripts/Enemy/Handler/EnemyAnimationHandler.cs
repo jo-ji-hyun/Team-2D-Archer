@@ -20,7 +20,7 @@ public class EnemyAnimationHandler : MonoBehaviour
 
     public void Move(Vector2 obj)
     {
-        animator.SetBool(IsMoving, obj.magnitude > .5f);
+        animator.SetBool(IsMoving, true);
     }
 
     public void Damage()
