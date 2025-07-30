@@ -22,7 +22,7 @@ public class AnimationPlayer : MonoBehaviour
         animator.SetBool(_isRun, obj.magnitude > .5f); // 움직이고있는가?
     }
 
-    // === 공격시 === (무기 애니메이션을 쓸꺼면 지우자 .... 고민중 )
+    // === 공격시 ===
     public void AttackBehavior()
     {
         animator.SetBool(_isAtk, true);
