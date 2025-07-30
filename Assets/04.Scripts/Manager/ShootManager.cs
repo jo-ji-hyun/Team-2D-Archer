@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class ShootManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject[] MagicPrefabs;
 
-    // Update is called once per frame
-    void Update()
+    // === ½Ì±ÛÅæ ¼±¾ð ===
+    private static ShootManager instance;
+    public static ShootManager Instance { get { return instance; } }
+
+    private void Awake()
     {
-        
+        instance = this;
+    }
+    //
+
+    // === ¹ß½Î ·ÎÁ÷ ===
+    public void ShootMagic(RangeWeapon rangeWeapon, Vector2 startPostiion, Vector2 direction)
+    {
+        GameObject origin = MagicPrefabs[rangeWeapon.magicIndex];
+        GameObject obj = Instantiate(origin, startPostiion, Quaternion.identity);
+
+        Shoot shoot = obj.GetComponent<Shoot>();
+
+        shoot.Init(direction, rangeWeapon);
     }
 }

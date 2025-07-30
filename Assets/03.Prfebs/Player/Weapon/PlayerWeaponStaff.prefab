@@ -84,7 +84,7 @@ MonoBehaviour:
   attackRange: 10
   target:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   SpawnPosition: {fileID: 959088237783861275}
   magicIndex: 0
   magicSize: 1

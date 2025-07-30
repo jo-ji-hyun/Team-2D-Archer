@@ -12,11 +12,12 @@ public class PlayerController : BaseController
         base.Start();
         _camera = Camera.main;
     }
+
     protected override void HandleAction()
     {
-        Debug.Log("¹«±â ¹ß½Î");
         isAttacking = Input.GetMouseButton(0);
     }
+
     void OnMove(InputValue inputValue)
     {
         movementDirection = inputValue.Get<Vector2>();

@@ -47,6 +47,7 @@ public class WeaponHandler : MonoBehaviour
     //[SerializeField] private float knockbackTime = 0.5f;
     //public float KnockbackTime { get => knockbackTime; set => knockbackTime = value; }
 
+
     protected virtual void Awake()
     {
         Controller = GetComponentInParent<BaseController>();          // 부모에게서 가져옴
@@ -57,7 +58,11 @@ public class WeaponHandler : MonoBehaviour
 
         transform.localScale = Vector3.one * weaponSize;
     }
-    
+    protected virtual void Start()
+    {
+
+    }
+
     // === 공격시 애니메이션 들고오기 ===
     public virtual void Attack()
     {
