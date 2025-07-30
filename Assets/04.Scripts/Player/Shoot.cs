@@ -5,7 +5,8 @@ using UnityEngine;
 public class Shoot : MonoBehaviour
 {
     // === 충돌체 정의 === 
-    [SerializeField] private string wallTag = "object";
+    [SerializeField] private string wallTag = "object"; // 장애물
+    [SerializeField] private LayerMask enemyLayer;       // 적
 
     private RangeWeapon _range_Weapon;
 
@@ -17,8 +18,6 @@ public class Shoot : MonoBehaviour
 
     private Rigidbody2D _rigidbody2D;
     private SpriteRenderer _sprite_Renderer;
-
-    public bool fxOnDestory = true;
 
     private void Awake()
     {
@@ -46,15 +45,15 @@ public class Shoot : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag(wallTag))
+        if (collision.gameObject.CompareTag(wallTag)) // 장애물(Tag)과 충돌시 삭제
         {
             DestroyShoot(transform.position, true);
         }
-        //else if (collision.gameObject.CompareTag(wallTag)) // 나중에 수정
-        //{
-        //    DestroyShoot(transform.position, true);
-        //    // 적 데미지 로직 추가
-        //}
+        if (enemyLayer.value == (enemyLayer.value | (1 << collision.gameObject.layer))) // 몬스터(Layer)와 충돌시 삭제
+        {
+            DestroyShoot(collision.ClosestPoint(transform.position), true);
+            //
+        }
     }
 
 
