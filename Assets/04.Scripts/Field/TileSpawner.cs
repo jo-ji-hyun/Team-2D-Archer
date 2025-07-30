@@ -8,6 +8,7 @@ using static UnityEditor.PlayerSettings;
 public class TileSpawner : MonoBehaviour
 {
     public GameObject tilePrefab;
+    public GameObject[] objectPrefab;
     public Sprite[] tileSprites;
 
     private int height = 10;
@@ -40,10 +41,25 @@ public class TileSpawner : MonoBehaviour
                 SpriteRenderer sr = tile.GetComponentInChildren<SpriteRenderer>();
                 sr.sortingOrder = i;
 
-                int _random = UnityEngine.Random.Range(0, 100);
-                if (_random <= 10)
+                if (UnityEngine.Random.Range(0, 100) <= 10)
                 {
                     sr.sprite = tileSprites[1];
+                }
+
+                if (UnityEngine.Random.Range(0, 100) <= 10)
+                {
+                    spawnPos = startPos + new Vector3(xPos + UnityEngine.Random.Range(-0.3f, 0.3f), yPos + UnityEngine.Random.Range(0.2f, 1f), 0f);
+                    GameObject _object = Instantiate(objectPrefab[UnityEngine.Random.Range(1, 4)], spawnPos, Quaternion.identity, transform);
+                    sr = _object.GetComponentInChildren<SpriteRenderer>();
+                    sr.sortingOrder = i + 20;
+                }
+
+                if (UnityEngine.Random.Range(0, 100) <= 2)
+                {
+                    spawnPos = startPos + new Vector3(xPos + UnityEngine.Random.Range(-0.3f, 0.3f), yPos + UnityEngine.Random.Range(0.2f, 1f), 0f);
+                    GameObject _object = Instantiate(objectPrefab[UnityEngine.Random.Range(0, 1)], spawnPos, Quaternion.identity, transform);
+                    sr = _object.GetComponentInChildren<SpriteRenderer>();
+                    sr.sortingOrder = i + 20;
                 }
                 i--;
             }
