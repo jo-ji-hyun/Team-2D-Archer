@@ -14,7 +14,7 @@ public class ShootManager : MonoBehaviour
     {
         instance = this;
     }
-    //
+    // -----------------------
 
     // === ¹ß½Î ·ÎÁ÷ ===
     public void ShootMagic(RangeWeapon rangeWeapon, Vector2 startPostiion, Vector2 direction)

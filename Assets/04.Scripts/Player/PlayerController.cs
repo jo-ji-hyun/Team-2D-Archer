@@ -15,7 +15,7 @@ public class PlayerController : BaseController
 
     protected override void HandleAction()
     {
-        isAttacking = Input.GetMouseButton(0);
+      
     }
 
     void OnMove(InputValue inputValue)

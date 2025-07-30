@@ -62,6 +62,8 @@ public class RangeWeapon : WeaponHandler
             CreateMagicShoot(Controller.LookDirection, angle);
         }
     }
+
+    // === 마법 발사 ===
     private void CreateMagicShoot(Vector2 _lookDirection, float angle)
     {
         _shoot_Manager.ShootMagic( this, SpawnPosition.position, RotateVector2(_lookDirection, angle));

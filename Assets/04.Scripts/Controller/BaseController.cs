@@ -57,8 +57,6 @@ public class BaseController : MonoBehaviour
         HandleAttackDelay();
     }
 
-
-
     // === 기본적인 이동 ===
     private void Movement(Vector2 direction)
     {
@@ -68,6 +66,7 @@ public class BaseController : MonoBehaviour
         animationPlayer.Move(direction);     // 이동 애니메이션
     }
 
+    // === 공격 ===
     protected virtual void HandleAction()
     {
 
@@ -102,11 +101,11 @@ public class BaseController : MonoBehaviour
         if (isAttacking && _time_Since_Last_Attack > weaponHandler.Delay)
         {
             _time_Since_Last_Attack = 0;
-            Attack();
+            AttackCall();
         }
     }
 
-    protected virtual void Attack()
+    protected virtual void AttackCall()
     {
         if (lookDirection != Vector2.zero)
             weaponHandler?.Attack(); // 무기들었으면 공격해라
