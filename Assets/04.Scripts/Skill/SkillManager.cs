@@ -15,11 +15,11 @@ public class SkillManager : MonoBehaviour
     // 현재 플레이어가 보유중인 스킬 리스트
     public List<Skill> acquiredSkills = new List<Skill>();
 
-    public SkillExecutor executor; // 스킬 사용을 위한 실행기
-
     private void Awake()
     {
-        if (Instance == null) Instance = this; // 싱글톤 인스턴스 설정
+        Instance = this; // 싱글톤 인스턴스 설정
+        // 테스트 용 기본 스킬
+        allSkills.Add(new Skill("Flamethrower", "강력한 화염 공격을 가한다."));
     }
 
     // 새로운 스킬을 플레이어에게 부여하는 함수
@@ -29,39 +29,37 @@ public class SkillManager : MonoBehaviour
         Debug.Log($"스킬 획득 : {skill.skillName}"); // 실제 효과 적용 로직은 따로 분리 가능함.
     }
 
-    // 아직 획득하지 않은 스킬 중에서 랜덤으로 N개 추출
-    public List<Skill> GetRandomSkills(int count)
+    public void AcquireRandomSkill()
     {
-        List<Skill> candidates = new List<Skill>();
+        // 아직 획득 하지 않은 스킬 중에서만 랜덤으로 선택.
+        List<Skill> available = allSkills.FindAll(s => !acquiredSkills.Contains(s));
 
-        foreach (Skill skill in allSkills)
+        if (available.Count > 0)
         {
-            if (!acquiredSkills.Contains(skill))
-                candidates.Add(skill);
+            int rand = Random.Range(0, available.Count);
+            Skill selected = available[rand];
+            acquiredSkills.Add(selected);
+            Debug.Log($"스킬 획득: {selected.skillName} - {selected.description}");
         }
-
-
-        // 랜덤하게 N개 뽑기
-        List<Skill> randomSkills = new List<Skill>();
-        for (int i = 0; i < count && candidates.Count > 0; i++)
+        else
         {
-            int Index = Random.Range(0, candidates.Count);
-            randomSkills.Add(candidates[Index]);
-            candidates.RemoveAt(Index);
+            Debug.Log("획득 가능한 스킬이 없습니다.");
         }
-
-        return randomSkills;
     }
 
-    // 스킬 사용(이펙트 실행)
-    public void UseSkill(string skillName, Vector3 position)
+    // 이미 획득한 스킬 목록을 보여주는 함수.
+    public void ShowAcquiredSkills()
     {
-        Skill skill = acquiredSkills.Find(s => s.skillName == skillName);
-        if (skill != null)
+        Debug.Log("==보유 스킬==");
+        foreach (var s in acquiredSkills)
         {
-            executor.skillPrefab = skill.skillPrefab;
-            executor.Use(position);
+            Debug.Log($"{s.skillName} : {s.description}");
         }
+    }
+
+    public void UseSkill(Skill skill, Vector3 position)
+    {
+        Debug.Log($"{skill.skillName} 스킬 사용! 위치: {position}");
     }
 }
 

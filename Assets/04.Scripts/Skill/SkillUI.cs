@@ -5,10 +5,14 @@ using UnityEngine;
 
 public class SkillUI : MonoBehaviour
 {
-    public string skillName; // 스킬 이름
+    public Skill skillData; // 스킬 이름
+    public GameObject playerObj; // 플레이어 오브젝트
 
     public void OnClickUseSkill()
     {
-        SkillManager.Instance.UseSkill(skillName, transform.position); // 예시 위치
+        if (playerObj != null)
+            SkillManager.Instance.UseSkill(skillData, transform.position); // 예시 위치
+        else
+            Debug.LogWarning("플레이어 오브젝트가 연결되어 있지 않습니다!");
     }
 }
