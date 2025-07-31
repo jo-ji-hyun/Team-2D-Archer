@@ -36,8 +36,8 @@ public class StatsManager : MonoBehaviour
 
         // === 레벨업 보너스 ===
         stats.maxHP += 10f;                         
-        stats.attack += 2f;                          
-        stats.defense += 1;
+        stats.attack += 1f;                          
+        stats.defense += 0.5f;
         
         stats.currentHP = stats.maxHP;                 
         Debug.Log($"레벨업! 현재 레벨: {stats.level}"); // ui 추가시 나중에 지우삼
