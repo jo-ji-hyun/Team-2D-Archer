@@ -26,16 +26,15 @@ public class EnemyManager : MonoBehaviour
         get { return _enemy_Spawn_Complete; }
         private set { _enemy_Spawn_Complete = value; } // 내부에서는 설정 가능, 외부에서는 읽기만 가능
     }
-    // ===========================================
 
     [SerializeField] private float timeBetweenSpawns = 0.2f;
     [SerializeField] private float timeBetweenWaves = 1f;
 
-    private Transform playerTarget; // 추가된거
+    private Transform playerTarget;
 
     private void Awake()
     {
-        // === 추가된거 ===
+        
         GameObject playerObject = GameObject.FindWithTag("Player");
         if (playerObject != null)
         {
@@ -45,7 +44,7 @@ public class EnemyManager : MonoBehaviour
         {
             Debug.LogWarning("EnemyManager: 'Player' 태그를 가진 오브젝트를 찾을 수 없습니다! 플레이어에 태그가 지정되어 있는지 확인하세요.");
         }
-       // ===============================
+       
     }
 
     public void StartWave(int waveCount)
