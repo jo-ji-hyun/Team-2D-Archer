@@ -8,19 +8,14 @@ public class StatsManager : MonoBehaviour
     // === 플레이어 스텟에서 정보를 가져옴 ===
     public PlayerStats stats = new PlayerStats();
 
-    // === 캐릭터 애니메이션 ===
-    protected AnimationPlayer animationPlayer;
-
     // ==== 게임매니저 호출 ====
     private GameManager _game_Manager;
 
     private void Awake()
     {
         _game_Manager = GetComponentInParent<GameManager>();
-    // =========================
-        animationPlayer = FindObjectOfType<AnimationPlayer>();  // 플레이어의 애니메이션 컴퍼넌트
     }
-
+    // =========================
 
     private void Start()
     {
@@ -59,12 +54,10 @@ public class StatsManager : MonoBehaviour
         if (stats.currentHP <= 0)
         { 
             stats.currentHP = 0;
-            animationPlayer.CharacterDie();
             _game_Manager.GameOver();
         }
         else
         {
-            animationPlayer.DamageSuffer();
             Hitpoint(); //확인용
         }    
     }

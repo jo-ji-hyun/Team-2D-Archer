@@ -9,15 +9,21 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public PlayerController player { get; private set; }
 
+    // === 자식들 참조 ===
     private EnemyManager _enemy_Manager;
+    private StatsManager _stats_Manager;
 
     private void Awake()
     {
         Instance = this;
         player = FindObjectOfType<PlayerController>();
-        player.Init(this);
+
         
         _enemy_Manager = GetComponentInChildren<EnemyManager>();
+        
+        _stats_Manager = GetComponentInChildren<StatsManager>();
+
+        player.Init(this, _stats_Manager);
     }
 
     // === 던전 입장시 ===

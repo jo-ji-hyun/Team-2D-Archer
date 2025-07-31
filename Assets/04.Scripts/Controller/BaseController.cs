@@ -20,9 +20,6 @@ public class BaseController : MonoBehaviour
     protected Vector2 lookDirection = Vector2.zero;
     public Vector2 LookDirection { get { return lookDirection; } }
 
-    // === 캐릭터 애니메이션 ===
-    protected AnimationPlayer animationPlayer;
-
     // === 무기 프리팹 준비 ===
     [SerializeField] public WeaponHandler WeaponPrefab;
     protected WeaponHandler weaponHandler;
@@ -33,7 +30,6 @@ public class BaseController : MonoBehaviour
     protected virtual void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();        // 컴퍼넌트에서 정보를 가져옴
-        animationPlayer = GetComponent<AnimationPlayer>();  // 플레이어의 애니메이션 컴퍼넌트
 
         // === 무기 프리팹에서 무기 가져오기 ===
         if (WeaponPrefab != null)
@@ -71,7 +67,6 @@ public class BaseController : MonoBehaviour
         direction = direction * _currentMoveSpeed;
 
         _rigidbody2D.velocity = direction;
-        animationPlayer.Move(direction);     // 이동 애니메이션
     }
 
     // === 공격 ===
@@ -125,9 +120,7 @@ public class BaseController : MonoBehaviour
         if (lookDirection != Vector2.zero)
         {
             weaponHandler?.Attack(); // 무기들었으면 공격해라
-            animationPlayer.AttackBehavior();
         }
     }
-
 }
 
