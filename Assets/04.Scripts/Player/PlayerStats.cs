@@ -9,8 +9,8 @@ public class PlayerStats
     public int level = 1;
     public float maxHP = 100.0f;
     public float currentHP = 100.0f;
-    public float attack = 10.0f;
-    public float defense = 5.0f;
+    public float attack = 5.0f;
+    public float defense = 1.0f;
     public float moveSpeed = 3.0f;
     public float attackSpeed = 1.0f;
 
