@@ -57,7 +57,7 @@ public class EnemyController : EnemyBaseController
 
         if (target == null)
         {
-            Debug.LogWarning("taget이 비었음");
+            Debug.LogWarning("target이 비었음");
             movementDirection = Vector2.zero;
             return;
         }
@@ -83,7 +83,6 @@ public class EnemyController : EnemyBaseController
         if (statHandler != null)
         {
             movementDirection = direction * statHandler.Speed;
-            Debug.Log($"[EnemyController] Moving towards: {movementDirection}, Speed: {statHandler.Speed}");
         }
         else
         {

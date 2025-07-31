@@ -166,7 +166,7 @@ MonoBehaviour:
   AtkPower: 7
   timeSinceLastAttack: 3.4028235e+38
   attackRange: 1
-  attackCooldown: 1
+  attackCooldown: 2.2
 --- !u!1 &6689174819530661850
 GameObject:
   m_ObjectHideFlags: 0
