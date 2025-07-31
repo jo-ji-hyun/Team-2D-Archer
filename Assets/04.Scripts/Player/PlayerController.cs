@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : BaseController
+public class PlayerController : BaseController // 이동을 받고 애니도 재생해야함
 {
     private GameManager _game_Manager;
     private Camera _camera;
@@ -73,11 +73,12 @@ public class PlayerController : BaseController
     // === 데미지를 받을시 ===
     public void TakeDamage(float dmg)
     {
-        
+        SetPlayerAlive(this._stats_Manager.stats.currentHP); // BaseController에 hp를 넘겨줌
+
         // === 애니메이션 재생 ===
         if (this._stats_Manager.stats.currentHP > 0)
         {
-            this._stats_Manager.TakeDamage(dmg);
+            this._stats_Manager.TakeDamage((int)dmg);
             _animation_Player?.DamageSuffer();
         }
         else if (this._stats_Manager.stats.currentHP <= 0)

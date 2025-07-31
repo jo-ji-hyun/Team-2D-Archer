@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerUIHelper : MonoBehaviour
 {
     public Image Hpbar;
+
+    public TextMeshProUGUI HpText;
 
     public void UpdateHP(float currentHealth, float maxHealth)
     {
@@ -20,6 +23,8 @@ public class PlayerUIHelper : MonoBehaviour
             {
                 Hpbar.fillAmount = currentHealth / maxHealth;
             }
+
+            HpText.text = $"{currentHealth.ToString("F0")}"; // F0 이 소수점 없이 전개
         }
     }
 }

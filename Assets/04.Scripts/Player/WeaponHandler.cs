@@ -37,16 +37,6 @@ public class WeaponHandler : MonoBehaviour
     // === 캐릭터 이동과 비교하기 위해 ===
     public BaseController Controller { get; private set; }
 
-    // === 넉백 === (나중에 추가)
-    //[SerializeField] private bool isOnKnockback = false;
-    //public bool IsOnKnockback { get => isOnKnockback; set => isOnKnockback = value; }
-
-    //[SerializeField] private float knockbackPower = 0.1f;
-    //public float KnockbackPower { get => knockbackPower; set => knockbackPower = value; }
-
-    //[SerializeField] private float knockbackTime = 0.5f;
-    //public float KnockbackTime { get => knockbackTime; set => knockbackTime = value; }
-
 
     protected virtual void Awake()
     {

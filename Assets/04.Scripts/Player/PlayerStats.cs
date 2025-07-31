@@ -7,8 +7,8 @@ using UnityEngine;
 public class PlayerStats
 {
     public int level = 1;
-    public float maxHP = 100.0f;
-    public float currentHP = 100.0f;
+    public int maxHP = 100;
+    public int currentHP = 100;
     public float attack = 5.0f;
     public float defense = 0.0f;
     public float moveSpeed = 3.0f;

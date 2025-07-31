@@ -26,17 +26,17 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.K))
         {
-            TakeDamage(20f);
+            TakeDamage(20);
         } // 대미지 받기(테스트용)
 
         if (Input.GetKeyDown(KeyCode.J))
         {
-            TakeDamage(99999f);
+            TakeDamage(99999);
         } // 즉사 대미지(테스트용)
     }
 
     // === 데미지 받기 ===
-    public void TakeDamage(float dmg)
+    public void TakeDamage(int dmg)
     {
         _stats_Manager.TakeDamage(dmg);
     }
