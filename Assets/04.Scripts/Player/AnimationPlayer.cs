@@ -18,9 +18,9 @@ public class AnimationPlayer : MonoBehaviour
     }
 
     // === 움직임 ===
-    public void Move(Vector2 obj)
+    public void Move()
     {
-        animator.SetBool(_isRun, obj.magnitude > .5f); // 움직이고있는가?
+        animator.SetBool(_isRun, true); // 움직이고있는가?
     }
 
     // === 공격시 ===

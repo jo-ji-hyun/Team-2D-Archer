@@ -6,13 +6,16 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    public PlayerStats Stats = new PlayerStats();
+    // === StatsManager 참고 ===
+    private StatsManager _stats_Manager;
 
-    void Start()
+    private void Awake()
     {
-        Stats.currentHP = Stats.maxHP; // 체력 초기화, UI 갱신
-        Debug.Log("HP: " + Stats.currentHP + ", ATK: " + Stats.attack);
+        _stats_Manager = FindObjectOfType<StatsManager>();
+        // ===========================
+        _stats_Manager.Hitpoint();
     }
+
 
     private void Update()
     {
@@ -28,32 +31,19 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.J))
         {
-            Stats.currentHP = 0;
+            TakeDamage(99999f);
         } // 즉사 대미지(테스트용)
     }
-    // 데미지 받기
+
+    // === 데미지 받기 ===
     public void TakeDamage(float dmg)
     {
-        float realDamage = Mathf.Max(0, dmg - Stats.defense);
-        Stats.currentHP -= realDamage;
-        if (Stats.currentHP < 0) Stats.currentHP = 0; // HP가 0 이하로 떨어지면 사망.
-        Debug.Log($"데미지 받음: {realDamage}, 현재 남은 HP: {Stats.currentHP}");
+        _stats_Manager.TakeDamage(dmg);
     }
 
-    // 레벨업
+    // === 레벨업 ===
     public void LevelUP()
     {
-        if (Stats.currentHP <= 0)
-        {
-            Debug.Log("플레이어가 사망했습니다."); 
-            return; // 플레이어가 죽으면 레벨업을 못하게 막음.
-        }
-
-        Stats.level++;
-        Stats.maxHP += 10f; // 레벨업 시 최대 HP 증가
-        Stats.attack += 2f; // 레벨업 시 공격력 증가
-        Stats.defense += 1f; // 레벨업 시 방어력 증가
-        Stats.currentHP = Stats.maxHP; // 레벨업 시 현재 HP를 최대 HP로 회복
-        Debug.Log($"레벨업! 현재 레벨: {Stats.level}");
+        _stats_Manager.Levelup();
     }
 }
