@@ -44,7 +44,7 @@ public class EnemyBaseController : MonoBehaviour
         var EnemyAtk = AtkPower;
         if (playerHealth != null)
         {
-            playerController.TakeDamage(AtkPower);
+            playerHealth.TakeDamage(AtkPower);
         }
 
         isAttacking = false; // 공격 끝났다고 판단
