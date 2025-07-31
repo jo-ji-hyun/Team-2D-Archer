@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     public PlayerStats Stats = new PlayerStats();
+
+    public int level = 1; // 플레이어 레벨
 
     void Start()
     {
@@ -55,5 +58,15 @@ public class Player : MonoBehaviour
         Stats.defense += 1f; // 레벨업 시 방어력 증가
         Stats.currentHP = Stats.maxHP; // 레벨업 시 현재 HP를 최대 HP로 회복
         Debug.Log($"레벨업! 현재 레벨: {Stats.level}");
+
+        if (Stats.level == 2)
+        {
+            Skill fireballSkill = SkillManager.Instance.allSkills.Find(s => s.skillName == "FireBall");
+            if (fireballSkill != null && !SkillManager.Instance.acquiredSkills.Contains(fireballSkill))
+            {
+                SkillManager.Instance.AcquireSkill(fireballSkill);
+                Debug.Log("파이어볼 스킬을 획득했습니다");
+            }
+        }
     }
 }
