@@ -292,6 +292,7 @@ GameObject:
   - component: {fileID: 463188274}
   - component: {fileID: 463188276}
   - component: {fileID: 463188275}
+  - component: {fileID: 463188277}
   m_Layer: 5
   m_Name: Hp_Gage_front
   m_TagString: Untagged
@@ -338,11 +339,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 1092869204, guid: ca82e7e671b76984ea25d94ab4186f7e, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -356,6 +357,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 463188273}
   m_CullTransparentMesh: 1
+--- !u!114 &463188277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463188273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b1a6157bbd8144458c66889ee2c479e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hpbar: {fileID: 463188275}
 --- !u!1 &512577775
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,7 +752,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1505343794, guid: ca82e7e671b76984ea25d94ab4186f7e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1064,6 +1078,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 1744240192}
+  - {fileID: 1499918150}
   - {fileID: 512577776}
   - {fileID: 885099515}
-  - {fileID: 1499918150}
