@@ -466,6 +466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 3713710080887282524, guid: 985aec065c737c2418aabbca177376d7, type: 3}
+  - {fileID: 4169024722797019735, guid: 00371d44b8a46164294e5918b6fe75da, type: 3}
   spawnAreas:
   - serializedVersion: 2
     x: 0

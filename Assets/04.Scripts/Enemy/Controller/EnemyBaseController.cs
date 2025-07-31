@@ -21,6 +21,9 @@ public class EnemyBaseController : MonoBehaviour
     protected EnemyStatHandler statHandler;
 
     [SerializeField] protected Transform target;
+    [SerializeField] protected float AtkPower = 5f;
+
+    private PlayerController playerController;
 
     protected bool isAttacking;
     public float timeSinceLastAttack = float.MaxValue;
@@ -38,10 +41,10 @@ public class EnemyBaseController : MonoBehaviour
         if (target == null) return;
 
         var playerHealth = target.GetComponent<PlayerController>();
+        var EnemyAtk = AtkPower;
         if (playerHealth != null)
         {
-
-
+            playerController.TakeDamage(AtkPower);
         }
 
         isAttacking = false; // 공격 끝났다고 판단
