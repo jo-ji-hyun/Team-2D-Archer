@@ -16,22 +16,20 @@ public class PlayerController : BaseController
         this.gameManager = gameManager;
         _camera = Camera.main;
 
-        _stats_Manager = FindObjectOfType<StatsManager>();
-        if (_stats_Manager == null)
-        {
-            Debug.LogError("PlayerController: 씬에서 StatsManager 컴포넌트를 찾을 수 없습니다! (GameManager 하위에 StatsManager가 있는지 확인)");
-        }
-        else
-        {
-            SetMoveSpeed(_stats_Manager.stats.moveSpeed);
-        }
+        _stats_Manager = FindObjectOfType<StatsManager>(); // StatsManager를 찾음
+
+        SetMoveSpeed(_stats_Manager.stats.moveSpeed); // BaseController에 속도를 넘겨줌
     }
 
     // === 플레이어 공격 로직 ===
     protected override void HandleAction()
     {
-        // 나중에 적 탐지시 공격으로 변경 ... 고민중
-        isAttacking = true;
+        if(_stats_Manager.stats.currentHP != 0)
+        {
+            // 나중에 적 탐지시 공격으로 변경 ... 고민중
+            isAttacking = true;
+        }
+
     }
 
     void OnMove(InputValue inputValue)

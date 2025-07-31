@@ -37,12 +37,6 @@ public class StatsManager : MonoBehaviour
     // === 레벨업 ===
     public void Levelup()
     {
-        if (stats.currentHP <= 0) // 혹시 모르니
-        {
-            animationPlayer.CharacterDie();
-            _game_Manager.GameOver(); // 게임오버 호출
-        }
-
         stats.level++;
 
         // === 레벨업 보너스 ===
@@ -51,8 +45,8 @@ public class StatsManager : MonoBehaviour
         stats.defense += 1;
         
         stats.currentHP = stats.maxHP;                 
-        Debug.Log($"레벨업! 현재 레벨: {stats.level}"); // 나중에 지우삼
-        Hitpoint(); // 확인용
+        Debug.Log($"레벨업! 현재 레벨: {stats.level}"); // ui 추가시 나중에 지우삼
+        Hitpoint();
     }
     
     // === 플레이어가 데미지를 받을 시 ===
@@ -65,14 +59,14 @@ public class StatsManager : MonoBehaviour
         if (stats.currentHP <= 0)
         { 
             stats.currentHP = 0;
+            animationPlayer.CharacterDie();
             _game_Manager.GameOver();
         }
         else
         {
             animationPlayer.DamageSuffer();
             Hitpoint(); //확인용
-        }
-            
+        }    
     }
 
 }
