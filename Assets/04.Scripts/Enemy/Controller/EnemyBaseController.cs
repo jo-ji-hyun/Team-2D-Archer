@@ -6,9 +6,9 @@ public class EnemyBaseController : MonoBehaviour
 {
     protected Rigidbody2D _rigidbody;
 
-    [SerializeField] private SpriteRenderer characterRenderer;
+    [SerializeField] protected SpriteRenderer characterRenderer;
 
-    protected Vector2 movementDirection = Vector2.one;
+    protected Vector2 movementDirection = Vector2.zero;
     public Vector2 MovementDirection { get { return movementDirection; } }
 
     protected Vector2 lookDirection = Vector2.zero;
@@ -31,10 +31,6 @@ public class EnemyBaseController : MonoBehaviour
         animationHandler = GetComponent<EnemyAnimationHandler>();
         statHandler = GetComponent<EnemyStatHandler>();
 
-        //if (WeaponPrefab == null)
-        //    weaponHandler = Instantiate(WeaponPrefab, weaponPivot);
-        //else
-        //    weaponHandler = GetComponentInChildren<EnemyWeaponHandler>();
     }
 
     protected virtual void DealDamageToTarget()
@@ -58,6 +54,7 @@ public class EnemyBaseController : MonoBehaviour
         {
             knockbackDuration -= Time.fixedDeltaTime;
         }
+        HandleAction(); // 이걸 호출해야함
     }
 
     protected virtual void HandleAction()

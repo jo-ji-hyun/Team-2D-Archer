@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  speed: 2
+  speed: 1
 --- !u!114 &4281668606953340281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,8 +162,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterRenderer: {fileID: 5938908763641698710}
-  WeaponPrefab: {fileID: 0}
-  followRange: 15
+  target: {fileID: 0}
+  timeSinceLastAttack: 3.4028235e+38
+  attackRange: 1
+  attackCooldown: 1
 --- !u!1 &6689174819530661850
 GameObject:
   m_ObjectHideFlags: 0
