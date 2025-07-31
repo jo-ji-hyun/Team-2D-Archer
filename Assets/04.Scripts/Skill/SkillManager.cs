@@ -16,8 +16,8 @@ public class SkillManager : MonoBehaviour
     public List<Skill> acquiredSkills = new List<Skill>();
 
     public GameObject fireballPrefab; // 파이어볼 프리팹
-    public GameObject skillButtenPrefeb; // 스킬 버튼 프리팹
-    public Transform skillButtenParent; // 스킬 버튼을 배치할 부모 오브젝트
+    public GameObject skillButtonPrefab; // 스킬 버튼 프리팹
+    public Transform skillButtonParent; // 스킬 버튼을 배치할 부모 오브젝트
 
     private void Awake()
     {
@@ -58,7 +58,7 @@ public class SkillManager : MonoBehaviour
     {
         Debug.Log("[Skill]스킬 버튼 생성: " + skill.skillName);
 
-        GameObject btnObj = Instantiate(skillButtenPrefeb, skillButtenParent);
+        GameObject btnObj = Instantiate(skillButtonPrefab, skillButtonParent);
         Debug.Log("[Skill] 버튼 실제 생성됨: " + btnObj.name);
 
         SkillUI skillUI = btnObj.GetComponent<SkillUI>();
@@ -99,7 +99,7 @@ public class SkillManager : MonoBehaviour
         {
             Vector2 dir = Vector2.right; // 예시로 오른쪽 방향으로 발사
 
-            GameObject proj = Instantiate(fireballPrefab, position, Quaternion.identity);
+            GameObject proj = Instantiate(fireballPrefab, spawnPos, Quaternion.identity);
 
             proj.GetComponent<Projectile>().SetDirection(dir); // 발사체 방향 설정
         }

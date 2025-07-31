@@ -523,8 +523,8 @@ MonoBehaviour:
   allSkills: []
   acquiredSkills: []
   fireballPrefab: {fileID: 8738154650902348572, guid: 9d0ba554e6385164186b820ee7b1d38c, type: 3}
-  skillButtenPrefeb: {fileID: 1214967395705132201, guid: 00a0863c72084c54ba11926b036d4159, type: 3}
-  skillButtenParent: {fileID: 1200687264}
+  skillButtonPrefab: {fileID: 1214967395705132201, guid: 00a0863c72084c54ba11926b036d4159, type: 3}
+  skillButtonParent: {fileID: 1200687264}
 --- !u!4 &443059698
 Transform:
   m_ObjectHideFlags: 0
@@ -710,6 +710,7 @@ MonoBehaviour:
     attack: 10
     defense: 5
     moveSpeed: 5
+    attackSpeed: 1
   level: 1
 --- !u!4 &1141833787
 Transform:
@@ -885,8 +886,8 @@ MonoBehaviour:
   allSkills: []
   acquiredSkills: []
   fireballPrefab: {fileID: 0}
-  skillButtenPrefeb: {fileID: 0}
-  skillButtenParent: {fileID: 0}
+  skillButtonPrefab: {fileID: 0}
+  skillButtonParent: {fileID: 0}
 --- !u!114 &1200687266
 MonoBehaviour:
   m_ObjectHideFlags: 0
