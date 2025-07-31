@@ -7,8 +7,6 @@ public class BaseController : MonoBehaviour
 {
     protected Rigidbody2D _rigidbody2D; // Rigidbody2D  불러오기
 
-    protected PlayerStats stats = new PlayerStats(); // 플레이어 스텟 가져오기
-
     // === 캐릭터,무기 캡슐화 === 
     [SerializeField] private SpriteRenderer character_Renderer;
     [SerializeField] private Transform weapon_Pivot;
@@ -16,7 +14,7 @@ public class BaseController : MonoBehaviour
     // === 움직임 제어 ===
     protected Vector2 movementDirection = Vector2.zero;
     public Vector2 MovementDirection { get { return movementDirection; } }
-    private float _baseMovement;
+    protected float _currentMoveSpeed;
 
     // === 마우스에 따라 바라보는 방향 제어 ===
     protected Vector2 lookDirection = Vector2.zero;
@@ -36,8 +34,6 @@ public class BaseController : MonoBehaviour
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();        // 컴퍼넌트에서 정보를 가져옴
         animationPlayer = GetComponent<AnimationPlayer>();  // 플레이어의 애니메이션 컴퍼넌트
-
-        _baseMovement = stats.moveSpeed;                     // 플레이어 스텟에서 이동 속도 들고오기
 
         // === 무기 프리팹에서 무기 가져오기 ===
         if (WeaponPrefab != null)
@@ -62,11 +58,17 @@ public class BaseController : MonoBehaviour
     {
         Rotate(lookDirection);
     }
+    
+    // === PlayerController에서 속도를 가져옴 ===
+    public void SetMoveSpeed(float speed)
+    {
+        _currentMoveSpeed = speed;
+    }
 
     // === 기본적인 이동 ===
     private void Movement(Vector2 direction)
     {
-        direction = direction * _baseMovement;
+        direction = direction * _currentMoveSpeed;
 
         _rigidbody2D.velocity = direction;
         animationPlayer.Move(direction);     // 이동 애니메이션

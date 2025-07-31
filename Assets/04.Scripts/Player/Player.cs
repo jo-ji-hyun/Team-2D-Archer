@@ -12,8 +12,10 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _stats_Manager = FindObjectOfType<StatsManager>();
+        // ===========================
+        _stats_Manager.Hitpoint();
     }
-    // ===========================
+
 
     private void Update()
     {

@@ -7,11 +7,24 @@ public class PlayerController : BaseController
 {
     private GameManager gameManager;
     private Camera _camera;
+    private StatsManager _stats_Manager; // StatsManager 참조
 
     public void Init(GameManager gameManager)
     {
+        base.Awake();
+
         this.gameManager = gameManager;
         _camera = Camera.main;
+
+        _stats_Manager = FindObjectOfType<StatsManager>();
+        if (_stats_Manager == null)
+        {
+            Debug.LogError("PlayerController: 씬에서 StatsManager 컴포넌트를 찾을 수 없습니다! (GameManager 하위에 StatsManager가 있는지 확인)");
+        }
+        else
+        {
+            SetMoveSpeed(_stats_Manager.stats.moveSpeed);
+        }
     }
 
     // === 플레이어 공격 로직 ===
