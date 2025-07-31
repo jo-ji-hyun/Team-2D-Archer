@@ -9,14 +9,14 @@ public class PlayerController : BaseController
     private Camera _camera;
 
     // === 캐릭터 애니메이션 ===
-    private AnimationPlayer animationPlayer;
+    private AnimationPlayer _animation_Player;
 
     private StatsManager _stats_Manager; // StatsManager 참조
 
     protected override void Awake()
     {
         base.Awake();
-        animationPlayer = GetComponent<AnimationPlayer>();  // 플레이어의 애니메이션 컴퍼넌트
+        _animation_Player = GetComponent<AnimationPlayer>();  // 플레이어의 애니메이션 컴퍼넌트
         _camera = Camera.main;
     }
     public void Init(GameManager gameManager, StatsManager statsManager)
@@ -34,7 +34,7 @@ public class PlayerController : BaseController
         {
             // 나중에 적 탐지시 공격으로 변경 ... 고민중
             isAttacking = true;
-            animationPlayer.AttackBehavior();
+            _animation_Player.AttackBehavior();
         }
     }
 
@@ -42,7 +42,7 @@ public class PlayerController : BaseController
     {
         movementDirection = inputValue.Get<Vector2>();
         movementDirection = movementDirection.normalized;
-        animationPlayer.Move();     // 이동 애니메이션
+        _animation_Player.Move();     // 이동 애니메이션
     }
 
     // === 방향 찾기 ===
@@ -69,11 +69,11 @@ public class PlayerController : BaseController
         // === 애니메이션 재생 ===
         if (this._stats_Manager.stats.currentHP > 0)
         {
-            animationPlayer?.DamageSuffer();
+            _animation_Player?.DamageSuffer();
         }
         else if (this._stats_Manager.stats.currentHP <= 0)
         {
-            animationPlayer?.CharacterDie();
+            _animation_Player?.CharacterDie();
         }
 
     }

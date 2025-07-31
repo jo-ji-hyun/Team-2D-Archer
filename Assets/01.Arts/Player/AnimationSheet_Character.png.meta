@@ -303,6 +303,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Hit_Character
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 32
+        width: 18
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef8699323dbb4924cad044689118ad58
+      internalID: 1653102944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -314,13 +335,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      AnimationSheet_Character_0: 1202917108
       Attack_Character_0: 790792273
       Attack_Character_1: 1923099418
       Character_0: 296027370
       Character_1: 1457230587
       Die_Character_0: 742919274
       Die_Character_1: -541318247
+      Hit_Character: 1653102944
       Walk_Character_0: 961212201
       Walk_Character_1: -1039498084
   mipmapLimitGroupName: 
