@@ -19,7 +19,7 @@ public class PlayerController : BaseController
         _animation_Player = GetComponent<AnimationPlayer>();  // 플레이어의 애니메이션 컴퍼넌트
         _camera = Camera.main;
     }
-    public void Init(GameManager gameManager, StatsManager statsManager)
+    public void Init(GameManager gameManager, StatsManager statsManager) // GamaManager와 StatsManager를 가져옴
     { 
         this._game_Manager = gameManager;
         this._stats_Manager = statsManager;
@@ -30,19 +30,27 @@ public class PlayerController : BaseController
     // === 플레이어 공격 로직 ===
     protected override void HandleAction()
     {
-        if(this._stats_Manager.stats.currentHP != 0)
+        if(this._stats_Manager.stats.currentHP > 0)
         {
             // 나중에 적 탐지시 공격으로 변경 ... 고민중
             isAttacking = true;
             _animation_Player.AttackBehavior();
         }
+        else
+        {
+            isAttacking = false;
+        }
     }
 
     void OnMove(InputValue inputValue)
     {
-        movementDirection = inputValue.Get<Vector2>();
-        movementDirection = movementDirection.normalized;
-        _animation_Player.Move();     // 이동 애니메이션
+        if(this._stats_Manager.stats.currentHP > 0)
+        {
+            movementDirection = inputValue.Get<Vector2>();
+            movementDirection = movementDirection.normalized;
+            _animation_Player.Move();     // 이동 애니메이션
+        }
+
     }
 
     // === 방향 찾기 ===
@@ -65,16 +73,17 @@ public class PlayerController : BaseController
     // === 데미지를 받을시 ===
     public void TakeDamage(float dmg)
     {
-        this._stats_Manager.TakeDamage(dmg);
+        
         // === 애니메이션 재생 ===
         if (this._stats_Manager.stats.currentHP > 0)
         {
+            this._stats_Manager.TakeDamage(dmg);
             _animation_Player?.DamageSuffer();
         }
         else if (this._stats_Manager.stats.currentHP <= 0)
         {
             _animation_Player?.CharacterDie();
         }
-
+        
     }
 }

@@ -38,7 +38,8 @@ public class AnimationPlayer : MonoBehaviour
     // === »ç¸Á ===
     public void CharacterDie()
     {
-        animator.SetBool(_isDie, true);
+        animator.SetTrigger(_isSuf);
+        animator.SetTrigger(_isDie);
         animator.SetBool(_isAtk, false);
         animator.SetBool(_isRun, false);
     }

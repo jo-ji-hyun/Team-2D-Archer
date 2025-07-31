@@ -53,6 +53,7 @@ public class StatsManager : MonoBehaviour
         if (stats.currentHP <= 0)
         { 
             stats.currentHP = 0;
+            Debug.LogError("플레이어 사망");
             _game_Manager.GameOver();
         }
         else
