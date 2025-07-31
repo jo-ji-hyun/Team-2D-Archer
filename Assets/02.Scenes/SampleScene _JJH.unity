@@ -640,7 +640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character_Renderer: {fileID: 5615209}
   weapon_Pivot: {fileID: 1445767537}
-  _baseMovement: 3
+  _baseMovement: 1
   WeaponPrefab: {fileID: 6314048512668355772, guid: aebe4ac3ba914cf449a4dbf3afa095a0, type: 3}
 --- !u!114 &1499918152
 MonoBehaviour:
@@ -693,9 +693,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1499918147}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 171e5e8ce37cd9143ba80890bf0f44f2, type: 3}
+  m_Script: {fileID: 11500000, guid: aa2d6bfdd5b88da4480f30c160278f2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Stats:
+    level: 1
+    maxHP: 100
+    currentHP: 100
+    attack: 10
+    defense: 5
+    moveSpeed: 5
 --- !u!1001 &1744240192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -762,6 +769,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
+  - {fileID: 1744240192}
   - {fileID: 1499918150}
   - {fileID: 512577776}
-  - {fileID: 1744240192}
