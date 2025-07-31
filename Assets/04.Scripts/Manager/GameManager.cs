@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public PlayerController player { get; private set; }
 
-    private StatsManager _stats_Manager;
     private EnemyManager _enemy_Manager;
 
     private void Awake()
@@ -19,8 +18,6 @@ public class GameManager : MonoBehaviour
         player.Init(this);
         
         _enemy_Manager = GetComponentInChildren<EnemyManager>();
-
-        _stats_Manager = player.GetComponent<StatsManager>();
     }
 
     // === 던전 입장시 ===
