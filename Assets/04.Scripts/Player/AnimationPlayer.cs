@@ -20,7 +20,8 @@ public class AnimationPlayer : MonoBehaviour
     // === 움직임 ===
     public void Move()
     {
-        animator.SetBool(_isRun, true); // 움직이고있는가?
+        animator.SetBool(_isRun, true); 
+        animator.SetBool(_isSuf, false);
     }
 
     // === 공격시 ===
@@ -33,11 +34,13 @@ public class AnimationPlayer : MonoBehaviour
     public void DamageSuffer()
     {
         animator.SetBool(_isSuf, true);
+        animator.SetBool(_isAtk, false);
     }
 
     // === 사망 ===
     public void CharacterDie()
     {
         animator.SetBool(_isDie, true);
+        animator.SetBool(_isAtk, false);
     }
 }

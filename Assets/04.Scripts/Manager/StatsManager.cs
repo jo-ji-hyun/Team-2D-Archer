@@ -19,13 +19,13 @@ public class StatsManager : MonoBehaviour
 
     private void Start()
     {
+        stats.currentHP = stats.maxHP; // 체력 초기화, UI 갱신
         Hitpoint();
     }
 
     // === HP표시 ===
     public void Hitpoint()
     {
-        stats.currentHP = stats.maxHP; // 체력 초기화, UI 갱신
         Debug.Log($"현재 체력 {stats.currentHP}"); // 확인용
     }
 
@@ -48,7 +48,6 @@ public class StatsManager : MonoBehaviour
     public void TakeDamage(float dmg)
     {
         float realDamage = Mathf.Max(0, dmg - stats.defense); // 데미지 계산
-
         stats.currentHP -= realDamage;
 
         if (stats.currentHP <= 0)

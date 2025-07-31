@@ -25,6 +25,8 @@ public class EnemyBaseController : MonoBehaviour
 
     private PlayerController playerController;
 
+    protected bool isDead = false;
+
     protected bool isAttacking;
     public float timeSinceLastAttack = float.MaxValue;
 
@@ -44,7 +46,7 @@ public class EnemyBaseController : MonoBehaviour
         var EnemyAtk = AtkPower;
         if (playerHealth != null)
         {
-            playerController.TakeDamage(AtkPower);
+            playerHealth.TakeDamage(AtkPower);
         }
 
         isAttacking = false; // 공격 끝났다고 판단
@@ -52,6 +54,8 @@ public class EnemyBaseController : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
+        if (isDead) return; // 사망 시 추가행동 방지
+
         Movment(movementDirection);
         if (knockbackDuration > 0.0f)
         {
@@ -87,6 +91,9 @@ public class EnemyBaseController : MonoBehaviour
 
     public virtual void Death()
     {
+        if (isDead) return;
+        isDead = true;
+
         _rigidbody.velocity = Vector3.zero;
         animationHandler.Death();
         Destroy(gameObject, 2f);

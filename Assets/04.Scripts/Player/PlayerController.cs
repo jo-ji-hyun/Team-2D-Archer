@@ -66,6 +66,7 @@ public class PlayerController : BaseController
     public void TakeDamage(float dmg)
     {
         this._stats_Manager.TakeDamage(dmg);
+        // === 애니메이션 재생 ===
         if (this._stats_Manager.stats.currentHP > 0)
         {
             animationPlayer?.DamageSuffer();
@@ -74,5 +75,6 @@ public class PlayerController : BaseController
         {
             animationPlayer?.CharacterDie();
         }
+
     }
 }

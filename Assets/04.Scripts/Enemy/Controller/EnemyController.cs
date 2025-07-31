@@ -97,6 +97,7 @@ public class EnemyController : EnemyBaseController
 
     private void Attack()
     {
+        DealDamageToTarget();
         timeSinceLastAttack = 0f;
         animationHandler.Attack(); // 트리거 방식으로 공격 애니메이션 실행
     }
