@@ -11,21 +11,22 @@ public class EnemyController : EnemyBaseController
 
     protected virtual void Start()
     {
-        //// "Player" 레이어 가져오기
-        //int playerLayer = LayerMask.NameToLayer("Player");
 
-        //// 씬에 있는 모든 GameObject를 검사
-        //GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
-        //foreach (GameObject obj in allObjects)
-        //{
-        //    if (obj.layer == playerLayer)
-        //    {
-        //        target = obj.transform;
-        //        break;
-        //    }
-        //}
-        //// 공격 타이밍 시 데미지 전달 함수 등록
-        //animationHandler.OnAttackHit += DealDamageToTarget;
+    }
+
+    private void UpdateFacingDirection()
+    {
+        if (target == null) return;
+
+        // 방향 비교
+        if (target.position.x < transform.position.x)
+        {
+            characterRenderer.flipX = true;  // 왼쪽에 있으면 왼쪽 바라보게
+        }
+        else
+        {
+            characterRenderer.flipX = false; // 오른쪽에 있으면 오른쪽 바라보게
+        }
     }
 
     protected override void FixedUpdate()
@@ -68,17 +69,16 @@ public class EnemyController : EnemyBaseController
 
         if (distance <= attackRange)
         {
-            // lookDirection = direction; 위에서 처리함
             movementDirection = Vector2.zero;
 
-            if (!isAttacking && timeSinceLastAttack >= attackCooldown)
+            if (timeSinceLastAttack >= attackCooldown)
             {
                 Attack();
             }
 
             return;
         }
-        // --- ★★★ 여기를 수정합니다! ★★★ ---
+
         // movementDirection에 statHandler의 속도를 곱해줍니다.
         if (statHandler != null)
         {
@@ -91,14 +91,12 @@ public class EnemyController : EnemyBaseController
             Debug.LogWarning("EnemyController: Stat Handler가 없어 속도 정보를 가져올 수 없습니다!");
         }
 
-        // lookDirection = direction; 이미 위에서 처리함
-        //movementDirection = direction;
+        UpdateFacingDirection(); // 방향 업데이트
 
     }
 
     private void Attack()
     {
-        isAttacking = true;
         timeSinceLastAttack = 0f;
         animationHandler.Attack(); // 트리거 방식으로 공격 애니메이션 실행
     }

@@ -6,7 +6,7 @@ public class EnemyBaseController : MonoBehaviour
 {
     protected Rigidbody2D _rigidbody;
 
-    [SerializeField] private SpriteRenderer characterRenderer;
+    [SerializeField] protected SpriteRenderer characterRenderer;
 
     protected Vector2 movementDirection = Vector2.zero;
     public Vector2 MovementDirection { get { return movementDirection; } }
@@ -31,10 +31,6 @@ public class EnemyBaseController : MonoBehaviour
         animationHandler = GetComponent<EnemyAnimationHandler>();
         statHandler = GetComponent<EnemyStatHandler>();
 
-        //if (WeaponPrefab == null)
-        //    weaponHandler = Instantiate(WeaponPrefab, weaponPivot);
-        //else
-        //    weaponHandler = GetComponentInChildren<EnemyWeaponHandler>();
     }
 
     protected virtual void DealDamageToTarget()
