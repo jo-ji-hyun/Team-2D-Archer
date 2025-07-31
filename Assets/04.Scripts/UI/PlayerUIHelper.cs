@@ -11,8 +11,15 @@ public class PlayerUIHelper : MonoBehaviour
     {
         if (Hpbar != null)
         {
-            // 체력바 Image의 fillAmount를 사용하여 체력 비율을 시각화
-            Hpbar.fillAmount = currentHealth / maxHealth;
+            // === 체력바 Image의 fillAmount를 사용하여 체력 비율을 시각화 ===
+            if(currentHealth <= 0)
+            {
+                Hpbar.fillAmount = 0 / maxHealth;
+            }
+            else
+            {
+                Hpbar.fillAmount = currentHealth / maxHealth;
+            }
         }
     }
 }
