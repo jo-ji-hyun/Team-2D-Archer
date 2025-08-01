@@ -8,19 +8,12 @@ using UnityEngine;
 public class Skill
 {
     public string skillName; // 스킬 이름
-    public string description; // 스킬 설명(UI에 표시됨)
-    public Sprite icon; // 스킬 아이콘
-    public SkillType type; // 스킬 타입 (공격, 방어, 속도, 치유 등)
-    public float value; // 스킬의 효과 수치
-    public GameObject skillPrefab; // 스킬 이펙트 프리팹
+    public string description; // 스킬 설명
+
+    public Skill(string name, string desc)
+    {
+        skillName = name; // 스킬 이름 초기화
+        description = desc; // 스킬 설명 초기화
+    }
 }
 
-// 스킬의 종류를 구분하기 위한.
-public enum SkillType
-{
-    Attack,
-    Defense,
-    Speed,
-    Heal,
-    Special
-}
