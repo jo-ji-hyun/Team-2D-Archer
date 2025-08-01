@@ -940,6 +940,9 @@ MonoBehaviour:
   character_Renderer: {fileID: 5615209}
   weapon_Pivot: {fileID: 1445767537}
   WeaponPrefab: {fileID: 6314048512668355772, guid: aebe4ac3ba914cf449a4dbf3afa095a0, type: 3}
+  EnemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &1499918152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1060,7 +1063,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 4
 --- !u!1 &1695368179
 GameObject:
   m_ObjectHideFlags: 0

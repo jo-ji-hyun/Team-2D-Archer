@@ -18,7 +18,7 @@ public class AnimationPlayer : MonoBehaviour
     }
 
     // === 움직임 ===
-    public void Move()
+    public void Move(Vector2 obj)
     {
         animator.SetBool(_isRun, true);
     }
@@ -26,7 +26,7 @@ public class AnimationPlayer : MonoBehaviour
     // === 공격시 ===
     public void AttackBehavior()
     {
-        animator.SetBool(_isAtk, true);
+        animator.SetTrigger(_isAtk);
     }
 
     // === 피해를 입을시 ===
@@ -40,7 +40,6 @@ public class AnimationPlayer : MonoBehaviour
     {
         animator.SetTrigger(_isSuf);
         animator.SetTrigger(_isDie);
-        animator.SetBool(_isAtk, false);
         animator.SetBool(_isRun, false);
     }
 }
