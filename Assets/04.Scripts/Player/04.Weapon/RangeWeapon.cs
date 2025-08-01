@@ -16,7 +16,7 @@ public class RangeWeapon : WeaponHandler
     public float MultipleAngel { get { return multipleAngel; } }
 
     // === 퍼짐 ===
-    [SerializeField] private float spread = 1;
+    [SerializeField] private float spread = 0.5f;
     public float Spread { get { return spread; } }
 
     // === 마법 참조 ===

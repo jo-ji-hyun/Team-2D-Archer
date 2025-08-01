@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8610251357882461123}
   - component: {fileID: 5351978694541468479}
   m_Layer: 0
-  m_Name: MagicArrow
+  m_Name: MagicBolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,7 +94,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0047187693, y: -0.002968561}
+  m_Offset: {x: 0.064572394, y: -0.01713232}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -105,7 +105,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.21278551, y: 0.09340603}
+  m_Size: {x: 0.12964386, y: 0.1382101}
   m_EdgeRadius: 0
 --- !u!114 &5351978694541468479
 MonoBehaviour:
@@ -123,9 +123,6 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
-  _magic_Base_Damage:
-  - 3
-  - 2
 --- !u!1 &8302410682682923472
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,7 +235,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.03, y: 0.03, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6514269597404911175}
@@ -284,12 +281,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 510
-  m_Sprite: {fileID: 21300000, guid: 6ed9a8d2043915f42808d611a0d61678, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aa84cee32d3ad7c41bfcc820aa82141d, type: 3}
   m_Color: {r: 0.60357106, g: 0.57793516, b: 0.98490566, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 10.24, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
