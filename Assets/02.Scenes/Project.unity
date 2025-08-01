@@ -167,11 +167,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f14e582d25b62254097838b64956d93a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefabs:
-  - {fileID: 3713710080887282524, guid: 985aec065c737c2418aabbca177376d7, type: 3}
-  - {fileID: 4169024722797019735, guid: 00371d44b8a46164294e5918b6fe75da, type: 3}
-  - {fileID: 896915849635725548, guid: 5c6ab7be4968a8e498661dbe005e15f3, type: 3}
-  - {fileID: 9052133549227503412, guid: a336a177a5e820d44bd453d122144a4b, type: 3}
+  waves: []
+  timeBetweenSpawns: 0.3
+  timeBetweenWaves: 1
   spawnAreas:
   - serializedVersion: 2
     x: 0
@@ -179,9 +177,9 @@ MonoBehaviour:
     width: 2
     height: 2
   gizmoColor: {r: 1, g: 0, b: 0, a: 0.3}
-  enemies: []
-  timeBetweenSpawns: 0.3
-  timeBetweenWaves: 1
+  activeEnemies: []
+  bossPrefab: {fileID: 0}
+  bossSpawnPosition: {x: 0, y: 0}
 --- !u!1 &276341954
 GameObject:
   m_ObjectHideFlags: 0
@@ -1922,7 +1920,7 @@ Transform:
   m_GameObject: {fileID: 1827385914}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.7, y: -1.4, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
