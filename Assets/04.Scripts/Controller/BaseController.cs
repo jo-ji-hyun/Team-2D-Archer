@@ -58,7 +58,6 @@ public class BaseController : MonoBehaviour
         if(_current_Player == true)
         {
             Rotate(lookDirection);
-            Debug.Log("플레이어 생존중");
         }
     }
 
