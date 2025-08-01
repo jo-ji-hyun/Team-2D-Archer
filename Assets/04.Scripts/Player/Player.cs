@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public static Player Instance;
+
     public PlayerStats Stats = new PlayerStats();
 
     public int level = 1; // 플레이어 레벨

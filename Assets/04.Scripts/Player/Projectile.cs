@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour
 {
     public float speed = 10f; // 발사체 속도
     public float lifetime = 2.0f; // 자동 파괴 시간
+    public float damage = 10f; // 발사체 피해량
 
     private Vector2 direction = Vector2.right; // 초기 발사 방향(오른쪽)
     void Start()

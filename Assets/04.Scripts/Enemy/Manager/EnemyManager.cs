@@ -19,6 +19,10 @@ public class EnemyManager : MonoBehaviour
 
     private List<EnemyController> activeEnemies = new List<EnemyController>(); // 현재 활성화된 적들
 
+    public static EnemyManager Instance;
+
+    public List<GameObject> enemies = new List<GameObject>();
+
     // === 경고문 거슬려서 추가
     private bool _enemy_Spawn_Complete;
     public bool _is_Enemy_Spawn_Complete 
@@ -34,7 +38,8 @@ public class EnemyManager : MonoBehaviour
 
     private void Awake()
     {
-        
+        Instance = this; // 싱글톤 인스턴스 설정
+
         GameObject playerObject = GameObject.FindWithTag("Player");
         if (playerObject != null)
         {
@@ -45,6 +50,12 @@ public class EnemyManager : MonoBehaviour
             Debug.LogWarning("EnemyManager: 'Player' 태그를 가진 오브젝트를 찾을 수 없습니다! 플레이어에 태그가 지정되어 있는지 확인하세요.");
         }
        
+    }
+
+    public bool AllEnemiesDead()
+    {
+        // 활성화된 적이 없으면 true 반환
+        return activeEnemies.Count == 0;
     }
 
     public void StartWave(int waveCount)

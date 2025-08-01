@@ -19,12 +19,32 @@ public class SkillManager : MonoBehaviour
     public GameObject skillButtonPrefab; // 스킬 버튼 프리팹
     public Transform skillButtonParent; // 스킬 버튼을 배치할 부모 오브젝트
 
+    public float autoFireInterval = 1.0f; // 자동 발사 간격 (초 단위)
+    private float autoFireTimer = 0f; // 자동 발사 타이머
+
     private void Awake()
     {
         Instance = this; // 싱글톤 인스턴스 설정
         // 테스트 용 기본 스킬
         allSkills.Add(new Skill("Flamethrower", "강력한 화염 공격을 가한다."));
         allSkills.Add(new Skill("FireBall", "화염구를 발사하여 적에게 피해를 준다."));
+    }
+
+    private void Update()
+    {
+        Skill fireballSkill = acquiredSkills.Find(s => s.skillName == "FireBall");
+        if (fireballSkill != null)
+        {
+            autoFireTimer += Time.deltaTime; // 타이머 업데이트
+            if (autoFireTimer >= autoFireInterval)
+            {
+                autoFireTimer = 0f; // 타이머 초기화
+
+                GameObject playerObj = GameObject.FindWithTag("Player");
+                if (playerObj != null)
+                    UseSkill(fireballSkill, playerObj.transform.position);
+            }
+        }
     }
 
     // 새로운 스킬을 플레이어에게 부여하는 함수
@@ -54,7 +74,7 @@ public class SkillManager : MonoBehaviour
             Debug.Log("획득 가능한 스킬이 없습니다.");
         }
     }
-    public void CreateSkillButten(Skill skill)
+    public void CreateSkillButten(Skill skill) // 스킬 버튼을 생성하는 함수.
     {
         Debug.Log("[Skill]스킬 버튼 생성: " + skill.skillName);
 
@@ -68,13 +88,13 @@ public class SkillManager : MonoBehaviour
         else
             Debug.Log("SkillUI 연결 완료");
 
-        skillUI.Init(skill); // 스킬 UI 초기화
-        skillUI.playerObj = GameObject.FindWithTag("Player"); // 플레이어 오브젝트를 찾아서 할당
+        skillUI.Init(skill); // 스킬 UI 초기화.
+        skillUI.playerObj = GameObject.FindWithTag("Player"); // 플레이어 오브젝트를 찾아서 할당.
 
 
         // 만약 init 함수 없이 직접 할당 할려면:
         // skillUI.skillData = skill;
-        // skillUI.skillNameText.text = skill.skillName; // 스킬 이름 설정
+        // skillUI.skillNameText.text = skill.skillName; // 스킬 이름 설정.
     }
 
     // 이미 획득한 스킬 목록을 보여주는 함수.
@@ -98,14 +118,18 @@ public class SkillManager : MonoBehaviour
         if (skill.skillName == "FireBall")
         {
             Vector2 dir = Vector2.right; // 예시로 오른쪽 방향으로 발사
-
             GameObject proj = Instantiate(fireballPrefab, spawnPos, Quaternion.identity);
-
             proj.GetComponent<Projectile>().SetDirection(dir); // 발사체 방향 설정
+
+            float FireballDamage = Player.Instance.Stats.attack * 0.5f;
+        }
+
+        if (skill == null)
+        {
+            Debug.LogWarning("사용할 스킬이 null입니다.");
+            return;
         }
     }
-
-
 }
 
 
