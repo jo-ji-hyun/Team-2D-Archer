@@ -81,7 +81,14 @@ public class PlayerController : BaseController // 이동을 받고 애니도 재생해야함
         {
             movementDirection = inputValue.Get<Vector2>();
             movementDirection = movementDirection.normalized;
-            _animation_Player.Move(movementDirection);     
+            if (movementDirection.magnitude > .1f)
+            {
+                _animation_Player.Move();
+            }
+            else
+            {
+                _animation_Player.Stay();
+            }
         }
 
     }

@@ -46,7 +46,7 @@ public class RangeWeapon : WeaponHandler
 
     public override void Attack()
     {
-        base.Attack(); // 애니메이션 가져오기
+        base.Attack(); // 공격시작
 
         float AngleSpace = multipleAngel; // 각도
         int PerShot = ShotNumber;          // 생성 갯수
