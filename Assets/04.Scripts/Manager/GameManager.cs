@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         player = FindObjectOfType<PlayerController>();
-
         
         _enemy_Manager = GetComponentInChildren<EnemyManager>();
         
@@ -38,14 +37,14 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        StartWave(); // 임시
+        StartWave(); 
         fadeManager.ButtonOff();
     }
 
     // === 게임 시작 ===
     public void StartWave()
     {
-        _enemy_Manager.StartWave(1);
+        _enemy_Manager.StartWave(0);
     }
 
     // === 다음 던전 ===
