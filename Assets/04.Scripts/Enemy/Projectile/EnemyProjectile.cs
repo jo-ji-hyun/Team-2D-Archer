@@ -15,6 +15,10 @@ public class EnemyProjectile : MonoBehaviour
 
     void Update()
     {
+        // 이동 방향을 기준으로 회전
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 150;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
         transform.position += direction * speed * Time.deltaTime;
     }
 
