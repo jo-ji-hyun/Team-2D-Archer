@@ -7,7 +7,6 @@ using static UnityEditor.PlayerSettings;
 
 public class TileSpawner : MonoBehaviour
 {
-    public int clear = 0;
 
     public GameObject tilePrefab;
     public GameObject[] objectPrefabBush;
@@ -27,13 +26,13 @@ public class TileSpawner : MonoBehaviour
 
     private void Update()
     {
-        if(clear == 0)
+        if(GameManager.clear == 0)
         {
 
         }
-        else if(clear == 1) 
+        else if(GameManager.clear == 1) 
         {
-            clear = 2;
+            GameManager.clear = 2;
             StartCoroutine(ClearSpawnTiles());
         }
         else
