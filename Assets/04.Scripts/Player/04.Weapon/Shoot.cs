@@ -18,8 +18,8 @@ public class Shoot : MonoBehaviour
 
     private Rigidbody2D _rigidbody2D;
     private SpriteRenderer _sprite_Renderer;
+
     // === 데미지 처리를 위해 불러옴 ===
-    private EnemyResourceController _targetEnemy;
     private StatsManager _stat_Manager;
    
     private void Awake()
