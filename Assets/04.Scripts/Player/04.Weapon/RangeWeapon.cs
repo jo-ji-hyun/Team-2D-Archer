@@ -15,16 +15,20 @@ public class RangeWeapon : WeaponHandler
     [SerializeField] private float multipleAngel = 15;
     public float MultipleAngel { get { return multipleAngel; } }
 
+    // === 퍼짐 ===
+    [SerializeField] private float spread = 1;
+    public float Spread { get { return spread; } }
+
     // === 마법 참조 ===
     private ShootManager _shoot_Manager;
-    private MaficCodex _magic_Codex;
+    public MagicCodex _magic_Codex;
 
     protected override void Start()
     {
         base.Start();
         _shoot_Manager = ShootManager.Instance;
 
-        _magic_Codex = new MaficCodex();
+        _magic_Codex = new MagicCodex();
     }
 
     public override void Attack()
@@ -40,25 +44,23 @@ public class RangeWeapon : WeaponHandler
         for (int i = 0; i < PerShot; i++)
         {
             float angle = minAngle + AngleSpace * i;
-            float randomSpread = Random.Range(-_magic_Codex.spread, _magic_Codex.spread);
+            float randomSpread = Random.Range(-spread, spread);
             angle += randomSpread;
             CreateMagicShoot(Controller.LookDirection, angle);
         }
     }
 
-    // === 마법 발사 ===
-    private void CreateMagicShoot(Vector2 _lookDirection, float angle)
-    {
-        for (int i = 0; i < magicCount; i++) // 현재 가지고있는 무기 수
-        {
-            _magic_Codex.magicIndex = i; // 저장된 index의 값을 점점 높여 같이 발싸하도록 함
-            _shoot_Manager.ShootMagic(this, SpawnPosition.position, RotateVector2(_lookDirection, angle), _magic_Codex);
-        }
-
-    }
+    // === 마법 투사체 각도 조절 ===
     private static Vector2 RotateVector2(Vector2 v, float degree)
     {
         return Quaternion.Euler(0, 0, degree) * v;
 
     }
+
+    // === 마법 발사 ===
+    private void CreateMagicShoot(Vector2 _lookDirection, float angle)
+    {
+        _shoot_Manager.ShootMagic(this, SpawnPosition.position, RotateVector2(_lookDirection, angle), _magic_Codex);
+    }
+
 }
