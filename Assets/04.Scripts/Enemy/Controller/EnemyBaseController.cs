@@ -96,6 +96,6 @@ public class EnemyBaseController : MonoBehaviour
 
         _rigidbody.velocity = Vector3.zero;
         animationHandler.Death();
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 3f);
     }
 }

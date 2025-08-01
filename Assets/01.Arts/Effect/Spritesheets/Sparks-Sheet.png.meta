@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -134,7 +134,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Sparks-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 214
+        width: 28
+        height: 22
+      alignment: 9
+      pivot: {x: 0.2684401, y: 0.16684514}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f46889f9b63b0464b9d20a2b4b64fff5
+      internalID: 863062275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparks-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 210
+        width: 52
+        height: 37
+      alignment: 9
+      pivot: {x: 0.16388951, y: 0.21810006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e8c6a7d4d0a3c4489f1109d69527c15
+      internalID: -667010315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparks-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 221
+        width: 57
+        height: 35
+      alignment: 9
+      pivot: {x: 0.12413453, y: 0.12950309}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d837ed402d3bf64386bd889c421c457
+      internalID: -907997721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparks-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 125
+        width: 64
+        height: 41
+      alignment: 9
+      pivot: {x: 0.14362651, y: 0.17618877}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b8fdd2528720084f920612bc5a85ac7
+      internalID: -114619659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparks-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 126
+        width: 63
+        height: 44
+      alignment: 9
+      pivot: {x: 0.116356015, y: 0.15184645}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf10159d42f73f04b82a530852570848
+      internalID: 1195852226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparks-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 128
+        width: 67
+        height: 46
+      alignment: 9
+      pivot: {x: 0.12909846, y: 0.12258148}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36bf43c7f67c9484da5f3efaa343a295
+      internalID: -50173029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +271,31 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Sparks-Sheet_0: 956320720
+      Sparks-Sheet_1: 863062275
+      Sparks-Sheet_10: -778102212
+      Sparks-Sheet_11: 1980038065
+      Sparks-Sheet_12: -114619659
+      Sparks-Sheet_13: 478831840
+      Sparks-Sheet_14: 1195852226
+      Sparks-Sheet_15: 1605891191
+      Sparks-Sheet_16: 313998327
+      Sparks-Sheet_17: 2141966782
+      Sparks-Sheet_18: 95607506
+      Sparks-Sheet_19: -559334407
+      Sparks-Sheet_2: -667010315
+      Sparks-Sheet_20: -1535141907
+      Sparks-Sheet_21: -1244850062
+      Sparks-Sheet_22: -1832335247
+      Sparks-Sheet_23: -50173029
+      Sparks-Sheet_3: 417892558
+      Sparks-Sheet_4: 486740238
+      Sparks-Sheet_5: -517946155
+      Sparks-Sheet_6: -1964263949
+      Sparks-Sheet_7: 413110982
+      Sparks-Sheet_8: -1892982382
+      Sparks-Sheet_9: -907997721
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
