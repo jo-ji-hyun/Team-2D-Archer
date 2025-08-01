@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Projectile : MonoBehaviour // 삭제예정
 {
     public float speed = 10f; // 발사체 속도
     public float lifetime = 2.0f; // 자동 파괴 시간
