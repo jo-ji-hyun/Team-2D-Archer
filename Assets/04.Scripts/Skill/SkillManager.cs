@@ -27,7 +27,6 @@ public class SkillManager : MonoBehaviour
     {
         Instance = this; // 싱글톤 인스턴스 설정
         // 테스트 용 기본 스킬
-        allSkills.Add(new Skill("Flamethrower", "강력한 화염 공격을 가한다."));
         allSkills.Add(new Skill("FireBall", "화염구를 발사하여 적에게 피해를 준다."));
     }
 
@@ -59,6 +58,12 @@ public class SkillManager : MonoBehaviour
 
     public void ShowSkillChoice()
     {
+        if (SkillChoiceUI.Instance == null)
+        {
+            Debug.LogError("SkillChoiceUI 인스턴스가 없습니다. SkillChoiceUI를 씬에 추가하세요.");
+            return;
+        }
+
         List<Skill> available = allSkills.FindAll(s => !acquiredSkills.Contains(s));
         List<Skill> choices = new List<Skill>();
 
@@ -147,6 +152,3 @@ public class SkillManager : MonoBehaviour
         }
     }
 }
-
-
-
