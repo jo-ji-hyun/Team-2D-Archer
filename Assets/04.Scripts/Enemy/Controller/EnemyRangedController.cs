@@ -80,7 +80,7 @@ public class EnemyRangedController : EnemyBaseController
 
         GameObject proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
 
-        Projectile projectile = proj.GetComponent<Projectile>();
+        EnemyProjectile projectile = proj.GetComponent<EnemyProjectile>();
         if (projectile != null)
         {
             projectile.direction = dir;

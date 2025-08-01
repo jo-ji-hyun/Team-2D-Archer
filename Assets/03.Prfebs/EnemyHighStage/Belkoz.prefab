@@ -273,5 +273,5 @@ MonoBehaviour:
   timeSinceLastAttack: 3.4028235e+38
   projectilePrefab: {fileID: 1836237105900907977, guid: ca100f577a8de9c4985cb54524e3ba1e, type: 3}
   firePoint: {fileID: 5205504801606263853}
-  attackRange: 10
+  attackRange: 6
   fireCooldown: 2
