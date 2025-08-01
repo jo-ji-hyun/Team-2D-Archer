@@ -30,9 +30,12 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private Color gizmoColor = new Color(1, 0, 0, 0.3f); // 기즈모 색상
 
 
-    private List<EnemyBaseController> activeEnemies = new List<EnemyBaseController>();
+    public List<EnemyBaseController> activeEnemies = new List<EnemyBaseController>();
     private Transform playerTarget;
     private Coroutine waveRoutine;
+
+    [SerializeField] private GameObject bossPrefab;
+    [SerializeField] private Vector2 bossSpawnPosition;
 
     // === 경고문 거슬려서 추가
     private bool _enemy_Spawn_Complete;
@@ -92,7 +95,13 @@ public class EnemyManager : MonoBehaviour
         _enemy_Spawn_Complete = true;
     }
 
-    private void SpawnEnemy(GameObject prefab)
+    private IEnumerator SpawnEnemy(GameObject prefab)
+    {
+        yield return new WaitForSeconds(5f); // 5초 대기
+        SponserEnemy(prefab);
+    }
+
+    private void SponserEnemy(GameObject prefab)
     {
         if (spawnAreas.Count == 0)
         {
@@ -135,6 +144,14 @@ public class EnemyManager : MonoBehaviour
         }
 
         activeEnemies.Add(baseController); // 공통 리스트에 추가
+    }
+
+    public void SpawnBoss()
+    {
+        var bossObj = Instantiate(bossPrefab, bossSpawnPosition, Quaternion.identity);
+        var boss = bossObj.GetComponent<BossController>();
+        if (boss != null && playerTarget != null)
+            boss.Init(this, playerTarget);
     }
 
     // 기즈모를 그려 영역을 시각화 (선택된 경우에만 표시)
