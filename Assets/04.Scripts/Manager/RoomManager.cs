@@ -24,7 +24,7 @@ public class RoomManager : MonoBehaviour
         if (!gameStarted)
             return; // 게임이 시작되지 않았다면 업데이트 함수 종료.
 
-        if (EnemyManager.Instance.AllEnemiesDead()) // 적 매니저에 모든 적이 죽었는지 확인하는 함수.
+        if (EnemyManager.Instance.IsAllSpawned && EnemyManager.Instance.AllEnemiesDead()) 
         {
             OnRoomCleared(); // 모든 적이 죽었을 떄 방 클리어 함수.
         }

@@ -3411,6 +3411,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RoomIndex: 0
+  startButton: {fileID: 1971526975}
+  fadeManager: {fileID: 9928353}
 --- !u!4 &1852198377
 Transform:
   m_ObjectHideFlags: 0
