@@ -3774,7 +3774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81d5e39b38a9239478e34898e5458a5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isCleared: 0
+  isCleared: 1
 --- !u!4 &1950792287
 Transform:
   m_ObjectHideFlags: 0
@@ -4118,7 +4118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f055cca2796a2d44b29d2d56f7b3289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 993509094}
 --- !u!81 &2026387386
 AudioListener:
   m_ObjectHideFlags: 0
