@@ -82,12 +82,14 @@ public class EnemyManager : MonoBehaviour
 
     private IEnumerator SpawnWave(EnemyWave wave)
     {
+        yield return new WaitForSeconds(5f); // 5초 대기
+
         _enemy_Spawn_Complete = false;
         foreach (var spawnInfo in wave.enemySpawns)
         {
             for (int i = 0; i < spawnInfo.count; i++)
             {
-                yield return StartCoroutine(SpawnEnemy(spawnInfo.enemyPrefab));
+                SpawnEnemy(spawnInfo.enemyPrefab);
                 yield return new WaitForSeconds(timeBetweenSpawns);
             }
         }
@@ -95,13 +97,7 @@ public class EnemyManager : MonoBehaviour
         _enemy_Spawn_Complete = true;
     }
 
-    private IEnumerator SpawnEnemy(GameObject prefab)
-    {
-        yield return new WaitForSeconds(5f); // 5초 대기
-        SponserEnemy(prefab);
-    }
-
-    private void SponserEnemy(GameObject prefab)
+    private void SpawnEnemy(GameObject prefab)
     {
         if (spawnAreas.Count == 0)
         {
