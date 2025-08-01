@@ -91,7 +91,7 @@ MonoBehaviour:
   duration: 5
   spread: 1
   shotNumber: 1
-  multipleAngel: 1
+  multipleAngel: 15
   magicColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &7157243327521163397
 GameObject:

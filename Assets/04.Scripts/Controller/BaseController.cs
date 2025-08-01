@@ -11,6 +11,9 @@ public class BaseController : MonoBehaviour
     [SerializeField] private SpriteRenderer character_Renderer;
     [SerializeField] private Transform weapon_Pivot;
 
+    // === 캐릭터 생존 상태
+    protected bool _current_Player;
+
     // === 움직임 제어 ===
     protected Vector2 movementDirection = Vector2.zero;
     public Vector2 MovementDirection { get { return movementDirection; } }
@@ -52,9 +55,19 @@ public class BaseController : MonoBehaviour
 
     protected virtual void Update()
     {
-        Rotate(lookDirection);
+        if(_current_Player == true)
+        {
+            Rotate(lookDirection);
+        }
     }
-    
+
+    // === PlayerController에서 체력를 확인함 ===
+    public void SetPlayerAlive(int hp)
+    {
+        // _current_Player = (hp > 0f) ? true : false;
+        _current_Player = (hp > 0);
+    }
+
     // === PlayerController에서 속도를 가져옴 ===
     public void SetMoveSpeed(float speed)
     {

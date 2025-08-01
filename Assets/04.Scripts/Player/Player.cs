@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.K))
         {
-            TakeDamage(20f);
+            TakeDamage(20);
         } // 대미지 받기(테스트용)
 
         if (Input.GetKeyDown(KeyCode.J))
@@ -37,9 +37,9 @@ public class Player : MonoBehaviour
         } // 즉사 대미지(테스트용)
     }
     // 데미지 받기
-    public void TakeDamage(float dmg)
+    public void TakeDamage(int dmg)
     {
-        float realDamage = Mathf.Max(0, dmg - Stats.defense);
+        int realDamage = (int)Mathf.Max(0, dmg - Stats.defense);
         Stats.currentHP -= realDamage;
         if (Stats.currentHP < 0) Stats.currentHP = 0; // HP가 0 이하로 떨어지면 사망.
         Debug.Log($"데미지 받음: {realDamage}, 현재 남은 HP: {Stats.currentHP}");
@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
         }
 
         Stats.level++;
-        Stats.maxHP += 10f; // 레벨업 시 최대 HP 증가
+        Stats.maxHP += 10; // 레벨업 시 최대 HP 증가
         Stats.attack += 2f; // 레벨업 시 공격력 증가
         Stats.defense += 1f; // 레벨업 시 방어력 증가
         Stats.currentHP = Stats.maxHP; // 레벨업 시 현재 HP를 최대 HP로 회복

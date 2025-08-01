@@ -28,7 +28,7 @@ public class RangeWeapon : WeaponHandler
     public int ShotNumber { get { return shotNumber; } }
 
     // === 다중샷 각도 ===
-    [SerializeField] private float multipleAngel = 1;
+    [SerializeField] private float multipleAngel = 15;
     public float MultipleAngel { get { return multipleAngel; } }
 
     // === 마법 색깔 === (혹시 모르니)
