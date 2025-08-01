@@ -32,7 +32,7 @@ public class PlayerController : BaseController // 이동을 받고 애니도 재생해야함
     {
         if(this._stats_Manager.stats.currentHP > 0)
         {
-            // 나중에 적 탐지시 공격으로 변경 ... 고민중
+            
             isAttacking = true;
             _animation_Player.AttackBehavior();
         }

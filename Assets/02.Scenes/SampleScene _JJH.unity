@@ -566,6 +566,7 @@ MonoBehaviour:
     width: 2
     height: 2
   gizmoColor: {r: 1, g: 0, b: 0, a: 0.3}
+  enemies: []
   timeBetweenSpawns: 0.3
   timeBetweenWaves: 1
 --- !u!4 &806075569
@@ -820,6 +821,7 @@ GameObject:
   - component: {fileID: 1499918153}
   - component: {fileID: 1499918154}
   - component: {fileID: 1499918155}
+  - component: {fileID: 1499918156}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -992,6 +994,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa2d6bfdd5b88da4480f30c160278f2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Stats:
+    level: 1
+    maxHP: 100
+    currentHP: 100
+    attack: 5
+    defense: 0
+    moveSpeed: 3
+    attackSpeed: 1
+  level: 1
 --- !u!223 &1499918155
 Canvas:
   m_ObjectHideFlags: 0
@@ -1015,6 +1026,41 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 500
   m_TargetDisplay: 0
+--- !u!58 &1499918156
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499918147}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 3
 --- !u!1 &1695368179
 GameObject:
   m_ObjectHideFlags: 0
