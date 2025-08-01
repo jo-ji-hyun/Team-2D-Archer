@@ -5,7 +5,8 @@ using UnityEngine;
 public class AnimationPlayer : MonoBehaviour
 {
     // === 애니메이션 트랜짓 bool값 불러오기 ===
-    private static readonly int _isRun = Animator.StringToHash("isRun");
+    private static readonly int _isStay = Animator.StringToHash("isStay");
+    private static readonly int _isRun = Animator.StringToHash("isMov");
     private static readonly int _isAtk = Animator.StringToHash("isAtk");
     private static readonly int _isSuf = Animator.StringToHash("isSuf");
     private static readonly int _isDie = Animator.StringToHash("isDie");
@@ -17,16 +18,26 @@ public class AnimationPlayer : MonoBehaviour
         animator = GetComponentInChildren<Animator>(); // 자식에게서 가져옴
     }
 
+    // === 대기 ===
+    public void Stay()
+    {
+        animator.SetBool(_isStay, true);
+        animator.SetBool(_isRun, false);
+        animator.SetBool(_isAtk, false);
+    }
+
     // === 움직임 ===
     public void Move()
     {
         animator.SetBool(_isRun, true);
+        animator.SetBool(_isStay, false);
     }
 
     // === 공격시 ===
     public void AttackBehavior()
     {
-        animator.SetBool(_isAtk, true);
+        animator.SetBool(_isAtk,true);
+        animator.SetBool(_isStay, false);
     }
 
     // === 피해를 입을시 ===
@@ -40,7 +51,6 @@ public class AnimationPlayer : MonoBehaviour
     {
         animator.SetTrigger(_isSuf);
         animator.SetTrigger(_isDie);
-        animator.SetBool(_isAtk, false);
         animator.SetBool(_isRun, false);
     }
 }

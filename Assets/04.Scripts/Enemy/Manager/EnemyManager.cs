@@ -4,37 +4,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+[System.Serializable] public class EnemyWave
+{
+    public string waveName;
+    public List<EnemySpawnInfo> enemySpawns;
+}
+
+[System.Serializable] public class EnemySpawnInfo
+{
+    public GameObject enemyPrefab;
+    public int count;
+}
+
 public class EnemyManager : MonoBehaviour
 {
-    private Coroutine waveRoutine;
-
-    [SerializeField]
-    private List<GameObject> enemyPrefabs; // 생성할 적 프리팹 리스트
-
-    [SerializeField]
-    private List<Rect> spawnAreas; // 적을 생성할 영역 리스트
-
-    [SerializeField]
-    private Color gizmoColor = new Color(1, 0, 0, 0.3f); // 기즈모 색상
-
-    private List<EnemyBaseController> activeEnemies = new List<EnemyBaseController>();
-
     public static EnemyManager Instance;
 
-    public List<GameObject> enemies = new List<GameObject>();
-
-    // === 경고문 거슬려서 추가
-    private bool _enemy_Spawn_Complete;
-    public bool _is_Enemy_Spawn_Complete 
-    {
-        get { return _enemy_Spawn_Complete; }
-        private set { _enemy_Spawn_Complete = value; } // 내부에서는 설정 가능, 외부에서는 읽기만 가능
-    }
-
+    [Header("Wave Settings")]
+    [SerializeField] private List<EnemyWave> waves = new List<EnemyWave>();
     [SerializeField] private float timeBetweenSpawns = 0.2f;
     [SerializeField] private float timeBetweenWaves = 1f;
 
+    [Header("Spawn Area Settings")]
+    [SerializeField] private List<Rect> spawnAreas; // 적을 생성할 영역 리스트
+    [SerializeField] private Color gizmoColor = new Color(1, 0, 0, 0.3f); // 기즈모 색상
+
+
+    private List<EnemyBaseController> activeEnemies = new List<EnemyBaseController>();
     private Transform playerTarget;
+    private Coroutine waveRoutine;
+
+    // === 경고문 거슬려서 추가
+    private bool _enemy_Spawn_Complete;
+    public bool _is_Enemy_Spawn_Complete => _enemy_Spawn_Complete;
 
     private void Awake()
     {
@@ -58,11 +60,16 @@ public class EnemyManager : MonoBehaviour
         return activeEnemies.Count == 0;
     }
 
-    public void StartWave(int waveCount)
+    public void StartWave(int waveIndex)
     {
-        if (waveRoutine != null)
-            StopCoroutine(waveRoutine);
-        waveRoutine = StartCoroutine(SpawnWave(waveCount));
+        if (waveIndex < 0 || waveIndex >= waves.Count)
+        {
+            Debug.LogWarning($"Wave index {waveIndex}는 범위를 벗어났습니다.");
+            return;
+        }
+
+        if (waveRoutine != null) StopCoroutine(waveRoutine);
+        waveRoutine = StartCoroutine(SpawnWave(waves[waveIndex]));
     }
 
     public void StopWave()
@@ -70,29 +77,28 @@ public class EnemyManager : MonoBehaviour
         StopAllCoroutines();
     }
 
-    private IEnumerator SpawnWave(int waveCount)
+    private IEnumerator SpawnWave(EnemyWave wave)
     {
-        _is_Enemy_Spawn_Complete = false;
-        yield return new WaitForSeconds(timeBetweenWaves);
-        for (int i = 0; i < waveCount; i++)
+        _enemy_Spawn_Complete = false;
+        foreach (var spawnInfo in wave.enemySpawns)
         {
-            yield return new WaitForSeconds(timeBetweenSpawns);
-            SpawnRandomEnemy();
+            for (int i = 0; i < spawnInfo.count; i++)
+            {
+                SpawnEnemy(spawnInfo.enemyPrefab);
+                yield return new WaitForSeconds(timeBetweenSpawns);
+            }
         }
 
-        _is_Enemy_Spawn_Complete = true;
+        _enemy_Spawn_Complete = true;
     }
 
-    private void SpawnRandomEnemy()
+    private void SpawnEnemy(GameObject prefab)
     {
-        if (enemyPrefabs.Count == 0 || spawnAreas.Count == 0)
+        if (spawnAreas.Count == 0)
         {
-            Debug.LogWarning("Enemy Prefabs 또는 Spawn Areas가 설정되지 않았습니다.");
+            Debug.LogWarning("Spawn Area가 설정되어 있지 않습니다.");
             return;
         }
-
-        // 랜덤한 적 프리팹 선택
-        GameObject randomPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Count)];
 
         // 랜덤한 영역 선택
         Rect randomArea = spawnAreas[Random.Range(0, spawnAreas.Count)];
@@ -103,9 +109,11 @@ public class EnemyManager : MonoBehaviour
             Random.Range(randomArea.yMin, randomArea.yMax)
         );
 
+
         // 적 생성 및 리스트에 추가
-        GameObject spawnedEnemy = Instantiate(randomPrefab, new Vector3(randomPosition.x, randomPosition.y), Quaternion.identity);
-        EnemyBaseController baseController = spawnedEnemy.GetComponent<EnemyBaseController>();
+        GameObject spawnedEnemy = Instantiate(prefab, new Vector3(randomPosition.x, randomPosition.y), Quaternion.identity);
+        var baseController = spawnedEnemy.GetComponent<EnemyBaseController>();
+
         if (baseController == null)
         {
             Debug.LogWarning("EnemyBaseController 컴포넌트가 없음: " + spawnedEnemy.name);
@@ -124,10 +132,6 @@ public class EnemyManager : MonoBehaviour
             {
                 ranged.Init(this, playerTarget);
             }
-        }
-        else
-        {
-            Debug.LogWarning("플레이어 타겟을 찾지 못했습니다.");
         }
 
         activeEnemies.Add(baseController); // 공통 리스트에 추가
@@ -149,9 +153,6 @@ public class EnemyManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartWave(1);
-        }
+        
     }
 }

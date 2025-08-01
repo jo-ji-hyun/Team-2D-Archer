@@ -29,11 +29,16 @@ public class GameManager : MonoBehaviour
     // === 던전 입장시 ===
     private void Start()
     {
-        StartGame(); // 임시
+        
+    }
+
+    public void StartGame()
+    {
+        StartWave(); // 임시
     }
 
     // === 게임 시작 ===
-    public void StartGame()
+    public void StartWave()
     {
         RoomIndex = 1; // 첫 번째 방 시작.
                       

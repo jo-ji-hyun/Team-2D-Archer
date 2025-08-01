@@ -9,6 +9,8 @@ public class FieldManager : MonoBehaviour
     public Transform Player;
     public Animator UI;
 
+    public int MonsterCount;
+
     private void Awake()
     {
         if (Instance == null)

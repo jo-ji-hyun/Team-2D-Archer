@@ -53,16 +53,10 @@ public class WeaponHandler : MonoBehaviour
 
     }
 
-    // === 공격시 애니메이션 들고오기 ===
+   
     public virtual void Attack()
     {
-        AttackAnimation();
-    }
-
-    // === 공격 애니메이션 ===
-    public void AttackAnimation()
-    {
-        _animator.SetTrigger(IsAttack);
+        // === RangeWeapon에서 호출 ===
     }
 
     // === 무기도 마우스 방향에 따라 뒤집기 ===
