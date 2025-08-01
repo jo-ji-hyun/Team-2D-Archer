@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public int RoomIndex;
 
+    public static int clear = 0;
+
     public static GameManager Instance;
     public PlayerController player { get; private set; }
 
@@ -24,6 +26,14 @@ public class GameManager : MonoBehaviour
         _stats_Manager = GetComponentInChildren<StatsManager>();
 
         player.Init(this, _stats_Manager);
+    }
+
+    private void Update()
+    {
+        if (EnemyManager.Instance.activeEnemies.Count == 0)
+        {
+            //GameManager.clear = 1;
+        }
     }
 
     // === 던전 입장시 ===
