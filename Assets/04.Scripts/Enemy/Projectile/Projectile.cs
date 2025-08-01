@@ -8,6 +8,11 @@ public class Projectile : MonoBehaviour
     public float damage = 10f;
     public Vector3 direction;
 
+    void Start()
+    {
+        Destroy(gameObject, 5f); // 5초 후 자동 삭제
+    }
+
     void Update()
     {
         transform.position += direction * speed * Time.deltaTime;
