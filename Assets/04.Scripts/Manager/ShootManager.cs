@@ -17,9 +17,9 @@ public class ShootManager : MonoBehaviour
     // -----------------------
 
     // === ¹ß½Î ·ÎÁ÷ ===
-    public void ShootMagic(RangeWeapon rangeWeapon, Vector2 startPostiion, Vector2 direction)
+    public void ShootMagic(RangeWeapon rangeWeapon, Vector2 startPostiion, Vector2 direction, MagicCodex magic)
     {
-        GameObject origin = MagicPrefabs[rangeWeapon.magicIndex];
+        GameObject origin = MagicPrefabs[magic.magicIndex];
         GameObject obj = Instantiate(origin, startPostiion, Quaternion.identity);
 
         Shoot shoot = obj.GetComponent<Shoot>();

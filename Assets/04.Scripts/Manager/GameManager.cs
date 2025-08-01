@@ -27,15 +27,16 @@ public class GameManager : MonoBehaviour
         
         _stats_Manager = GetComponentInChildren<StatsManager>();
 
-        player.Init(this, _stats_Manager);
+        player.Init(this, _stats_Manager,_enemy_Manager); // 플레이어한테 매니저를 넣어줌
     }
 
     private void Update()
     {
-        if (EnemyManager.Instance.activeEnemies.Count == 0)
+        if (_enemy_Manager.activeEnemies.Count == 0 )
         {
-            //GameManager.clear = 1;
+
         }
+
     }
 
     // === 던전 입장시 ===
@@ -47,7 +48,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        StartWave(); 
+        StartWave();
         fadeManager.ButtonOff();
     }
 

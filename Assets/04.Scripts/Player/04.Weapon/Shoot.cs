@@ -18,13 +18,9 @@ public class Shoot : MonoBehaviour
 
     private Rigidbody2D _rigidbody2D;
     private SpriteRenderer _sprite_Renderer;
-
     // === 데미지 처리를 위해 불러옴 ===
     private EnemyResourceController _targetEnemy;
     private StatsManager _stat_Manager;
-
-    // === 초기데미지 여기서 수정 ===
-    [SerializeField] private float[] _magic_Base_Damage = { 3.0f, 2.0f }; // 마법 프리팹 [0]부터 기본 데미지 추가
    
     private void Awake()
     {
@@ -43,12 +39,12 @@ public class Shoot : MonoBehaviour
 
         _current_Duration += Time.deltaTime;
 
-        if (_current_Duration > _range_Weapon.Duration)
+        if (_current_Duration > _range_Weapon._magic_Codex.duration)
         {
             DestroyShoot(transform.position, false);
         }
 
-        _rigidbody2D.velocity = _direction * _range_Weapon.Speed;
+        _rigidbody2D.velocity = _direction * _range_Weapon._magic_Codex.speed;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -74,13 +70,13 @@ public class Shoot : MonoBehaviour
     private float FinalMagicDamage()
     {
         float currentDamage = _range_Weapon.Power;                      // 무기 데미지 
-        
-        currentDamage += _magic_Base_Damage[_range_Weapon.magicIndex];  // 마법 기초 데미지
+
+        currentDamage += _range_Weapon._magic_Codex.Damage;
 
         // === 플레이어 스텟 참조 ===
         if (_stat_Manager.stats.attack >= 0)
         {
-            currentDamage += _stat_Manager.stats.attack; // 추후에 적 방어력도 고려
+            currentDamage += _stat_Manager.stats.attack; 
         }
 
         return currentDamage;  // 무기 데미지 + 마법 기본 데미지 + 플레이어 스텟
@@ -93,7 +89,7 @@ public class Shoot : MonoBehaviour
 
         this._direction = direction;
         _current_Duration = 0;
-        transform.localScale = Vector3.one * weaponHandler.magicSize;
+        transform.localScale = Vector3.one * _range_Weapon._magic_Codex.magicSize;
 
         transform.right = this._direction;
 
