@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using System.Diagnostics.Contracts;
+using UnityEngine.UIElements;
 
 public class SkillManager : MonoBehaviour
 {
@@ -54,6 +55,21 @@ public class SkillManager : MonoBehaviour
         Debug.Log($"스킬 획득 : {skill.skillName}"); // 실제 효과 적용 로직은 따로 분리 가능함.
 
         CreateSkillButten(skill); // UI에 스킬 버튼 생성
+    }
+
+    public void ShowSkillChoice()
+    {
+        List<Skill> available = allSkills.FindAll(s => !acquiredSkills.Contains(s));
+        List<Skill> choices = new List<Skill>();
+
+        for (int i = 0; i < 3 && available.Count > 0; i++)
+        {
+            int idx = Random.Range(0, available.Count);
+            choices.Add(available[idx]);
+            available.RemoveAt(idx); // 선택한 스킬은 목록에서 제거
+        }
+
+        SkillChoiceUI.Instance.ShowChoices(choices);
     }
 
     public void AcquireRandomSkill()

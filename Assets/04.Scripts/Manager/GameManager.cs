@@ -35,14 +35,23 @@ public class GameManager : MonoBehaviour
     // === 게임 시작 ===
     public void StartGame()
     {
+        RoomIndex = 1; // 첫 번째 방 시작.
+                      
+        // 적 생성, 방 프리팹 생성
         _enemy_Manager.StartWave(1);
         Instantiate(FieldManager.Instance.RoomPrefab, new Vector3(0, 0, 0), Quaternion.identity).name = "Room";
+
+        // 방 도착 직후 게임을 잠시 멈추고 스킬 선택창 띄움.
+        SkillManager.Instance.ShowSkillChoice();
     }
 
     // === 다음 던전 ===
     void StartNextWave()
     {
+        RoomIndex++;
 
+        _enemy_Manager.StartWave(RoomIndex);
+        Instantiate(FieldManager.Instance.RoomPrefab, new Vector3(0, 0, 0), Quaternion.identity).name = "Room" + RoomIndex;
     }
 
     // === 스테이지 종료 ===
