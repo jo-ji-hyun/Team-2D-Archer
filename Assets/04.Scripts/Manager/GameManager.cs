@@ -29,13 +29,19 @@ public class GameManager : MonoBehaviour
     // === 던전 입장시 ===
     private void Start()
     {
-        StartGame(); // 임시
+        
+    }
+
+    public void StartGame()
+    {
+        StartWave(); // 임시
     }
 
     // === 게임 시작 ===
-    public void StartGame()
+    public void StartWave()
     {
         _enemy_Manager.StartWave(1);
+        Instantiate(FieldManager.Instance.RoomPrefab, new Vector3(0, 0, 0), Quaternion.identity).name = "Room";
     }
 
     // === 다음 던전 ===
