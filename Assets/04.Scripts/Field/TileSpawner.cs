@@ -13,6 +13,8 @@ public class TileSpawner : MonoBehaviour
     public GameObject[] objectPrefabTree;
     public Sprite[] tileSprites;
 
+    public int clear = 0;
+
     private int height = 10;
     private int width = 10;
 
@@ -26,13 +28,13 @@ public class TileSpawner : MonoBehaviour
 
     private void Update()
     {
-        if(GameManager.clear == 0)
+        if(clear == 0)
         {
 
         }
-        else if(GameManager.clear == 1) 
+        else if(clear == 1) 
         {
-            GameManager.clear = 2;
+            clear = 2;
             StartCoroutine(ClearSpawnTiles());
         }
         else
