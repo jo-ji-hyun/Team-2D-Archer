@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBag : MonoBehaviour // 기본 마법무기 정보
+[System.Serializable] // 데이터 직렬화
+public class PlayerBag  // 기본 마법무기 정보
 {
 
 }
