@@ -59,6 +59,7 @@ public class Shoot : MonoBehaviour
             // === 몬스터의 체력 변화 ===
             EnemyResourceController enemy = collision.GetComponent<EnemyResourceController>();
             float _total_Damage = FinalMagicDamage();
+
            // Debug.LogError($"{_total_Damage}"); // 데미지 확인용
             enemy.ChangeHealth(-_total_Damage);
         }
@@ -93,7 +94,6 @@ public class Shoot : MonoBehaviour
         this._direction = direction;
         _current_Duration = 0;
         transform.localScale = Vector3.one * weaponHandler.magicSize;
-        _sprite_Renderer.color = weaponHandler.magicColor;
 
         transform.right = this._direction;
 

@@ -7,6 +7,10 @@ public class RangeWeapon : WeaponHandler
     // === 생성 위치 ===
     [SerializeField] private Transform SpawnPosition;
 
+    // === 현재 가지고 있는 무기 갯수 ===
+    [SerializeField] public int magicCount = 2;
+    public int MagicCount { get { return magicCount; } }
+
     // === 마법 종류 0부터 ===
     [SerializeField] public int magicIndex = 0;
     public int MagicIndex { get { return magicIndex; } }
@@ -30,10 +34,6 @@ public class RangeWeapon : WeaponHandler
     // === 다중샷 각도 ===
     [SerializeField] private float multipleAngel = 15;
     public float MultipleAngel { get { return multipleAngel; } }
-
-    // === 마법 색깔 === (혹시 모르니)
-    [SerializeField] public Color magicColor;
-    public Color MagicColor { get { return magicColor; } }
 
     // === 마법 참조 ===
     private ShootManager _shoot_Manager;
@@ -66,7 +66,12 @@ public class RangeWeapon : WeaponHandler
     // === 마법 발사 ===
     private void CreateMagicShoot(Vector2 _lookDirection, float angle)
     {
-        _shoot_Manager.ShootMagic( this, SpawnPosition.position, RotateVector2(_lookDirection, angle));
+        for (int i = 0; i < magicCount; i++) // 현재 가지고있는 무기 수
+        {
+            magicIndex = i; // 저장된 index의 값을 점점 높여 같이 발싸하도록 함
+            _shoot_Manager.ShootMagic(this, SpawnPosition.position, RotateVector2(_lookDirection, angle));
+        }
+
     }
     private static Vector2 RotateVector2(Vector2 v, float degree)
     {
