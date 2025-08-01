@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         _enemy_Manager.StartWave(1);
+        Instantiate(FieldManager.Instance.RoomPrefab, new Vector3(0, 0, 0), Quaternion.identity).name = "Room";
     }
 
     // === 다음 던전 ===

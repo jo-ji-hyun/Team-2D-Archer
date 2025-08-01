@@ -76,7 +76,7 @@ public class TileSpawner : MonoBehaviour
 
                     _object.transform.localScale = new Vector3(scale, scale, 1f);
                     sr = _object.GetComponentInChildren<SpriteRenderer>();
-                    sr.sortingOrder = i + 20;
+                    sr.sortingOrder = i + 21;
                 }
 
                 if (UnityEngine.Random.Range(0, 100) <= 2)
