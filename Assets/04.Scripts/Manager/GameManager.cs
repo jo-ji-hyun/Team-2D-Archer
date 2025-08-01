@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public int RoomIndex;
+    public Button startButton;
 
     public static GameManager Instance;
+    public FadeManager fadeManager;
     public PlayerController player { get; private set; }
 
     // === 자식들 참조 ===
@@ -29,19 +32,20 @@ public class GameManager : MonoBehaviour
     // === 던전 입장시 ===
     private void Start()
     {
-        
+        startButton.onClick.AddListener(StartGame);
+        Instantiate(FieldManager.Instance.RoomPrefab, new Vector3(0, 0, 0), Quaternion.identity).name = "Room";
     }
 
     public void StartGame()
     {
         StartWave(); // 임시
+        fadeManager.ButtonOff();
     }
 
     // === 게임 시작 ===
     public void StartWave()
     {
         _enemy_Manager.StartWave(1);
-        Instantiate(FieldManager.Instance.RoomPrefab, new Vector3(0, 0, 0), Quaternion.identity).name = "Room";
     }
 
     // === 다음 던전 ===
