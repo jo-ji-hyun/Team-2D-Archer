@@ -17,7 +17,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField]
     private Color gizmoColor = new Color(1, 0, 0, 0.3f); // 기즈모 색상
 
-    private List<EnemyController> activeEnemies = new List<EnemyController>(); // 현재 활성화된 적들
+    private List<EnemyBaseController> activeEnemies = new List<EnemyBaseController>();
 
     // === 경고문 거슬려서 추가
     private bool _enemy_Spawn_Complete;
@@ -94,17 +94,32 @@ public class EnemyManager : MonoBehaviour
 
         // 적 생성 및 리스트에 추가
         GameObject spawnedEnemy = Instantiate(randomPrefab, new Vector3(randomPosition.x, randomPosition.y), Quaternion.identity);
-        EnemyController enemyController = spawnedEnemy.GetComponent<EnemyController>();
-        if (playerTarget == null)
+        EnemyBaseController baseController = spawnedEnemy.GetComponent<EnemyBaseController>();
+        if (baseController == null)
         {
-            Debug.Log("태그를 못찾음");
-        }
-        else 
-        {
-            enemyController.Init(this, playerTarget); // 추가된거
+            Debug.LogWarning("EnemyBaseController 컴포넌트가 없음: " + spawnedEnemy.name);
+            return;
         }
 
-        activeEnemies.Add(enemyController);
+        // Init 함수 호출 (자식 클래스에 맞게 자동으로 호출됨)
+        if (playerTarget != null)
+        {
+            // 자식 클래스별로 Init 호출
+            if (baseController is EnemyController melee)
+            {
+                melee.Init(this, playerTarget);
+            }
+            else if (baseController is EnemyRangedController ranged)
+            {
+                ranged.Init(this, playerTarget);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("플레이어 타겟을 찾지 못했습니다.");
+        }
+
+        activeEnemies.Add(baseController); // 공통 리스트에 추가
     }
 
     // 기즈모를 그려 영역을 시각화 (선택된 경우에만 표시)
