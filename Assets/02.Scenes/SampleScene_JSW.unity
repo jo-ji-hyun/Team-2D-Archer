@@ -322,6 +322,58 @@ Transform:
   m_Children: []
   m_Father: {fileID: 993509094}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &9928351
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9928352}
+  - component: {fileID: 9928353}
+  m_Layer: 0
+  m_Name: FadeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9928352
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9928351}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1852198377}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9928353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9928351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 922ad1ed7e2aeb74cbf48fa1c5ae6193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI: {fileID: 972349411}
+  UI2: {fileID: 1971526971}
+  UI3: {fileID: 1133558798}
+  UI4: {fileID: 1674808130}
+  MainCamera: {fileID: 2026387383}
+  TitleCamera: {fileID: 2098303239}
+  Player: {fileID: 0}
+  Tilte: {fileID: 2098303240}
 --- !u!1 &22133346
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,7 +726,7 @@ GameObject:
   - component: {fileID: 287846760}
   - component: {fileID: 287846759}
   m_Layer: 5
-  m_Name: Button (Legacy) (2)
+  m_Name: Skill3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1233,7 +1285,7 @@ GameObject:
   - component: {fileID: 743950121}
   - component: {fileID: 743950120}
   m_Layer: 5
-  m_Name: Button (Legacy) (1)
+  m_Name: Skill2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1594,7 +1646,7 @@ GameObject:
   - component: {fileID: 918303169}
   - component: {fileID: 918303168}
   m_Layer: 5
-  m_Name: Button (Legacy)
+  m_Name: Skill1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2152,58 +2204,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1100, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1065527702
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1065527703}
-  - component: {fileID: 1065527704}
-  m_Layer: 0
-  m_Name: FadeManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1065527703
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1065527702}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1852198377}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1065527704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1065527702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 922ad1ed7e2aeb74cbf48fa1c5ae6193, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UI: {fileID: 0}
-  UI2: {fileID: 0}
-  UI3: {fileID: 0}
-  UI4: {fileID: 0}
-  MainCamera: {fileID: 2026387383}
-  TitleCamera: {fileID: 0}
-  Player: {fileID: 0}
-  Tilte: {fileID: 0}
 --- !u!1 &1123621002
 GameObject:
   m_ObjectHideFlags: 0
@@ -3426,8 +3426,8 @@ Transform:
   m_Children:
   - {fileID: 61993974}
   - {fileID: 1608815772}
-  - {fileID: 1065527703}
   - {fileID: 1556393}
+  - {fileID: 9928352}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1859412536
@@ -3651,6 +3651,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room
       objectReference: {fileID: 0}
+    - target: {fileID: 2289910791662358666, guid: 4a0b2223327f05544ac2508336611190, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4963368941146436685, guid: 4a0b2223327f05544ac2508336611190, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3726,7 +3730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RoomPrefab: {fileID: 2289910791662358666, guid: 4a0b2223327f05544ac2508336611190, type: 3}
-  Player: {fileID: 0}
+  Player: {fileID: 993509094}
   UI: {fileID: 1034210575}
   MonsterCount: 0
 --- !u!4 &1900065736
@@ -3774,7 +3778,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81d5e39b38a9239478e34898e5458a5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isCleared: 1
+  isCleared: 0
+  gameStarted: 0
 --- !u!4 &1950792287
 Transform:
   m_ObjectHideFlags: 0
@@ -3986,9 +3991,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1971526973}
-        m_TargetAssemblyTypeName: ButtonClick, Assembly-CSharp
-        m_MethodName: StartButton
+      - m_Target: {fileID: 1971526974}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: StartPlayback
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

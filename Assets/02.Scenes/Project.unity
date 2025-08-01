@@ -1490,7 +1490,6 @@ GameObject:
   - component: {fileID: 1435161035}
   - component: {fileID: 1435161034}
   - component: {fileID: 1435161037}
-  - component: {fileID: 1435161038}
   m_Layer: 5
   m_Name: Button (Legacy)
   m_TagString: Untagged
@@ -1561,7 +1560,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1435161038}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ButtonClick, Assembly-CSharp
         m_MethodName: StartButton
         m_Mode: 1
@@ -1632,18 +1631,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1435161038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1435161032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9273dc6192b09f94d9d636e5684ed444, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1438224346
 GameObject:
   m_ObjectHideFlags: 0
@@ -1950,8 +1937,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RoomIndex: 0
-  startButton: {fileID: 1435161034}
-  fadeManager: {fileID: 1203066773}
 --- !u!4 &1675130625
 Transform:
   m_ObjectHideFlags: 0

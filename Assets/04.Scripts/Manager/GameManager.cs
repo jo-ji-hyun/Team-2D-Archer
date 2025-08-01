@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        StartWave(); // 임시
+        // StartWave(); // 임시
     }
 
     // === 게임 시작 ===
