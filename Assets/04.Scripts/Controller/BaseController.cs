@@ -12,7 +12,7 @@ public class BaseController : MonoBehaviour
     [SerializeField] private Transform weapon_Pivot;
 
     // === 캐릭터 생존 상태
-    protected bool _current_Player;
+    protected bool _current_Player = true;
 
     // === 움직임 제어 ===
     protected Vector2 movementDirection = Vector2.zero;

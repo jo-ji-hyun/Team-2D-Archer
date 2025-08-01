@@ -96,7 +96,9 @@ public class PlayerController : BaseController // 이동을 받고 애니도 재생해야함
     // === 방향 찾기 ===
     void OnLook(InputValue inputValue)
     {
-        Vector2 mousePosition = inputValue.Get<Vector2>();
+        Vector3 mousePosition = inputValue.Get<Vector2>(); // 3D 값을 2D값으로 치환
+        mousePosition.z = -10; // Z 값을 기존 위치인 -10으로 고정
+
         Vector2 worldPos = _camera.ScreenToWorldPoint(mousePosition);
         lookDirection = (worldPos - (Vector2)transform.position);
 
