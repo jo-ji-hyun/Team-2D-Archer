@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossController : EnemyBaseController
+public class BossController : BossBaseController
 {
     private EnemyManager enemyManager;
 
