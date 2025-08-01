@@ -123,6 +123,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &144351317
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 144351318}
+  - component: {fileID: 144351319}
+  m_Layer: 0
+  m_Name: EnemyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &144351318
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144351317}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1675130625}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &144351319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144351317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f14e582d25b62254097838b64956d93a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves: []
+  timeBetweenSpawns: 0.3
+  timeBetweenWaves: 1
+  spawnAreas:
+  - serializedVersion: 2
+    x: 0
+    y: 0
+    width: 2
+    height: 2
+  gizmoColor: {r: 1, g: 0, b: 0, a: 0.3}
+  activeEnemies: []
+  bossPrefab: {fileID: 0}
+  bossSpawnPosition: {x: 0, y: 0}
 --- !u!1 &276341954
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,99 +1302,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!1 &1417264904
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1417264905}
-  - component: {fileID: 1417264906}
-  m_Layer: 0
-  m_Name: EnemyManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1417264905
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1417264904}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1675130625}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1417264906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1417264904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f14e582d25b62254097838b64956d93a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves:
-  - waveName: Stage1
-    enemySpawns:
-    - enemyPrefab: {fileID: 4169024722797019735, guid: 00371d44b8a46164294e5918b6fe75da, type: 3}
-      count: 1
-    - enemyPrefab: {fileID: 3713710080887282524, guid: 985aec065c737c2418aabbca177376d7, type: 3}
-      count: 2
-  - waveName: Stage2
-    enemySpawns:
-    - enemyPrefab: {fileID: 4169024722797019735, guid: 00371d44b8a46164294e5918b6fe75da, type: 3}
-      count: 2
-    - enemyPrefab: {fileID: 3713710080887282524, guid: 985aec065c737c2418aabbca177376d7, type: 3}
-      count: 1
-    - enemyPrefab: {fileID: 896915849635725548, guid: 5c6ab7be4968a8e498661dbe005e15f3, type: 3}
-      count: 1
-  - waveName: Stage3
-    enemySpawns:
-    - enemyPrefab: {fileID: 4169024722797019735, guid: 00371d44b8a46164294e5918b6fe75da, type: 3}
-      count: 1
-    - enemyPrefab: {fileID: 3713710080887282524, guid: 985aec065c737c2418aabbca177376d7, type: 3}
-      count: 2
-    - enemyPrefab: {fileID: 896915849635725548, guid: 5c6ab7be4968a8e498661dbe005e15f3, type: 3}
-      count: 1
-    - enemyPrefab: {fileID: 9052133549227503412, guid: a336a177a5e820d44bd453d122144a4b, type: 3}
-      count: 1
-  - waveName: Stage4
-    enemySpawns:
-    - enemyPrefab: {fileID: 896915849635725548, guid: 5c6ab7be4968a8e498661dbe005e15f3, type: 3}
-      count: 2
-    - enemyPrefab: {fileID: 9052133549227503412, guid: a336a177a5e820d44bd453d122144a4b, type: 3}
-      count: 2
-  - waveName: Final Stage
-    enemySpawns:
-    - enemyPrefab: {fileID: 896915849635725548, guid: 5c6ab7be4968a8e498661dbe005e15f3, type: 3}
-      count: 1
-    - enemyPrefab: {fileID: 9052133549227503412, guid: a336a177a5e820d44bd453d122144a4b, type: 3}
-      count: 1
-  timeBetweenSpawns: 0.3
-  timeBetweenWaves: 1
-  spawnAreas:
-  - serializedVersion: 2
-    x: 0
-    y: 0
-    width: 2
-    height: 2
-  gizmoColor: {r: 1, g: 0, b: 0, a: 0.3}
-  activeEnemies: []
-  bossPrefab: {fileID: 0}
-  bossSpawnPosition: {x: 0, y: 0}
 --- !u!1 &1435161032
 GameObject:
   m_ObjectHideFlags: 0
@@ -1692,7 +1656,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1417264905}
+  - {fileID: 144351318}
   - {fileID: 582068163}
   - {fileID: 1686154416}
   - {fileID: 1203066772}
@@ -1956,7 +1920,7 @@ Transform:
   m_GameObject: {fileID: 1827385914}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.7, y: -1.4, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

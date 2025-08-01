@@ -21,7 +21,6 @@ public class FadeManager : MonoBehaviour
     {
         UI.SetActive(true);
         StartCoroutine(UIOffFade());
-        Player.transform.position = new Vector3(-3.7f, -1.4f, 0f);
     }
 
     IEnumerator UIOffFade()
