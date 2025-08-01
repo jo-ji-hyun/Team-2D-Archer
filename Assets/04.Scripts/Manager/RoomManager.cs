@@ -28,7 +28,7 @@ public class RoomManager : MonoBehaviour
     void ChexkAllEnemiesDead() // 모든 적이 죽었는지 리스트를 체크해서 클리어가 되었는지 확인하는 함수.
     {
         // 적 매니저의 적이 리스트에 0 즉 모든 적이 죽었을 때 방이 클리어됨.
-        if (EnemyManager.Instance.enemies.Count == 0)
+        if (EnemyManager.Instance.activeEnemies.Count == 0)
         {
             OnRoomCleared();
         }

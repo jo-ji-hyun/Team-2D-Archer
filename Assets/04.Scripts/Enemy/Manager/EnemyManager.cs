@@ -30,7 +30,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private Color gizmoColor = new Color(1, 0, 0, 0.3f); // 기즈모 색상
 
 
-    private List<EnemyBaseController> activeEnemies = new List<EnemyBaseController>();
+    public List<EnemyBaseController> activeEnemies = new List<EnemyBaseController>();
     private Transform playerTarget;
     private Coroutine waveRoutine;
 
