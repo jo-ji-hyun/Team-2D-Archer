@@ -39,12 +39,10 @@ public class PlayerController : BaseController // 이동을 받고 애니도 재생해야함
         {
             isAttacking = true;
             _animation_Player.AttackBehavior();
-            Debug.Log("공굑");
         }
         else if(this._stats_Manager.stats.currentHP > 0 || this._enemy_Manager.activeEnemies.Count <= 0)
         {
             isAttacking = false;
-            Debug.Log("에러");
         }
     }
 

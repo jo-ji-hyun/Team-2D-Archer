@@ -22,6 +22,7 @@ public class Shoot : MonoBehaviour
     // === 데미지 처리를 위해 불러옴 ===
     private EnemyResourceController _targetEnemy;
     private StatsManager _stat_Manager;
+    private MaficCodex _magic_Codex;
 
     // === 초기데미지 여기서 수정 ===
     [SerializeField] private float[] _magic_Base_Damage = { 3.0f, 2.0f }; // 마법 프리팹 [0]부터 기본 데미지 추가
@@ -32,6 +33,7 @@ public class Shoot : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _pivot = transform.GetChild(0);
         _stat_Manager = FindObjectOfType<StatsManager>();
+        _magic_Codex = new MaficCodex();
     }
 
     private void Update()
@@ -43,7 +45,7 @@ public class Shoot : MonoBehaviour
 
         _current_Duration += Time.deltaTime;
 
-        if (_current_Duration > _range_Weapon.Duration)
+        if (_current_Duration > _magic_Codex.duration)
         {
             DestroyShoot(transform.position, false);
         }
@@ -75,7 +77,7 @@ public class Shoot : MonoBehaviour
     {
         float currentDamage = _range_Weapon.Power;                      // 무기 데미지 
         
-        currentDamage += _magic_Base_Damage[_range_Weapon.magicIndex];  // 마법 기초 데미지
+        currentDamage += _magic_Base_Damage[_magic_Codex.magicIndex];  // 마법 기초 데미지
 
         // === 플레이어 스텟 참조 ===
         if (_stat_Manager.stats.attack >= 0)
@@ -93,7 +95,7 @@ public class Shoot : MonoBehaviour
 
         this._direction = direction;
         _current_Duration = 0;
-        transform.localScale = Vector3.one * weaponHandler.magicSize;
+        transform.localScale = Vector3.one * _magic_Codex.magicSize;
 
         transform.right = this._direction;
 
