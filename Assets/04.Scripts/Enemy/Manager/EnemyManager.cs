@@ -87,7 +87,7 @@ public class EnemyManager : MonoBehaviour
         {
             for (int i = 0; i < spawnInfo.count; i++)
             {
-                SpawnEnemy(spawnInfo.enemyPrefab);
+                yield return StartCoroutine(SpawnEnemy(spawnInfo.enemyPrefab));
                 yield return new WaitForSeconds(timeBetweenSpawns);
             }
         }
