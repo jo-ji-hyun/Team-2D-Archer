@@ -99,7 +99,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.008015394, y: -0.7374048}
+  m_Offset: {x: 0.008015394, y: -1.2282559}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -110,7 +110,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0160308, y: 2.1862607}
+  m_Size: {x: 1.0160308, y: 1.2045586}
   m_EdgeRadius: 0
 --- !u!114 &1788809123708173623
 MonoBehaviour:
@@ -128,7 +128,6 @@ MonoBehaviour:
   AtkPower: 10
   moveSpeed: 2
   target: {fileID: 0}
-  moveSpeed: 2
   warningAreaPrefab: {fileID: 1514757515781927674, guid: 8fed067bb1cacae4ea4c3e8918a6631b, type: 3}
   meleeAttackRange: 2.5
   warningDuration: 1.5
