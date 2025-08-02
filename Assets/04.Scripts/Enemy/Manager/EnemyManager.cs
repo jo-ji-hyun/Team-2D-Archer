@@ -163,8 +163,19 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    // 적 죽을때마다 수 감소
+    public void RemoveEnemy(EnemyBaseController enemy)
+    {
+        if (activeEnemies.Contains(enemy))
+        {
+            activeEnemies.Remove(enemy);
+        }
+    }
+
     private void Update()
     {
         
     }
+
+    public bool IsAllSpawned => _enemy_Spawn_Complete;
 }
