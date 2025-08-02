@@ -78,7 +78,7 @@ public class RangeWeapon : WeaponHandler
     // === 마법 발동 ===
     private void CreateMagic(Vector2 _lookDirection, float angle)
     {
-        _skill_Manager.UseSkill(SpawnPosition.position, RotateVector2(_lookDirection, angle), _skill_Manager.acquiredSkills.Count);
+        _skill_Manager.UseSkill(this, SpawnPosition.position, RotateVector2(_lookDirection, angle), _skill_Manager.acquiredSkills.Count);
     }
 
 }

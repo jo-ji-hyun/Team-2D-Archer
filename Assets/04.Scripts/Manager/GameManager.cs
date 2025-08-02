@@ -43,7 +43,8 @@ public class GameManager : MonoBehaviour
         player.Init(this, _stats_Manager,_enemy_Manager);
         rangeWeapon.Init(_skill_Manager);
 
-        ShootManager.Instance.GiveRange(_stats_Manager, _skill_Manager); 
+        ShootManager.Instance.GiveRange(_stats_Manager, _skill_Manager);
+        SkillManager.Instance.GiveToSkillManager(_stats_Manager);
     }
 
     private void Update()
