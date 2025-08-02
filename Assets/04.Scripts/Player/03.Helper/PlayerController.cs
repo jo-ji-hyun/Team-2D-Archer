@@ -63,6 +63,10 @@ public class PlayerController : BaseController // 이동을 받고 애니도 재생해야함
                 _animation_Player.Stay();
             }
         }
+        else
+        {
+            movementDirection = Vector2.zero;
+        }
 
     }
 

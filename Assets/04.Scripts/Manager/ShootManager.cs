@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class ShootManager : MonoBehaviour
 {
+    // === 무기 프리팹 ===
     [SerializeField] private GameObject[] MagicPrefabs;
+
+    // === 다른 매니저 정의 ===
+    private StatsManager _stats_Manager;
+
+    private SkillManager _skill_Manager;
 
     // === 싱글톤 선언 ===
     private static ShootManager instance;
     public static ShootManager Instance { get { return instance; } }
-
-    private StatsManager _stats_Manager;
-
-    private SkillManager _skill_Manager;
 
     private void Awake()
     {

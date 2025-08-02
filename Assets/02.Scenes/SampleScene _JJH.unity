@@ -390,8 +390,6 @@ MonoBehaviour:
   allSkills: []
   acquiredSkills: []
   fireballPrefab: {fileID: 8738154650902348572, guid: 9d0ba554e6385164186b820ee7b1d38c, type: 3}
-  skillButtonPrefab: {fileID: 0}
-  skillButtonParent: {fileID: 0}
   autoFireInterval: 1
 --- !u!1 &461030258
 GameObject:
