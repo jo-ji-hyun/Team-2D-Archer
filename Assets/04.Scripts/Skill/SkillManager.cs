@@ -28,6 +28,8 @@ public class SkillManager : MonoBehaviour
         Instance = this; // 싱글톤 인스턴스 설정
         // 테스트 용 기본 스킬
         allSkills.Add(new Skill("FireBall", "화염구를 발사하여 적에게 피해를 준다."));
+        allSkills.Add(new Skill("IceSpike", "얼음 창을 발사하여 적을 얼린다."));
+        allSkills.Add(new Skill("LightningBolt", "번개를 소환하여 적에게 피해를 준다."));
     }
 
     private void Update()

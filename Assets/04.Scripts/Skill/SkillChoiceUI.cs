@@ -21,6 +21,8 @@ public class SkillChoiceUI : MonoBehaviour
 
     public void ShowChoices(List<Skill> skills)
     {
+        Debug.Log("ShowChoices 호출됨. 버튼 개수: " + buttons.Length + ", 스킬 개수: " + skills.Count);
+
         currentchoices = skills; // 현재 선택 가능한 스킬 목록 설정
         panel.SetActive(true); // 패널을 활성화
         Time.timeScale = 0f; // 게임 일시 정지
@@ -29,6 +31,8 @@ public class SkillChoiceUI : MonoBehaviour
         {
             if (i < skills.Count)
             {
+                Debug.Log($"버튼[{i}] 활성화: {skills[i].skillName} 버튼 오브젝트: {buttons[i].name}");
+
                 buttons[i].gameObject.SetActive(true); // 버튼 활성화
                 nameTexts[i].text = skills[i].skillName; // 스킬 이름 설정
                 int idx = i; // 로컬 변수로 인덱스 저장
@@ -37,6 +41,7 @@ public class SkillChoiceUI : MonoBehaviour
             }
             else
             {
+                Debug.Log($"버튼[{i}] 비활성화. 버튼 오브젝트: {buttons[i].name}");
                 buttons[i].gameObject.SetActive(false); // 버튼 비활성화
             }
         }
@@ -44,8 +49,17 @@ public class SkillChoiceUI : MonoBehaviour
 
     void OnClickSelect(int idx)
     {
+        Debug.Log($"스킬 버튼 클릭됨! idx: {idx}, currentchoices.Count: {currentchoices?.Count ?? -1}");
+
+        if (currentchoices == null || idx < 0 || idx >= currentchoices.Count)
+        {
+            Debug.LogError("OnClickSelect 잘못된 인덱스 또는 currentchoices가 null");
+            return;
+        }
+
         SkillManager.Instance.AcquireSkill(currentchoices[idx]); // 선택한 스킬 획득
         panel.SetActive(false); // 패널 숨김
         Time.timeScale = 1f; // 게임 재개
+        GameManager.Instance.EndOfWave(); // 게임 매니저에 현재 웨이브 종료 알림
     }
 }

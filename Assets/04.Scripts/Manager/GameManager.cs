@@ -18,27 +18,19 @@ public class GameManager : MonoBehaviour
     private EnemyManager _enemy_Manager;
     private StatsManager _stats_Manager;
 
+    private GameObject currentRoomObj;
+
     private void Awake()
     {
         Instance = this;
         player = FindObjectOfType<PlayerController>();
 
         _enemy_Manager = GetComponentInChildren<EnemyManager>();
-
         _stats_Manager = GetComponentInChildren<StatsManager>();
 
         player.Init(this, _stats_Manager);
     }
 
-    private void Update()
-    {
-        if (EnemyManager.Instance.activeEnemies.Count == 0)
-        {
-            //GameManager.clear = 1;
-        }
-    }
-
-    // === 던전 입장시 ===
     private void Start()
     {
         startButton.onClick.AddListener(StartGame);
@@ -46,29 +38,38 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        RoomIndex = 1;
-        StartWave();
+        RoomIndex = 0; // 0부터 시작
+        StartWave(RoomIndex);
         fadeManager.ButtonOff();
     }
 
-    // === 게임 시작 ===
-    public void StartWave()
+    // === 웨이브(방) 시작 ===
+    public void StartWave(int idx)
     {
-        _enemy_Manager.StartWave(0);
-        Instantiate(FieldManager.Instance.RoomPrefab, new Vector3(0, 0, 0), Quaternion.identity).name = "Room" + RoomIndex;
+        // ★ 이전 방 오브젝트가 있다면 제거
+        if (currentRoomObj != null)
+            Destroy(currentRoomObj);
 
-        SkillManager.Instance.ShowSkillChoice();
+        _enemy_Manager.StartWave(idx);
+        currentRoomObj = Instantiate(FieldManager.Instance.RoomPrefab, Vector3.zero, Quaternion.identity);
+        currentRoomObj.name = "Room" + (idx + 1);
+
+        // ★ RoomManager.StartRoom() 호출!
+        var roomMgr = currentRoomObj.GetComponent<RoomManager>();
+        if (roomMgr != null)
+            roomMgr.StartRoom();
+        else
+            Debug.LogError("RoomManager가 RoomPrefab에 없음!");
     }
 
-    // === 다음 던전 ===
-    void StartNextWave()
+    // === 다음 던전(방) 진행 ===
+    public void StartNextWave()
     {
         RoomIndex++;
-        _enemy_Manager.StartWave(RoomIndex);
-        Instantiate(FieldManager.Instance.RoomPrefab, new Vector3(0, 0, 0), Quaternion.identity).name = "Room" + RoomIndex;
+        StartWave(RoomIndex); // ★ 방 생성도 같이!
     }
 
-    // === 스테이지 종료 ===
+    // === 스테이지 종료(방 클리어 후, 스킬 선택 후) ===
     public void EndOfWave()
     {
         StartNextWave();
@@ -80,5 +81,4 @@ public class GameManager : MonoBehaviour
         _enemy_Manager.StopWave();
         // 메인씬으로 돌아가기 (추후에 추가)
     }
-
 }

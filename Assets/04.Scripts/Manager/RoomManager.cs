@@ -26,6 +26,7 @@ public class RoomManager : MonoBehaviour
 
         if (EnemyManager.Instance.IsAllSpawned && EnemyManager.Instance.AllEnemiesDead()) 
         {
+            Debug.Log("[RoomManager] 조건 만족: OnRoomCleared() 호출");
             OnRoomCleared(); // 모든 적이 죽었을 떄 방 클리어 함수.
         }
 
@@ -44,5 +45,6 @@ public class RoomManager : MonoBehaviour
     public void StartRoom()
     {
         gameStarted = true; // 게임 시작 상태를 true로 설정.
+        Debug.Log("RoomManager.StartRoom() 호출됨! gameStarted true");
     }
 }
