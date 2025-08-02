@@ -23,7 +23,7 @@ public class EnemyBaseController : MonoBehaviour
     [SerializeField] protected Transform target;
     [SerializeField] protected float AtkPower = 5f;
 
-    private PlayerController playerController;
+    protected EnemyManager enemyManager;
 
     protected bool isDead = false;
 
@@ -36,6 +36,11 @@ public class EnemyBaseController : MonoBehaviour
         animationHandler = GetComponent<EnemyAnimationHandler>();
         statHandler = GetComponent<EnemyStatHandler>();
 
+    }
+
+    public virtual void Init(EnemyManager manager, Transform player)
+    {
+        this.enemyManager = manager;
     }
 
     protected virtual void DealDamageToTarget()

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BossController : BossBaseController
 {
-    private EnemyManager enemyManager;
 
     [SerializeField] private GameObject warningAreaPrefab;
     [SerializeField] private float meleeAttackRange = 2.5f;
@@ -12,7 +11,6 @@ public class BossController : BossBaseController
 
     public void Init(EnemyManager enemyManager, Transform target)
     {
-        this.enemyManager = enemyManager;
         this.target = target;
         StartCoroutine(BossBehaviorPattern());
     }

@@ -52,9 +52,9 @@ public abstract class BossBaseController : MonoBehaviour
 
     protected virtual void Die()
     {
-        animationHandler?.Death();
+        animationHandler.Death();
         StopAllCoroutines();
-        Destroy(gameObject, 2f); // 2초 후 오브젝트 제거
+        Destroy(gameObject, 6f); // 2초 후 오브젝트 제거
     }
 
     // 보스가 플레이어를 바라보는 방향을 업데이트 (보스 공용 기능)
