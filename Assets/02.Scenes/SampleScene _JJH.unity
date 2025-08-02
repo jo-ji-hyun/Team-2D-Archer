@@ -490,6 +490,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b26406deb5a762f4586382f8c57178ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isSkill: 0
+  AbilityPower: 0
   allSkills: []
   acquiredSkills: []
   fireballPrefab: {fileID: 8738154650902348572, guid: 9d0ba554e6385164186b820ee7b1d38c, type: 3}
@@ -2001,7 +2003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RoomPrefab: {fileID: 2289910791662358666, guid: 4a0b2223327f05544ac2508336611190, type: 3}
-  Player: {fileID: 0}
+  Player: {fileID: 31751049}
   UI: {fileID: 461030259}
   MonsterCount: 0
 --- !u!4 &1112499315
@@ -2756,6 +2758,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b26406deb5a762f4586382f8c57178ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isSkill: 0
+  AbilityPower: 0
   allSkills: []
   acquiredSkills: []
   fireballPrefab: {fileID: 8738154650902348572, guid: 9d0ba554e6385164186b820ee7b1d38c, type: 3}
@@ -2840,7 +2844,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1705708782}
   - component: {fileID: 1705708781}
-  - component: {fileID: 1705708780}
   - component: {fileID: 1705708779}
   m_Layer: 0
   m_Name: Tiltle Camera
@@ -2870,14 +2873,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!81 &1705708780
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1705708778}
-  m_Enabled: 1
 --- !u!20 &1705708781
 Camera:
   m_ObjectHideFlags: 0
