@@ -176,4 +176,6 @@ public class EnemyManager : MonoBehaviour
     {
         
     }
+
+    public bool IsAllSpawned => _enemy_Spawn_Complete;
 }
