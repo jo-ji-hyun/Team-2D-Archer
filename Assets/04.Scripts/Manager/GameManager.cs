@@ -13,10 +13,13 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public FadeManager fadeManager;
     public PlayerController player { get; private set; }
+    public ShootManager shootManager { get; private set; }
 
     // === 자식들 참조 ===
     private EnemyManager _enemy_Manager;
     private StatsManager _stats_Manager;
+    private ShootManager _shoot_Manager;
+    private SkillManager _skill_Manager;
 
     private GameObject currentRoomObj;
 
@@ -27,8 +30,13 @@ public class GameManager : MonoBehaviour
 
         _enemy_Manager = GetComponentInChildren<EnemyManager>();
         _stats_Manager = GetComponentInChildren<StatsManager>();
+        _shoot_Manager = GetComponentInChildren<ShootManager>();
+        _skill_Manager = GetComponentInChildren<SkillManager>();
 
-        player.Init(this, _stats_Manager);
+        // 플레이어, 슛매니저 등 의존성 주입
+        player.Init(this, _stats_Manager, _enemy_Manager);
+        if (_shoot_Manager != null && _stats_Manager != null && _skill_Manager != null)
+            _shoot_Manager.GiveRange(_stats_Manager, _skill_Manager);
     }
 
     private void Start()
@@ -38,7 +46,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        RoomIndex = 0; // 0부터 시작
+        RoomIndex = 0;
         StartWave(RoomIndex);
         fadeManager.ButtonOff();
     }
@@ -66,7 +74,7 @@ public class GameManager : MonoBehaviour
     public void StartNextWave()
     {
         RoomIndex++;
-        StartWave(RoomIndex); // ★ 방 생성도 같이!
+        StartWave(RoomIndex);
     }
 
     // === 스테이지 종료(방 클리어 후, 스킬 선택 후) ===
