@@ -27,7 +27,7 @@ public class BossController : BossBaseController
 
     private IEnumerator BossBehaviorPattern()
     {
-        yield return new WaitForSeconds(2f); // ▶ 등장 후 대기
+        yield return new WaitForSeconds(2f); // 등장 후 대기
 
         while (true)
         {
