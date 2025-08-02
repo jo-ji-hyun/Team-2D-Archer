@@ -4,16 +4,24 @@ using UnityEngine;
 
 public class BossController : BossBaseController
 {
-    private EnemyManager enemyManager;
-
+    private BossManager bossManager;
+    private BossAnimationHandler animHandler;
     [SerializeField] private GameObject warningAreaPrefab;
     [SerializeField] private float meleeAttackRange = 2.5f;
     [SerializeField] private float warningDuration = 1.5f;
+    private bool isDying = false;
 
-    public void Init(EnemyManager enemyManager, Transform target)
+    public void Init(BossManager bossManager, Transform target)
     {
-        this.enemyManager = enemyManager;
+        this.bossManager = bossManager;
         this.target = target;
+        animHandler = GetComponent<BossAnimationHandler>();
+
+        if (animHandler == null)
+        {
+            Debug.LogWarning("BossAnimationHandler가 없습니다!");
+        }
+
         StartCoroutine(BossBehaviorPattern());
     }
 
@@ -29,7 +37,7 @@ public class BossController : BossBaseController
             yield return new WaitForSeconds(0.5f);
 
             // ▶ 플레이어에게 돌진
-            yield return StartCoroutine(MoveTowardsPlayer(1f));
+            yield return StartCoroutine(MoveTowardsPlayer(2f));
 
             // ▶ 근거리 범위공격 (즉시 폭발)
             yield return StartCoroutine(MeleeAreaAttack());
@@ -37,7 +45,7 @@ public class BossController : BossBaseController
             yield return new WaitForSeconds(0.5f);
 
             // ▶ 플레이어 반대방향으로 30도 틀어서 이동
-            yield return StartCoroutine(MoveAtAngleFromPlayer(2f, 30f));
+            yield return StartCoroutine(MoveAtAngleFromPlayer(1.4f));
 
             yield return new WaitForSeconds(0.5f);
         }
@@ -47,6 +55,7 @@ public class BossController : BossBaseController
     {
         // TODO: 원거리 투사체 생성 + 일정 시간 후 폭발
         Debug.Log("보스: 원거리 범위공격");
+        animHandler.Skill();
         // 예:Instantiate(projectile, firePosition, Quaternion.identity)
         yield return new WaitForSeconds(1f); // 연출 시간
     }
@@ -61,6 +70,8 @@ public class BossController : BossBaseController
 
         // 2. 경고 지속시간 기다림
         yield return new WaitForSeconds(warningDuration);
+
+        animHandler.Attack();
 
         // 3. 범위 안에 있는 타겟들에게 데미지
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, meleeAttackRange / 2f);
@@ -86,30 +97,37 @@ public class BossController : BossBaseController
 
     private IEnumerator MoveTowardsPlayer(float duration)
     {
+        animHandler.Move();
         Debug.Log("보스: 플레이어에게 접근");
         float t = 0f;
         while (t < duration)
         {
+            UpdateFacingDirection();
             Vector3 dir = (target.position - transform.position).normalized;
             transform.position += dir * moveSpeed * Time.deltaTime;
             t += Time.deltaTime;
             yield return null;
         }
+        animHandler.Idle();
     }
 
-    private IEnumerator MoveAtAngleFromPlayer(float duration, float angleOffset)
+    private IEnumerator MoveAtAngleFromPlayer(float duration)
     {
-        Debug.Log($"보스: 플레이어 기준 30도 방향으로 이동");
-        Vector3 toPlayer = (target.position - transform.position).normalized;
-        Vector3 rotatedDir = Quaternion.Euler(0, 0, angleOffset) * toPlayer;
+        animHandler.Move();
+        Debug.Log("보스: 플레이어 반대 방향으로 도망");
+
+        // 플레이어를 등진 방향 계산
+        Vector3 awayDir = (transform.position - target.position).normalized;
 
         float t = 0f;
         while (t < duration)
         {
-            transform.position += rotatedDir * moveSpeed * Time.deltaTime;
+            UpdateFacingDirection();
+            transform.position += awayDir * moveSpeed * Time.deltaTime;
             t += Time.deltaTime;
             yield return null;
         }
+        animHandler.Idle();
     }
 
     private void UpdateFacingDirection()
@@ -125,5 +143,29 @@ public class BossController : BossBaseController
         {
             characterRenderer.flipX = false; // 오른쪽에 있으면 오른쪽 바라보게
         }
+    }
+
+    public void Die()
+    {
+        if (!isDying)
+        {
+            StartCoroutine(HandleDeath());
+        }
+    }
+
+    private IEnumerator HandleDeath()
+    {
+        isDying = true;
+
+        if (animHandler != null)
+        {
+            animHandler.Death(); // 죽는 애니메이션 시작
+        }
+
+        Debug.Log("보스: 죽는 애니메이션 재생 중 (6초 대기)");
+        yield return new WaitForSeconds(6f); // 애니메이션 연출 시간 대기
+
+        bossManager?.UnregisterBoss();
+        Destroy(gameObject);
     }
 }

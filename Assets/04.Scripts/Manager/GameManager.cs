@@ -21,19 +21,22 @@ public class GameManager : MonoBehaviour
     private ShootManager _shoot_Manager;
     private SkillManager _skill_Manager;
 
+    private GameObject currentRoomObj;
+
     private void Awake()
     {
         Instance = this;
         player = FindObjectOfType<PlayerController>();
-        
+
         _enemy_Manager = GetComponentInChildren<EnemyManager>();
-        
         _stats_Manager = GetComponentInChildren<StatsManager>();
         _shoot_Manager = GetComponentInChildren<ShootManager>();
         _skill_Manager = GetComponentInChildren<SkillManager>();
 
-        player.Init(this, _stats_Manager,_enemy_Manager); // 플레이어한테 매니저를 넣어줌
-        ShootManager.Instance.GiveRange(_stats_Manager, _skill_Manager); // 슛매니저에게 다른 매니저를 넘겨줌
+        // 플레이어, 슛매니저 등 의존성 주입
+        player.Init(this, _stats_Manager, _enemy_Manager);
+        if (_shoot_Manager != null && _stats_Manager != null && _skill_Manager != null)
+            _shoot_Manager.GiveRange(_stats_Manager, _skill_Manager);
     }
 
     private void Update()
@@ -48,31 +51,46 @@ public class GameManager : MonoBehaviour
     }
 
     // === 던전 입장시 ===
+
     private void Start()
     {
         startButton.onClick.AddListener(StartGame);
-        Instantiate(FieldManager.Instance.RoomPrefab, new Vector3(0, 0, 0), Quaternion.identity).name = "Room";
     }
 
     public void StartGame()
     {
-        StartWave();
+        RoomIndex = 0;
+        StartWave(RoomIndex);
         fadeManager.ButtonOff();
     }
 
-    // === 게임 시작 ===
-    public void StartWave()
+    // === 웨이브(방) 시작 ===
+    public void StartWave(int idx)
     {
-        _enemy_Manager.StartWave(0);
+        // ★ 이전 방 오브젝트가 있다면 제거
+        if (currentRoomObj != null)
+            Destroy(currentRoomObj);
+
+        _enemy_Manager.StartWave(idx);
+        currentRoomObj = Instantiate(FieldManager.Instance.RoomPrefab, Vector3.zero, Quaternion.identity);
+        currentRoomObj.name = "Room" + (idx + 1);
+
+        // ★ RoomManager.StartRoom() 호출!
+        var roomMgr = currentRoomObj.GetComponent<RoomManager>();
+        if (roomMgr != null)
+            roomMgr.StartRoom();
+        else
+            Debug.LogError("RoomManager가 RoomPrefab에 없음!");
     }
 
-    // === 다음 던전 ===
-    void StartNextWave()
+    // === 다음 던전(방) 진행 ===
+    public void StartNextWave()
     {
-
+        RoomIndex++;
+        StartWave(RoomIndex);
     }
 
-    // === 스테이지 종료 ===
+    // === 스테이지 종료(방 클리어 후, 스킬 선택 후) ===
     public void EndOfWave()
     {
         StartNextWave();
@@ -84,5 +102,4 @@ public class GameManager : MonoBehaviour
         _enemy_Manager.StopWave();
         // 메인씬으로 돌아가기 (추후에 추가)
     }
-
 }
