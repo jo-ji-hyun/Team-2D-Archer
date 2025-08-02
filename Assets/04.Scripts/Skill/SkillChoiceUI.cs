@@ -60,6 +60,7 @@ public class SkillChoiceUI : MonoBehaviour
         SkillManager.Instance.AcquireSkill(currentchoices[idx]); // 선택한 스킬 획득
         panel.SetActive(false); // 패널 숨김
         Time.timeScale = 1f; // 게임 재개
-        GameManager.Instance.EndOfWave(); // 게임 매니저에 현재 웨이브 종료 알림
+
+        //GameManager.Instance.EndOfWave(); // 게임 매니저에 현재 웨이브 종료 알림
     }
 }
