@@ -16,12 +16,14 @@ public class RangeWeapon : WeaponHandler
     public float MultipleAngel { get { return multipleAngel; } }
 
     // === 퍼짐 ===
-    [SerializeField] private float spread = 0.5f;
+    [SerializeField] private float spread = 0.3f;
     public float Spread { get { return spread; } }
 
     // === 마법 참조 ===
     private ShootManager _shoot_Manager;
     public MagicCodex _magic_Codex;
+
+    private SkillManager _skill_Manager;
 
     protected override void Start()
     {
@@ -29,6 +31,11 @@ public class RangeWeapon : WeaponHandler
         _shoot_Manager = ShootManager.Instance;
 
         _magic_Codex = new MagicCodex();
+    }
+
+    public void Init(SkillManager skill)
+    {
+        this._skill_Manager = skill;
     }
 
     public override void Attack()
