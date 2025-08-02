@@ -3163,8 +3163,6 @@ MonoBehaviour:
     height: 2
   gizmoColor: {r: 1, g: 0, b: 0, a: 0.3}
   activeEnemies: []
-  bossPrefab: {fileID: 0}
-  bossSpawnPosition: {x: 0, y: 0}
 --- !u!1 &1935513874
 GameObject:
   m_ObjectHideFlags: 0
@@ -3489,6 +3487,10 @@ PrefabInstance:
     - target: {fileID: 2289910791662358666, guid: 4a0b2223327f05544ac2508336611190, type: 3}
       propertyPath: m_Name
       value: Room
+      objectReference: {fileID: 0}
+    - target: {fileID: 2289910791662358666, guid: 4a0b2223327f05544ac2508336611190, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2763140608637372907, guid: 4a0b2223327f05544ac2508336611190, type: 3}
       propertyPath: isCleared
