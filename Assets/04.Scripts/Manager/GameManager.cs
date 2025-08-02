@@ -40,8 +40,10 @@ public class GameManager : MonoBehaviour
     {
         if (_enemy_Manager.activeEnemies.Count == 0 )
         {
-
+            Debug.Log("dd");
         }
+
+        Debug.Log(_enemy_Manager.activeEnemies.Count);
 
     }
 
