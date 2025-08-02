@@ -23,6 +23,7 @@ public class BossManager : MonoBehaviour
     {
         // 실험용 별개 타겟지정
         GameObject playerObject = GameObject.FindWithTag("Player");
+
         if (playerObject != null)
         {
             playerTarget = playerObject.transform;
