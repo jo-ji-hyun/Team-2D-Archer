@@ -21,6 +21,8 @@ public class RoomManager : MonoBehaviour
 
     void Update()
     {
+        Debug.Log($"[RoomManager] gameStarted: {gameStarted}, IsAllSpawned: {EnemyManager.Instance.IsAllSpawned}, AllEnemiesDead: {EnemyManager.Instance.AllEnemiesDead()}");
+
         if (!gameStarted)
             return; // 게임이 시작되지 않았다면 업데이트 함수 종료.
 
