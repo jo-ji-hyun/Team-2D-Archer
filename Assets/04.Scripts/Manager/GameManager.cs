@@ -39,6 +39,19 @@ public class GameManager : MonoBehaviour
             _shoot_Manager.GiveRange(_stats_Manager, _skill_Manager);
     }
 
+    private void Update()
+    {
+        if (_enemy_Manager.activeEnemies.Count == 0 )
+        {
+            Debug.Log("dd");
+        }
+
+        Debug.Log(_enemy_Manager.activeEnemies.Count);
+
+    }
+
+    // === 던전 입장시 ===
+
     private void Start()
     {
         startButton.onClick.AddListener(StartGame);
