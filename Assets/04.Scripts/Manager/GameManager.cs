@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public FadeManager fadeManager;
     public PlayerController player { get; private set; }
 
-    // === �ڽĵ� ���� ===
+
     private EnemyManager _enemy_Manager;
     private StatsManager _stats_Manager;
     private ShootManager _shoot_Manager;
@@ -34,8 +34,8 @@ public class GameManager : MonoBehaviour
         _shoot_Manager = GetComponentInChildren<ShootManager>();
         _skill_Manager = GetComponentInChildren<SkillManager>();
 
-        player.Init(this, _stats_Manager,_enemy_Manager); // �÷��̾����� �Ŵ����� �־���
-        ShootManager.Instance.GiveRange(_stats_Manager, _skill_Manager); // ���Ŵ������� �ٸ� �Ŵ����� �Ѱ���
+        player.Init(this, _stats_Manager,_enemy_Manager);
+        ShootManager.Instance.GiveRange(_stats_Manager, _skill_Manager); 
     }
 
     private void Update()
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    // === ���� ����� ===
+
 
     private void Start()
     {
@@ -63,39 +63,36 @@ public class GameManager : MonoBehaviour
         fadeManager.ButtonOff();
     }
 
-    // === ���� ���� ===
+
     public void StartWave()
     {
         _enemy_Manager.StartWave(0);
     }
 
-    // === ���� ���� ===
     void StartNextWave()
     {
 
     }
 
-    // === �������� ���� ===
+
     public void EndOfWave()
     {
         StartNextWave();
     }
 
-    // === �÷��̾� ����� ===
+
     public void GameOver()
     {
         StartCoroutine(PlayerDeathRoutine());
         _enemy_Manager.StopWave();
-        // ���ξ����� ���ư��� (���Ŀ� �߰�)
     }
 
-    // === ����� ���� ===
+
     private IEnumerator PlayerDeathRoutine()
     {
-        yield return new WaitForSeconds(2.0f);        // 2�ʸ� ���
+        yield return new WaitForSeconds(2.0f);       
 
         playertarget.SetActive(false);
-        Debug.Log("�÷��̾� Ÿ�� ��Ȱ��ȭ.");
     }
 
 }
