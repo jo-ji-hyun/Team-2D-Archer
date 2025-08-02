@@ -490,6 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b26406deb5a762f4586382f8c57178ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isReady: 0
   allSkills: []
   acquiredSkills: []
   fireballPrefab: {fileID: 8738154650902348572, guid: 9d0ba554e6385164186b820ee7b1d38c, type: 3}
@@ -1485,6 +1486,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 751793166}
   m_CullTransparentMesh: 1
+--- !u!1 &759907523
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 759907524}
+  - component: {fileID: 759907525}
+  m_Layer: 0
+  m_Name: RommManger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &759907524
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759907523}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1811208969}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &759907525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759907523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81d5e39b38a9239478e34898e5458a5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCleared: 0
+  gameStarted: 0
 --- !u!1 &785585740
 GameObject:
   m_ObjectHideFlags: 0
@@ -2708,6 +2755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b26406deb5a762f4586382f8c57178ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isReady: 0
   allSkills: []
   acquiredSkills: []
   fireballPrefab: {fileID: 8738154650902348572, guid: 9d0ba554e6385164186b820ee7b1d38c, type: 3}
@@ -2763,7 +2811,7 @@ MonoBehaviour:
   UI4: {fileID: 843096790}
   MainCamera: {fileID: 1306104113}
   TitleCamera: {fileID: 1705708778}
-  Player: {fileID: 0}
+  Player: {fileID: 31751040}
   Tilte: {fileID: 1705708779}
 --- !u!4 &1704156058
 Transform:
@@ -2925,6 +2973,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RoomIndex: 0
   startButton: {fileID: 2005738089}
+  playertarget: {fileID: 0}
   fadeManager: {fileID: 1704156057}
 --- !u!4 &1811208969
 Transform:
@@ -2944,6 +2993,7 @@ Transform:
   - {fileID: 1704156058}
   - {fileID: 1898659375}
   - {fileID: 277508398}
+  - {fileID: 759907524}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1850694564
