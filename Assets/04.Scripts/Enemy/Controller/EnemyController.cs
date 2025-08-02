@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyController : EnemyBaseController
 {
-    private EnemyManager enemyManager;
 
     [SerializeField] private float attackRange = 1.5f;
     [SerializeField] private float attackCooldown = 1f;

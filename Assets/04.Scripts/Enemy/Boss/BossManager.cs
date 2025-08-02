@@ -6,15 +6,30 @@ public class BossManager : MonoBehaviour
 {
     public static BossManager Instance;
 
+    [Header("보스 설정")]
     [SerializeField] private GameObject bossPrefab;
     [SerializeField] private Vector2 bossSpawnPosition;
 
     private BossController currentBoss;
     private Transform playerTarget;
 
+    // 실험용 강제시작
+    private void Start()
+    {
+        SpawnBoss();
+    }
+
     private void Awake()
     {
-        if (Instance == null)
+        // 실험용 별개 타겟지정
+        GameObject playerObject = GameObject.FindWithTag("Player");
+        if (playerObject != null)
+        {
+            playerTarget = playerObject.transform;
+        }
+
+
+            if (Instance == null)
         {
             Instance = this;
         }
@@ -22,6 +37,7 @@ public class BossManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
 
     public void SetPlayerTarget(Transform player)
