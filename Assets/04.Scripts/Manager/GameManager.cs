@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
 
     public FadeManager fadeManager;
     public PlayerController player { get; private set; }
-    public ShootManager shootManager { get; private set; }
 
     // === 자식들 참조 ===
     private EnemyManager _enemy_Manager;

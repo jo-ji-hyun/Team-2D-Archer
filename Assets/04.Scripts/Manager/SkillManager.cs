@@ -17,7 +17,7 @@ public class SkillManager : MonoBehaviour
 
     public GameObject fireballPrefab; // 파이어볼 프리팹
     public GameObject skillButtonPrefab; // 스킬 버튼 프리팹 (UI)
-    public Transform skillButtonParent; // 스킬 버튼 부모 (UI)
+    public Transform  skillButtonParent; // 스킬 버튼 부모 (UI)
 
     private void Awake()
     {
@@ -29,6 +29,7 @@ public class SkillManager : MonoBehaviour
         allSkills.Add(new Skill(2, "LightningBolt", "번개를 소환하여 적에게 피해를 준다.", 12f, 10f));
 
         acquiredSkills.Add(new Skill(0, "FireBall", "화염구를 발사하여 적에게 피해를 준다.", 10f, 5f)); // 확인용추가
+        _isReady = true; // 스킬 준비 완료
     }
 
     // 새로운 스킬 획득
@@ -115,8 +116,9 @@ public class SkillManager : MonoBehaviour
     {
         for (int i = 0; i < acquiredSkills.Count; i++)
         {
-            if (i == acquiredSkills[i].skillIndex)
+            if (skillnum == acquiredSkills[i].skillIndex)
             {
+                Debug.Log("스킬 찾음");
                 _isReady = true; // 스킬 준비 완료
             }
 
