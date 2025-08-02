@@ -6,8 +6,6 @@ public class BossController : BossBaseController
 {
     private EnemyManager enemyManager;
 
-    public float moveSpeed = 2f;
-
     [SerializeField] private GameObject warningAreaPrefab;
     [SerializeField] private float meleeAttackRange = 2.5f;
     [SerializeField] private float warningDuration = 1.5f;

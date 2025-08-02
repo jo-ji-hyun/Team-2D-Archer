@@ -2316,8 +2316,9 @@ MonoBehaviour:
       count: 1
     - enemyPrefab: {fileID: 9052133549227503412, guid: a336a177a5e820d44bd453d122144a4b, type: 3}
       count: 1
+    - enemyPrefab: {fileID: 4010490467910632654, guid: 2aa488744e212ea44a9e2d1feb7f89d9, type: 3}
+      count: 1
   timeBetweenSpawns: 0.3
-  timeBetweenWaves: 1
   spawnAreas:
   - serializedVersion: 2
     x: -2
