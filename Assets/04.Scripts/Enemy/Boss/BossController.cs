@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class BossController : BossBaseController
 {
-
+    private BossManager bossManager;
     [SerializeField] private GameObject warningAreaPrefab;
     [SerializeField] private float meleeAttackRange = 2.5f;
     [SerializeField] private float warningDuration = 1.5f;
 
-    public void Init(EnemyManager enemyManager, Transform target)
+    public void Init(BossManager bossManager, Transform target)
     {
         this.target = target;
         StartCoroutine(BossBehaviorPattern());
@@ -123,5 +123,11 @@ public class BossController : BossBaseController
         {
             characterRenderer.flipX = false; // 오른쪽에 있으면 오른쪽 바라보게
         }
+    }
+
+    public void Die()
+    {
+        bossManager.UnregisterBoss();
+        Destroy(gameObject);
     }
 }
