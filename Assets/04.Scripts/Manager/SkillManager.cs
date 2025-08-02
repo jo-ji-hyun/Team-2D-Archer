@@ -16,8 +16,6 @@ public class SkillManager : MonoBehaviour
     public List<Skill> acquiredSkills = new List<Skill>();
 
     public GameObject fireballPrefab; // 파이어볼 프리팹
-    public GameObject skillButtonPrefab; // 스킬 버튼 프리팹
-    public Transform skillButtonParent; // 스킬 버튼을 배치할 부모 오브젝트
 
     public float autoFireInterval = 1.0f; // 자동 발사 간격 (초 단위)
     private float autoFireTimer = 0f; // 자동 발사 타이머
@@ -25,9 +23,8 @@ public class SkillManager : MonoBehaviour
     private void Awake()
     {
         Instance = this; // 싱글톤 인스턴스 설정
-        // 테스트 용 기본 스킬
-        allSkills.Add(new Skill("Flamethrower", "강력한 화염 공격을 가한다."));
-        allSkills.Add(new Skill("FireBall", "화염구를 발사하여 적에게 피해를 준다."));
+        // 스킬을 추가함
+        allSkills.Add(new Skill("FireBall", "화염구를 발사하여 적에게 피해를 준다.", 10f, 5f));
     }
 
     private void Update()
@@ -52,8 +49,6 @@ public class SkillManager : MonoBehaviour
     {
         acquiredSkills.Add(skill); // 스킬을 획득한 스킬 목록에 추가
         Debug.Log($"스킬 획득 : {skill.skillName}"); // 실제 효과 적용 로직은 따로 분리 가능함.
-
-        CreateSkillButten(skill); // UI에 스킬 버튼 생성
     }
 
     public void AcquireRandomSkill()
@@ -66,44 +61,10 @@ public class SkillManager : MonoBehaviour
             int rand = Random.Range(0, available.Count);
             Skill selected = available[rand];
             acquiredSkills.Add(selected);
-            Debug.Log($"스킬 획득: {selected.skillName} - {selected.description}");
-            CreateSkillButten(selected);
         }
         else
         {
             Debug.Log("획득 가능한 스킬이 없습니다.");
-        }
-    }
-    public void CreateSkillButten(Skill skill) // 스킬 버튼을 생성하는 함수.
-    {
-        Debug.Log("[Skill]스킬 버튼 생성: " + skill.skillName);
-
-        GameObject btnObj = Instantiate(skillButtonPrefab, skillButtonParent);
-        Debug.Log("[Skill] 버튼 실제 생성됨: " + btnObj.name);
-
-        SkillUI skillUI = btnObj.GetComponent<SkillUI>();
-        if (skillUI == null)
-            Debug.LogWarning("SkillUI 스크립트가 프리팹에 없음");
-
-        else
-            Debug.Log("SkillUI 연결 완료");
-
-        skillUI.Init(skill); // 스킬 UI 초기화.
-        skillUI.playerObj = GameObject.FindWithTag("Player"); // 플레이어 오브젝트를 찾아서 할당.
-
-
-        // 만약 init 함수 없이 직접 할당 할려면:
-        // skillUI.skillData = skill;
-        // skillUI.skillNameText.text = skill.skillName; // 스킬 이름 설정.
-    }
-
-    // 이미 획득한 스킬 목록을 보여주는 함수.
-    public void ShowAcquiredSkills()
-    {
-        Debug.Log("==보유 스킬==");
-        foreach (var s in acquiredSkills)
-        {
-            Debug.Log($"{s.skillName} : {s.description}");
         }
     }
 
