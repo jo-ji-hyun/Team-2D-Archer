@@ -123,9 +123,23 @@ public class SkillManager : MonoBehaviour
                 Debug.Log("스킬 발동");
 
                 AbilityPower = acquiredSkills[i].damage;
-                Shoot shoot = proj.GetComponent<Shoot>();
 
-                shoot.Init(direction, range, this._stats_Manager, this._shoot_Manager, this);
+                Shoot shoot = proj.GetComponent<Shoot>();
+                if (shoot == null)
+                {
+                    shoot.Init(direction, range, this._stats_Manager, this._shoot_Manager, this);
+                    return;
+                }
+
+                SkillProjectile projectile = proj.GetComponent<SkillProjectile>();
+                if (projectile != null)
+                {
+                    projectile.Init(direction, AbilityPower, 10f);
+                    return;
+                }
+
+                Debug.LogWarning("발사체에 샷 또는 스킬 발사체 컴포넌트가 없습니다.");
+
             }
 
         }

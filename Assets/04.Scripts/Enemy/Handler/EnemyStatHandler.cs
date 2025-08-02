@@ -4,17 +4,31 @@ using UnityEngine;
 
 public class EnemyStatHandler : MonoBehaviour
 {
-    [Range(1, 100)][SerializeField] private int health = 10;
-    public int Health
+    [Header("스탯 설정")]
+    [Range(1f, 100f)]
+    [SerializeField] private float MaxHP = 10f;
+    public float Health => MaxHP; // 읽기 전용 체력
+
+    [Range(1f, 20f)]
+    [SerializeField] private float speed = 3f;
+
+    public float Speed => speed; // 읽기 전용 속도
+
+    private float currentHp;
+
+    private void Awake()
     {
-        get => health;
-        set => health = Mathf.Clamp(value, 0, 100);
+        currentHp = MaxHP;
     }
 
-    [Range(1f, 20f)][SerializeField] private float speed = 3;
-    public float Speed
+    public void TakeDamage(float damage)
     {
-        get => speed;
-        set => speed = Mathf.Clamp(value, 0, 20);
+        currentHp -= damage;
+        Debug.Log($"[EnemyStatHandler] 피해를 입음: {damage}, 남은 체력: {currentHp}");
+
+        if (currentHp <= 0)
+        {
+            GetComponent<EnemyBaseController>()?.Death();
+        }
     }
 }

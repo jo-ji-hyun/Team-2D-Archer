@@ -489,6 +489,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b26406deb5a762f4586382f8c57178ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isSkill: 0
+  AbilityPower: 0
   allSkills: []
   acquiredSkills: []
   fireballPrefab: {fileID: 8738154650902348572, guid: 9d0ba554e6385164186b820ee7b1d38c, type: 3}
@@ -2633,7 +2635,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1654637977}
-  - component: {fileID: 1654637976}
+  - component: {fileID: 1654637978}
   m_Layer: 0
   m_Name: SkillManager
   m_TagString: Untagged
@@ -2641,25 +2643,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1654637976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1654637975}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b26406deb5a762f4586382f8c57178ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allSkills: []
-  acquiredSkills: []
-  fireballPrefab: {fileID: 8738154650902348572, guid: 9d0ba554e6385164186b820ee7b1d38c, type: 3}
-  iceSpikePrefab: {fileID: 0}
-  lightningBolt: {fileID: 0}
-  skillButtonPrefab: {fileID: 1214967395705132201, guid: 871410e67f000824b9e02dee6c1148e6, type: 3}
-  skillButtonParent: {fileID: 1138310687}
 --- !u!4 &1654637977
 Transform:
   m_ObjectHideFlags: 0
@@ -2675,6 +2658,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1654637978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654637975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b26406deb5a762f4586382f8c57178ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isSkill: 0
+  AbilityPower: 0
+  allSkills: []
+  acquiredSkills: []
+  fireballPrefab: {fileID: 8738154650902348572, guid: 9d0ba554e6385164186b820ee7b1d38c, type: 3}
+  iceSpikePrefab: {fileID: 0}
+  lightningBolt: {fileID: 0}
+  skillButtonPrefab: {fileID: 0}
+  skillButtonParent: {fileID: 1138310687}
 --- !u!1 &1704156056
 GameObject:
   m_ObjectHideFlags: 0
@@ -2870,7 +2874,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b86979f7c92af884b946adc1b5cfa70e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RoomIndex: 0
   startButton: {fileID: 2005738089}
   playertarget: {fileID: 31751040}
   fadeManager: {fileID: 1704156057}

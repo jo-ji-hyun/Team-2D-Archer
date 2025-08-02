@@ -15,25 +15,25 @@ public class RoomManager : MonoBehaviour
         SkillManager.Instance.ShowSkillChoice();
     }
 
-    //void Update()
+    //void update()
     //{
-    //    if (!gameStarted)
+    //    if (!gamestarted)
     //        return; // 게임이 시작되지 않았다면 업데이트 함수 종료.
 
-    //    if (EnemyManager.Instance.IsAllSpawned && EnemyManager.Instance.AllEnemiesDead()) 
+    //    if (enemymanager.instance.isallspawned && enemymanager.instance.allenemiesdead()) 
     //    {
-    //        OnRoomCleared(); // 모든 적이 죽었을 떄 방 클리어 함수.
+    //        onroomcleared(); // 모든 적이 죽었을 떄 방 클리어 함수.
     //    }
 
-    //    if (Input.GetKeyDown(KeyCode.R))
+    //    if (input.getkeydown(keycode.r))
     //    {
-    //        SkillManager.Instance.AcquireRandomSkill();
-    //        // 테스트용 R키 누르면 랜덤 스킬 획득
+    //        skillmanager.instance.acquirerandomskill();
+    //        // 테스트용 r키 누르면 랜덤 스킬 획득
     //    }
 
-    //    if (Input.GetKeyDown(KeyCode.V))
+    //    if (input.getkeydown(keycode.v))
     //    {
-    //        OnRoomCleared(); // 테스트용 V키 누르면 방 클리어 함수 호출
+    //        onroomcleared(); // 테스트용 v키 누르면 방 클리어 함수 호출
     //    }
     //}
 
