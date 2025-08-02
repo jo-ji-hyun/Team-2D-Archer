@@ -10,6 +10,10 @@ public class ShootManager : MonoBehaviour
     private static ShootManager instance;
     public static ShootManager Instance { get { return instance; } }
 
+    private StatsManager _stats_Manager;
+
+    private SkillManager _skill_Manager;
+
     private void Awake()
     {
         instance = this;
@@ -24,6 +28,13 @@ public class ShootManager : MonoBehaviour
 
         Shoot shoot = obj.GetComponent<Shoot>();
 
-        shoot.Init(direction, rangeWeapon);
+        shoot.Init(direction,rangeWeapon, this._stats_Manager, this, this._skill_Manager);
+    }
+
+    // 받은 매니저를 재정의
+    public void GiveRange(StatsManager stats, SkillManager skill)
+    {
+        this._stats_Manager = stats;
+        this._skill_Manager = skill;
     }
 }
