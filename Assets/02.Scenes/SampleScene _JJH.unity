@@ -389,8 +389,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allSkills: []
   acquiredSkills: []
-  fireballPrefab: {fileID: 8738154650902348572, guid: 9d0ba554e6385164186b820ee7b1d38c, type: 3}
-  autoFireInterval: 1
+  skillData:
+    skillName: 
+    description: 
+    damage: 0
+    speed: 0
+  _auto_Fire_Interval: 1
 --- !u!1 &461030258
 GameObject:
   m_ObjectHideFlags: 0
@@ -2106,6 +2110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RoomIndex: 0
   startButton: {fileID: 2005738089}
+  playertarget: {fileID: 31751040}
   fadeManager: {fileID: 1704156057}
 --- !u!4 &1811208969
 Transform:

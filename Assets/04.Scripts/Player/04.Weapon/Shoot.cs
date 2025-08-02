@@ -34,7 +34,7 @@ public class Shoot : MonoBehaviour
     {
         if (!_isReady)
         {
-            return;
+            _skill_Manager.UseSkill("FireBalt");
         }
 
         _current_Duration += Time.deltaTime;

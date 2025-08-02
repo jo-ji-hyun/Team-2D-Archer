@@ -10,7 +10,10 @@ public class GameManager : MonoBehaviour
 
     public static int clear = 0;
 
+    public GameObject playertarget;
+
     public static GameManager Instance;
+
     public FadeManager fadeManager;
     public PlayerController player { get; private set; }
     public ShootManager shootManager { get; private set; }
@@ -79,8 +82,18 @@ public class GameManager : MonoBehaviour
     // === 플레이어 사망시 ===
     public void GameOver()
     {
+        StartCoroutine(PlayerDeathRoutine());
         _enemy_Manager.StopWave();
         // 메인씬으로 돌아가기 (추후에 추가)
+    }
+
+    // === 사망시 연출 ===
+    private IEnumerator PlayerDeathRoutine()
+    {
+        yield return new WaitForSeconds(2.0f);        // 2초를 대기
+
+        playertarget.SetActive(false);
+        Debug.Log("플레이어 타깃 비활성화.");
     }
 
 }

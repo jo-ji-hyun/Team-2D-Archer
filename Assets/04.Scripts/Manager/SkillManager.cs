@@ -15,10 +15,11 @@ public class SkillManager : MonoBehaviour
     // 현재 플레이어가 보유중인 스킬 리스트
     public List<Skill> acquiredSkills = new List<Skill>();
 
-    public GameObject fireballPrefab; // 파이어볼 프리팹
+    // === 스킬정보를 받아옴 ===
+    public Skill skillData;
 
-    public float autoFireInterval = 1.0f; // 자동 발사 간격 (초 단위)
-    private float autoFireTimer = 0f; // 자동 발사 타이머
+    public float _auto_Fire_Interval = 1.0f; // 자동 발사 간격 (초 단위)
+    private float _auto_Fire_Timer = 0f; // 자동 발사 타이머
 
     private void Awake()
     {
@@ -30,18 +31,18 @@ public class SkillManager : MonoBehaviour
     private void Update()
     {
         Skill fireballSkill = acquiredSkills.Find(s => s.skillName == "FireBall");
-        if (fireballSkill != null)
-        {
-            autoFireTimer += Time.deltaTime; // 타이머 업데이트
-            if (autoFireTimer >= autoFireInterval)
-            {
-                autoFireTimer = 0f; // 타이머 초기화
+        //if (fireballSkill != null)
+        //{
+        //    autoFireTimer += Time.deltaTime; // 타이머 업데이트
+        //    if (autoFireTimer >= autoFireInterval)
+        //    {
+        //        autoFireTimer = 0f; // 타이머 초기화
 
-                GameObject playerObj = GameObject.FindWithTag("Player");
-                if (playerObj != null)
-                    UseSkill(fireballSkill, playerObj.transform.position);
-            }
-        }
+        //        GameObject playerObj = GameObject.FindWithTag("Player");
+        //        if (playerObj != null)
+        //           // UseSkill(fireballSkill, playerObj.transform.position);
+        //    }
+        //}
     }
 
     // 새로운 스킬을 플레이어에게 부여하는 함수
@@ -68,19 +69,18 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    public void UseSkill(Skill skill, Vector3 position)
+    public void UseSkill(string skill)//, Vector3 position)
     {
-        Debug.Log($"{skill.skillName} 스킬 사용! 위치: {position}");
+        Debug.Log($"{acquiredSkills} 스킬 사용!");
 
-        // 플레이어 위치에서 발사하도록 설정
-        GameObject playerObj = GameObject.FindWithTag("Player");
-        Vector3 spawnPos = playerObj != null ? playerObj.transform.position : position;
+        //// 플레이어 위치에서 발사하도록 설정
+        //GameObject playerObj = GameObject.FindWithTag("Player");
+        //Vector3 spawnPos = playerObj != null ? playerObj.transform.position : position;
 
-        if (skill.skillName == "FireBall")
+        for (int i = 0; i < acquiredSkills.Count; i++)
         {
-            Vector2 dir = Vector2.right; // 예시로 오른쪽 방향으로 발사
-            GameObject proj = Instantiate(fireballPrefab, spawnPos, Quaternion.identity);
-            proj.GetComponent<Projectile>().SetDirection(dir); // 발사체 방향 설정
+            Skill skillData = acquiredSkills[i];
+            Debug.Log("스킬 번호 " + i + " 이름: " + skillData.skillName);
 
             float FireballDamage = Player.Instance.Stats.attack * 0.5f;
         }
