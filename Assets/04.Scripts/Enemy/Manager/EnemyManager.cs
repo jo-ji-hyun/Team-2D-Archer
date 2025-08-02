@@ -33,9 +33,6 @@ public class EnemyManager : MonoBehaviour
     private Transform playerTarget;
     private Coroutine waveRoutine;
 
-    [SerializeField] private GameObject bossPrefab;
-    [SerializeField] private Vector2 bossSpawnPosition;
-
     // === 경고문 거슬려서 추가
     private bool _enemy_Spawn_Complete;
     public bool _is_Enemy_Spawn_Complete => _enemy_Spawn_Complete;
@@ -139,14 +136,6 @@ public class EnemyManager : MonoBehaviour
         }
 
         activeEnemies.Add(baseController); // 공통 리스트에 추가
-    }
-
-    public void SpawnBoss()
-    {
-        var bossObj = Instantiate(bossPrefab, bossSpawnPosition, Quaternion.identity);
-        var boss = bossObj.GetComponent<BossController>();
-        if (boss != null && playerTarget != null)
-            boss.Init(this, playerTarget);
     }
 
     // 기즈모를 그려 영역을 시각화 (선택된 경우에만 표시)

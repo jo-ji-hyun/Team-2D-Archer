@@ -18,9 +18,14 @@ public class BossAnimationHandler : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
     }
 
-    public void Move(Vector2 obj)
+    public void Move()
     {
         animator.SetBool(IsMoving, true);
+    }
+
+    public void Idle()
+    {
+        animator.SetBool(IsMoving, false);
     }
 
     public void Skill()

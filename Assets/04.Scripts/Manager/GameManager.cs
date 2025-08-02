@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public FadeManager fadeManager;
     public PlayerController player { get; private set; }
 
-    // === ÀÚ½Äµé ÂüÁ¶ ===
+    // === ï¿½Ú½Äµï¿½ ï¿½ï¿½ï¿½ï¿½ ===
     private EnemyManager _enemy_Manager;
     private StatsManager _stats_Manager;
     private ShootManager _shoot_Manager;
@@ -34,20 +34,23 @@ public class GameManager : MonoBehaviour
         _shoot_Manager = GetComponentInChildren<ShootManager>();
         _skill_Manager = GetComponentInChildren<SkillManager>();
 
-        player.Init(this, _stats_Manager,_enemy_Manager); // ÇÃ·¹ÀÌ¾îÇÑÅ× ¸Å´ÏÀú¸¦ ³Ö¾îÁÜ
-        ShootManager.Instance.GiveRange(_stats_Manager, _skill_Manager); // ½¸¸Å´ÏÀú¿¡°Ô ´Ù¸¥ ¸Å´ÏÀú¸¦ ³Ñ°ÜÁÜ
+        player.Init(this, _stats_Manager,_enemy_Manager); // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å´ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½ï¿½
+        ShootManager.Instance.GiveRange(_stats_Manager, _skill_Manager); // ï¿½ï¿½ï¿½Å´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½Å´ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ°ï¿½ï¿½ï¿½
     }
 
     private void Update()
     {
         if (_enemy_Manager.activeEnemies.Count == 0 )
         {
-
+            Debug.Log("dd");
         }
+
+        Debug.Log(_enemy_Manager.activeEnemies.Count);
 
     }
 
-    // === ´øÀü ÀÔÀå½Ã ===
+    // === ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ===
+
     private void Start()
     {
         startButton.onClick.AddListener(StartGame);
@@ -60,39 +63,39 @@ public class GameManager : MonoBehaviour
         fadeManager.ButtonOff();
     }
 
-    // === °ÔÀÓ ½ÃÀÛ ===
+    // === ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ===
     public void StartWave()
     {
         _enemy_Manager.StartWave(0);
     }
 
-    // === ´ÙÀ½ ´øÀü ===
+    // === ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ===
     void StartNextWave()
     {
 
     }
 
-    // === ½ºÅ×ÀÌÁö Á¾·á ===
+    // === ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ===
     public void EndOfWave()
     {
         StartNextWave();
     }
 
-    // === ÇÃ·¹ÀÌ¾î »ç¸Á½Ã ===
+    // === ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ===
     public void GameOver()
     {
         StartCoroutine(PlayerDeathRoutine());
         _enemy_Manager.StopWave();
-        // ¸ÞÀÎ¾ÀÀ¸·Î µ¹¾Æ°¡±â (ÃßÈÄ¿¡ Ãß°¡)
+        // ï¿½ï¿½ï¿½Î¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½Ä¿ï¿½ ï¿½ß°ï¿½)
     }
 
-    // === »ç¸Á½Ã ¿¬Ãâ ===
+    // === ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ===
     private IEnumerator PlayerDeathRoutine()
     {
-        yield return new WaitForSeconds(2.0f);        // 2ÃÊ¸¦ ´ë±â
+        yield return new WaitForSeconds(2.0f);        // 2ï¿½Ê¸ï¿½ ï¿½ï¿½ï¿½
 
         playertarget.SetActive(false);
-        Debug.Log("ÇÃ·¹ÀÌ¾î Å¸±ê ºñÈ°¼ºÈ­.");
+        Debug.Log("ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­.");
     }
 
 }
