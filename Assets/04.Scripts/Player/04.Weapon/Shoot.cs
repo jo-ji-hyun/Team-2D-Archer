@@ -16,7 +16,6 @@ public class Shoot : MonoBehaviour
 
     private float _current_Duration;
     private Vector2 _direction;
-    private bool _isReady;
 
     private Transform _pivot;
 
@@ -32,9 +31,9 @@ public class Shoot : MonoBehaviour
 
     private void Update()
     {
-        if (!_isReady)
+        if (_skill_Manager._isReady == true)
         {
-            _skill_Manager.UseSkill("FireBalt");
+            _skill_Manager.UseSkill(0);
         }
 
         _current_Duration += Time.deltaTime;
@@ -101,8 +100,6 @@ public class Shoot : MonoBehaviour
             _pivot.localRotation = Quaternion.Euler(180, 0, 0);
         else
             _pivot.localRotation = Quaternion.Euler(0, 0, 0);
-
-        _isReady = true;
     }
 
     // === ÆÄ±« ·ÎÁ÷ ===
