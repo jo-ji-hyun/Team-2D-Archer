@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
 
     public void EndOfWave()
     {
-        StartNextWave();
+        // StartNextWave();
     }
 
 
