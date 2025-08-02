@@ -81,7 +81,7 @@ public class Shoot : MonoBehaviour
         // === 플레이어 스텟 참조 ===
         
         currentDamage += _stats_Manager.stats.attack;
-        Debug.LogError($"{_stats_Manager.stats.attack}");
+
         return currentDamage;  // 무기 데미지 + 마법 기본 데미지 + 플레이어 스텟
     }
 
