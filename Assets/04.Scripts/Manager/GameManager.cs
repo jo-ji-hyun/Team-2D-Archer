@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     public static int clear = 0;
 
+    public static bool famestart = false;
+
     public GameObject playertarget;
 
     public static GameManager Instance;
@@ -46,12 +48,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+
         if (_enemy_Manager.activeEnemies.Count == 0 )
         {
-            Debug.Log("dd");
+            Debug.Log(_enemy_Manager.activeEnemies.Count);
         }
-
-        Debug.Log(_enemy_Manager.activeEnemies.Count);
 
     }
 
