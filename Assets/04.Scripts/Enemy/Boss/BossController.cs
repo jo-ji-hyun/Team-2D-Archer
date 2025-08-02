@@ -31,7 +31,7 @@ public class BossController : BossBaseController
 
         while (true)
         {
-            // ▶ 원거리 범위공격 (투사체 생성 → 터짐)
+            // 원거리 범위공격 (투사체 생성 → 터짐)
             yield return StartCoroutine(RangedAreaAttack());
 
             yield return new WaitForSeconds(0.5f);
