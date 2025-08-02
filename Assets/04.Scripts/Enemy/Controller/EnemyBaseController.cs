@@ -18,7 +18,7 @@ public class EnemyBaseController : MonoBehaviour
     private float knockbackDuration = 0.0f;
 
     protected EnemyAnimationHandler animationHandler;
-    protected EnemyStatHandler statHandler;
+    public EnemyStatHandler statHandler;
 
     [SerializeField] protected Transform target;
     [SerializeField] protected float AtkPower = 5f;
