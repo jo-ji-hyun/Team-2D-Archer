@@ -8,7 +8,11 @@ public class Shoot : MonoBehaviour
     [SerializeField] private string wallTag = "object"; // 장애물
     [SerializeField] private LayerMask enemyLayer;       // 적
 
+    // === Init으로 초기화 할 스크립트 ===
     private RangeWeapon _range_Weapon;
+    private StatsManager _stats_Manager;
+    private ShootManager _shoot_Manager;
+    private SkillManager _skill_Manager;
 
     private float _current_Duration;
     private Vector2 _direction;
@@ -19,19 +23,11 @@ public class Shoot : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private SpriteRenderer _sprite_Renderer;
 
-    // === 데미지 처리를 위해 불러옴 ===
-    private EnemyResourceController _targetEnemy;
-    private StatsManager _stat_Manager;
-
-    // === 초기데미지 여기서 수정 ===
-    [SerializeField] private float[] _magic_Base_Damage = { 3.0f, 2.0f }; // 마법 프리팹 [0]부터 기본 데미지 추가
-   
     private void Awake()
     {
         _sprite_Renderer = GetComponentInChildren<SpriteRenderer>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _pivot = transform.GetChild(0);
-        _stat_Manager = FindObjectOfType<StatsManager>();
     }
 
     private void Update()
@@ -43,14 +39,15 @@ public class Shoot : MonoBehaviour
 
         _current_Duration += Time.deltaTime;
 
-        if (_current_Duration > _range_Weapon.Duration)
+        if (_current_Duration > _range_Weapon._magic_Codex.duration)
         {
             DestroyShoot(transform.position, false);
         }
 
-        _rigidbody2D.velocity = _direction * _range_Weapon.Speed;
+        _rigidbody2D.velocity = _direction * _range_Weapon._magic_Codex.speed;
     }
 
+    // === 투사체 충돌 로직 ===
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (enemyLayer.value == (enemyLayer.value | (1 << collision.gameObject.layer))) // 몬스터(Layer)와 충돌시 삭제
@@ -74,26 +71,29 @@ public class Shoot : MonoBehaviour
     private float FinalMagicDamage()
     {
         float currentDamage = _range_Weapon.Power;                      // 무기 데미지 
-        
-        currentDamage += _magic_Base_Damage[_range_Weapon.magicIndex];  // 마법 기초 데미지
+
+        currentDamage += _range_Weapon._magic_Codex.Damage;
 
         // === 플레이어 스텟 참조 ===
-        if (_stat_Manager.stats.attack >= 0)
+        if (_stats_Manager.stats.attack >= 0)
         {
-            currentDamage += _stat_Manager.stats.attack; // 추후에 적 방어력도 고려
+            currentDamage += _stats_Manager.stats.attack; 
         }
 
         return currentDamage;  // 무기 데미지 + 마법 기본 데미지 + 플레이어 스텟
     }
 
-    // === 투사체 정보 설정(크기, 방향, 색깔) ===
-    public void Init(Vector2 direction, RangeWeapon weaponHandler)
+    // === 투사체 정보 설정(크기, 방향) ===
+    public void Init(Vector2 direction, RangeWeapon range, StatsManager statsManager, ShootManager shootManager, SkillManager skillManager)
     {
-        _range_Weapon = weaponHandler;
+        _range_Weapon = range;
+       this._stats_Manager = statsManager;
+       this._shoot_Manager = shootManager;
+       this._skill_Manager = skillManager;
 
         this._direction = direction;
         _current_Duration = 0;
-        transform.localScale = Vector3.one * weaponHandler.magicSize;
+        transform.localScale = Vector3.one * _range_Weapon._magic_Codex.magicSize;
 
         transform.right = this._direction;
 

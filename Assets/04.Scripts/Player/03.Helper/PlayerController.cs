@@ -9,14 +9,12 @@ public class PlayerController : BaseController // 이동을 받고 애니도 재생해야함
     private Camera _camera;
 
     // === CircleLayer가 적을 탐지 ===
-    private int _detected_Enemy;
-    private int _enemy_Layer;
+    private EnemyManager _enemy_Manager;
 
     // === 캐릭터 애니메이션 ===
     private AnimationPlayer _animation_Player;
 
     private StatsManager _stats_Manager; // StatsManager 참조
-
 
     protected override void Awake()
     {
@@ -24,12 +22,12 @@ public class PlayerController : BaseController // 이동을 받고 애니도 재생해야함
         _animation_Player = GetComponent<AnimationPlayer>();  // 플레이어의 애니메이션 컴퍼넌트
         _camera = Camera.main;
 
-        _enemy_Layer = LayerMask.NameToLayer("Enemy"); // Enemy 레이어를 저장
     }
-    public void Init(GameManager gameManager, StatsManager statsManager) // GamaManager와 StatsManager를 가져옴
+    public void Init(GameManager gameManager, StatsManager statsManager, EnemyManager enemyManager) // GamaManager와 StatsManager를 가져옴
     { 
         this._game_Manager = gameManager;
         this._stats_Manager = statsManager;
+        this._enemy_Manager = enemyManager;
 
         SetMoveSpeed(this._stats_Manager.stats.moveSpeed); // BaseController에 속도를 넘겨줌
     }
@@ -37,42 +35,17 @@ public class PlayerController : BaseController // 이동을 받고 애니도 재생해야함
     // === 플레이어 공격 로직 ===
     protected override void HandleAction()
     {
-        if(this._stats_Manager.stats.currentHP > 0 && _detected_Enemy > 0)
+        if(this._stats_Manager.stats.currentHP > 0 && this._enemy_Manager.activeEnemies.Count > 0)
         {
             isAttacking = true;
             _animation_Player.AttackBehavior();
         }
-        else if(this._stats_Manager.stats.currentHP > 0 || _detected_Enemy == 0)
+        else if(this._stats_Manager.stats.currentHP > 0 || this._enemy_Manager.activeEnemies.Count <= 0)
         {
             isAttacking = false;
         }
     }
 
-    // 트리거 안에 다른 콜라이더가 들어왔을 때 실행되는 함수
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        // "Enemy" 레이어를 가진 오브젝트가 들어왔는지 확인
-        if (other.gameObject.layer == _enemy_Layer)
-        {
-            // 적을 발견하면 증가
-            _detected_Enemy = 1;
-        }
-    }
-
-    // 트리거에서 다른 콜라이더가 나갔을 때 실행되는 함수
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.layer == _enemy_Layer)
-        {
-            // 적이 범위를 벗어나면 감소
-            _detected_Enemy = 0;
-
-            if (_detected_Enemy <= 0)
-            {
-                _detected_Enemy = 0;
-            }
-        }
-    }
 
     // === 움직이기 ===
     void OnMove(InputValue inputValue)
@@ -89,6 +62,10 @@ public class PlayerController : BaseController // 이동을 받고 애니도 재생해야함
             {
                 _animation_Player.Stay();
             }
+        }
+        else
+        {
+            movementDirection = Vector2.zero;
         }
 
     }

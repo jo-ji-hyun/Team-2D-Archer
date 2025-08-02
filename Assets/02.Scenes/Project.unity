@@ -831,7 +831,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 900, y: 800}
+  m_SizeDelta: {x: 1100, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &964428492
 Animator:
@@ -1030,7 +1030,6 @@ GameObject:
   - component: {fileID: 1005376060}
   - component: {fileID: 1005376059}
   - component: {fileID: 1005376058}
-  - component: {fileID: 1005376057}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -1038,41 +1037,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!58 &1005376057
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1005376056}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 4
 --- !u!223 &1005376058
 Canvas:
   m_ObjectHideFlags: 0
@@ -1300,7 +1264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RoomPrefab: {fileID: 2289910791662358666, guid: 4a0b2223327f05544ac2508336611190, type: 3}
-  Player: {fileID: 0}
+  Player: {fileID: 1005376065}
   UI: {fileID: 276341955}
   MonsterCount: 0
 --- !u!4 &1197603259
@@ -2301,14 +2265,15 @@ MonoBehaviour:
       count: 1
     - enemyPrefab: {fileID: 9052133549227503412, guid: a336a177a5e820d44bd453d122144a4b, type: 3}
       count: 1
+    - enemyPrefab: {fileID: 4010490467910632654, guid: 2aa488744e212ea44a9e2d1feb7f89d9, type: 3}
+      count: 1
   timeBetweenSpawns: 0.3
-  timeBetweenWaves: 1
   spawnAreas:
   - serializedVersion: 2
-    x: 0
-    y: 0
-    width: 2
-    height: 2
+    x: -2
+    y: -2
+    width: 5
+    height: 5
   gizmoColor: {r: 1, g: 0, b: 0, a: 0.3}
   activeEnemies: []
   bossPrefab: {fileID: 0}

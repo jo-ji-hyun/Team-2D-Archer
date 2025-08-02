@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class ShootManager : MonoBehaviour
 {
+    // === 무기 프리팹 ===
     [SerializeField] private GameObject[] MagicPrefabs;
+
+    // === 다른 매니저 정의 ===
+    private StatsManager _stats_Manager;
+
+    private SkillManager _skill_Manager;
 
     // === 싱글톤 선언 ===
     private static ShootManager instance;
@@ -17,13 +23,20 @@ public class ShootManager : MonoBehaviour
     // -----------------------
 
     // === 발싸 로직 ===
-    public void ShootMagic(RangeWeapon rangeWeapon, Vector2 startPostiion, Vector2 direction)
+    public void ShootMagic(RangeWeapon rangeWeapon, Vector2 startPostiion, Vector2 direction, MagicCodex magic)
     {
-        GameObject origin = MagicPrefabs[rangeWeapon.magicIndex];
+        GameObject origin = MagicPrefabs[magic.magicIndex];
         GameObject obj = Instantiate(origin, startPostiion, Quaternion.identity);
 
         Shoot shoot = obj.GetComponent<Shoot>();
 
-        shoot.Init(direction, rangeWeapon);
+        shoot.Init(direction,rangeWeapon, this._stats_Manager, this, this._skill_Manager);
+    }
+
+    // 받은 매니저를 재정의
+    public void GiveRange(StatsManager stats, SkillManager skill)
+    {
+        this._stats_Manager = stats;
+        this._skill_Manager = skill;
     }
 }

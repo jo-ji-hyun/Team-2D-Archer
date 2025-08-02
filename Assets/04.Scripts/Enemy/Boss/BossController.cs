@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossController : EnemyBaseController
+public class BossController : BossBaseController
 {
     private EnemyManager enemyManager;
-
-    public float moveSpeed = 2f;
 
     [SerializeField] private GameObject warningAreaPrefab;
     [SerializeField] private float meleeAttackRange = 2.5f;

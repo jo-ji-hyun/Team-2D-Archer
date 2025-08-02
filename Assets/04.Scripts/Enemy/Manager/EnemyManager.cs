@@ -23,7 +23,6 @@ public class EnemyManager : MonoBehaviour
     [Header("Wave Settings")]
     [SerializeField] private List<EnemyWave> waves = new List<EnemyWave>();
     [SerializeField] private float timeBetweenSpawns = 0.2f;
-    [SerializeField] private float timeBetweenWaves = 1f;
 
     [Header("Spawn Area Settings")]
     [SerializeField] private List<Rect> spawnAreas; // 利阑 积己且 康开 府胶飘

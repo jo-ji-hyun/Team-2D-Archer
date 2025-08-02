@@ -27,7 +27,6 @@ public class EnemyProjectile : MonoBehaviour
 
         if (collision.CompareTag("Player"))
         {
-            // 데미지 처리 (예: collision.GetComponent<Player>().TakeDamage(damage);)
             Destroy(gameObject);
         }
     }

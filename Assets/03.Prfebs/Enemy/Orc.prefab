@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4281668606953340281}
   m_Layer: 6
   m_Name: Orc
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,7 +70,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.068464994, y: 0.013166368}
+  m_Offset: {x: -0.08974491, y: -0.19431314}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -81,7 +81,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.69454074, y: 0.7840719}
+  m_Size: {x: 0.33278158, y: 0.3691129}
   m_EdgeRadius: 0
 --- !u!50 &587335313901228516
 Rigidbody2D:

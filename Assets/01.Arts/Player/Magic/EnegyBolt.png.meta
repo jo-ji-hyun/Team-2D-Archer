@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5466e9cb90082be4191ad70cacf0c030
+guid: aa84cee32d3ad7c41bfcc820aa82141d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -134,133 +134,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Orc-Attack02_0
-      rect:
-        serializedVersion: 2
-        x: 44
-        y: 43
-        width: 22
-        height: 15
-      alignment: 9
-      pivot: {x: 0.35143176, y: 0.488222}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2d1598efbd763494382f7cb831ccb76c
-      internalID: -2066576203
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Orc-Attack02_1
-      rect:
-        serializedVersion: 2
-        x: 136
-        y: 43
-        width: 19
-        height: 24
-      alignment: 9
-      pivot: {x: 0.7292473, y: 0.350921}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fce084e4c11aa464980f48047fcd2a4d
-      internalID: 1651476517
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Orc-Attack02_2
-      rect:
-        serializedVersion: 2
-        x: 236
-        y: 43
-        width: 19
-        height: 23
-      alignment: 9
-      pivot: {x: 0.7456215, y: 0.3579664}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ce21330dc46d4c2419d7c21e196e211f
-      internalID: 401903868
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Orc-Attack02_3
-      rect:
-        serializedVersion: 2
-        x: 345
-        y: 34
-        width: 29
-        height: 30
-      alignment: 9
-      pivot: {x: 0.26934078, y: 0.57259494}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d278f93541c848a46a0f5bec8709c3de
-      internalID: -1420510613
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Orc-Attack02_4
-      rect:
-        serializedVersion: 2
-        x: 445
-        y: 34
-        width: 22
-        height: 25
-      alignment: 9
-      pivot: {x: 0.33029592, y: 0.6928952}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 681929b01b53d3a42af08d174ffbc8e3
-      internalID: -2011073431
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Orc-Attack02_5
-      rect:
-        serializedVersion: 2
-        x: 545
-        y: 37
-        width: 17
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3eada8f22f70d2b43b9bcfcd4e8c9fb3
-      internalID: 1190657982
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -271,13 +145,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Orc-Attack02_0: -2066576203
-      Orc-Attack02_1: 1651476517
-      Orc-Attack02_2: 401903868
-      Orc-Attack02_3: -1420510613
-      Orc-Attack02_4: -2011073431
-      Orc-Attack02_5: 1190657982
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
