@@ -44,8 +44,8 @@ public class BossController : BossBaseController
 
             yield return new WaitForSeconds(0.5f);
 
-            // ▶ 플레이어 반대방향으로 160도 틀어서 이동
-            yield return StartCoroutine(MoveAtAngleFromPlayer(1.4f, 160f));
+            // ▶ 플레이어 반대방향으로 30도 틀어서 이동
+            yield return StartCoroutine(MoveAtAngleFromPlayer(1.4f));
 
             yield return new WaitForSeconds(0.5f);
         }
@@ -111,18 +111,19 @@ public class BossController : BossBaseController
         animHandler.Idle();
     }
 
-    private IEnumerator MoveAtAngleFromPlayer(float duration, float angleOffset)
+    private IEnumerator MoveAtAngleFromPlayer(float duration)
     {
         animHandler.Move();
-        Debug.Log($"보스: 플레이어 기준 30도 방향으로 이동");
-        Vector3 toPlayer = (target.position - transform.position).normalized;
-        Vector3 rotatedDir = Quaternion.Euler(0, 0, angleOffset) * toPlayer;
+        Debug.Log("보스: 플레이어 반대 방향으로 도망");
+
+        // 플레이어를 등진 방향 계산
+        Vector3 awayDir = (transform.position - target.position).normalized;
 
         float t = 0f;
         while (t < duration)
         {
             UpdateFacingDirection();
-            transform.position += rotatedDir * moveSpeed * Time.deltaTime;
+            transform.position += awayDir * moveSpeed * Time.deltaTime;
             t += Time.deltaTime;
             yield return null;
         }
