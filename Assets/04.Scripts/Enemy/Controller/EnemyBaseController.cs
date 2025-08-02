@@ -100,6 +100,7 @@ public class EnemyBaseController : MonoBehaviour
         isDead = true;
 
         _rigidbody.velocity = Vector3.zero;
+        EnemyManager.Instance?.RemoveEnemy(this);
         animationHandler.Death();
         Destroy(gameObject, 3f);
     }
