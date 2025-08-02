@@ -31,11 +31,6 @@ public class Shoot : MonoBehaviour
 
     private void Update()
     {
-        if (_skill_Manager._isReady == true)
-        {
-            _skill_Manager.UseSkill(0);
-        }
-
         _current_Duration += Time.deltaTime;
 
         if (_current_Duration > _range_Weapon._magic_Codex.duration)
