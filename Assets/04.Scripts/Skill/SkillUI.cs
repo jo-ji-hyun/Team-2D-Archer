@@ -17,11 +17,11 @@ public class SkillUI : MonoBehaviour
             skillNameText.text = skill.skillName; // UI에 스킬 이름 설정
     }
 
-    //public void OnClickUseSkill()
+    //public void onclickuseskill()
     //{
-    //    if (playerObj != null)
-    //        SkillManager.Instance.UseSkill(skillData, playerObj.transform.position); // 플레이어 위치에서 발사.
+    //    if (playerobj != null)
+    //        skillmanager.instance.useskill(skilldata, playerobj.transform.position); // 플레이어 위치에서 발사.
     //    else
-    //        Debug.LogWarning("플레이어 오브젝트가 연결되어 있지 않습니다!");
+    //        debug.logwarning("플레이어 오브젝트가 연결되어 있지 않습니다!");
     //}
 }
