@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class SkillManager : MonoBehaviour
@@ -102,12 +103,14 @@ public class SkillManager : MonoBehaviour
     }
 
     // === 실제 스킬 발사 ===
-    public void UseSkill(int skillnum)
+    public void UseSkill(Vector2 startPosition, Vector2 direction, int skillnum)
     {
         for (int i = 0; i < acquiredSkills.Count; i++)
         {
-            if (skillnum == acquiredSkills[i].skillIndex)
+            if (skillnum == acquiredSkills[i].Index)
             {
+                GameObject proj = Instantiate(fireballPrefab, startPosition, Quaternion.identity);
+                proj.GetComponent<Projectile>().SetDirection(direction);                                                       
 
                 _isReady = true; // 스킬 준비 완료
             }

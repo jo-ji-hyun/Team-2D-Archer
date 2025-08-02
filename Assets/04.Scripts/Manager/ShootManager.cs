@@ -30,7 +30,7 @@ public class ShootManager : MonoBehaviour
 
         Shoot shoot = obj.GetComponent<Shoot>();
 
-        shoot.Init(direction,rangeWeapon, this._stats_Manager, this, this._skill_Manager);
+        shoot.Init(direction, rangeWeapon, this._stats_Manager, this, this._skill_Manager);
     }
 
     // 받은 매니저를 재정의
