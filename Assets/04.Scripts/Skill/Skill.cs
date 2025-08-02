@@ -12,7 +12,6 @@ public class Skill
     public string description;    // 스킬 설명
     public float damage;           // 발사체 피해량
     public float speed;             // 발사체 속도
-    public float cooldown;           // 스킬 쿨타임
 
     public GameObject magicBulletPrefab;
 

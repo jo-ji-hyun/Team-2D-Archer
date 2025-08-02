@@ -33,12 +33,21 @@ public class Shoot : MonoBehaviour
     {
         _current_Duration += Time.deltaTime;
 
-        if (_current_Duration > _range_Weapon._magic_Codex.duration)
+        if (_current_Duration > 5.0f)
         {
             DestroyShoot(transform.position, false);
         }
 
-        _rigidbody2D.velocity = _direction * _range_Weapon._magic_Codex.speed;
+        if (_skill_Manager._isSkill == false)
+        {
+            _rigidbody2D.velocity = _direction * _range_Weapon._magic_Codex.speed;
+        }
+        else
+        {
+            _rigidbody2D.velocity = _direction * 8f; // 임시로
+            _skill_Manager._isSkill = false;
+        }
+
     }
 
     // === 투사체 충돌 로직 ===
@@ -66,13 +75,12 @@ public class Shoot : MonoBehaviour
     {
         float currentDamage = _range_Weapon.Power;                      // 무기 데미지 
 
-        currentDamage += _range_Weapon._magic_Codex.Damage;
+        float magicdamage = (_skill_Manager._isSkill == true) ? _range_Weapon._magic_Codex.Damage : _skill_Manager.AbilityPower;
+        currentDamage += magicdamage;
 
         // === 플레이어 스텟 참조 ===
-        if (_stats_Manager.stats.attack >= 0)
-        {
-            currentDamage += _stats_Manager.stats.attack; 
-        }
+        
+        currentDamage += _stats_Manager.stats.attack;
 
         return currentDamage;  // 무기 데미지 + 마법 기본 데미지 + 플레이어 스텟
     }

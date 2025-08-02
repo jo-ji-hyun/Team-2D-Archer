@@ -8,6 +8,16 @@ public class SkillManager : MonoBehaviour
     // 싱글톤 패턴
     public static SkillManager Instance;
 
+    // === 스킬 확인 ===
+    public bool _isSkill;
+    public float AbilityPower;
+
+    // === 다른 매니저 정의 ===
+    private StatsManager _stats_Manager;
+
+    private ShootManager _shoot_Manager;
+
+
     // 모든 스킬 목록
     public List<Skill> allSkills = new List<Skill>();
 
@@ -101,19 +111,29 @@ public class SkillManager : MonoBehaviour
     }
 
     // === 실제 스킬 발사 ===
-    public void UseSkill(Vector2 startPosition, Vector2 direction, int skillnum)
+    public void UseSkill(RangeWeapon range, Vector2 startPosition, Vector2 direction, int skillnum)
     {
         for (int i = 0; i < acquiredSkills.Count; i++)
         {
-            if (skillnum == acquiredSkills[i].Index)
+            if (skillnum - 1 == acquiredSkills[i].Index)
             {
+                _isSkill = true;
                 GameObject magicPrefab = acquiredSkills[i].magicBulletPrefab;
                 GameObject proj = Instantiate(magicPrefab, startPosition, Quaternion.identity);
                 Debug.Log("스킬 발동");
+
+                AbilityPower = acquiredSkills[i].damage;
+                Shoot shoot = proj.GetComponent<Shoot>();
+
+                shoot.Init(direction, range, this._stats_Manager, this._shoot_Manager, this);
             }
 
         }
     }
+    // 받은 매니저를 재정의
+    public void GiveToSkillManager(StatsManager stats)
+    {
+        this._stats_Manager = stats;
+    }
 
-   
 }
