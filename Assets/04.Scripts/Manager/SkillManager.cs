@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class SkillManager : MonoBehaviour
@@ -101,27 +102,21 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    // 이미 획득한 스킬 출력(디버깅용)
-    public void ShowAcquiredSkills()
-    {
-        Debug.Log("==보유 스킬==");
-        foreach (var s in acquiredSkills)
-        {
-            Debug.Log($"{s.skillName} : {s.description}");
-        }
-    }
-
-    // 실제 스킬 발사(플레이어 입력 등에서 호출)
-    public void UseSkill(int skillnum)
+    // === 실제 스킬 발사 ===
+    public void UseSkill(Vector2 startPosition, Vector2 direction, int skillnum)
     {
         for (int i = 0; i < acquiredSkills.Count; i++)
         {
-            if (skillnum == acquiredSkills[i].skillIndex)
+            if (skillnum == acquiredSkills[i].Index)
             {
-                Debug.Log("스킬 찾음");
+                GameObject proj = Instantiate(fireballPrefab, startPosition, Quaternion.identity);
+                proj.GetComponent<Projectile>().SetDirection(direction);                                                       
+
                 _isReady = true; // 스킬 준비 완료
             }
 
         }
     }
+
+   
 }

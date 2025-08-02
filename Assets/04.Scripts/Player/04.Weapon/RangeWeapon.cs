@@ -54,6 +54,11 @@ public class RangeWeapon : WeaponHandler
             float randomSpread = Random.Range(-spread, spread);
             angle += randomSpread;
             CreateMagicShoot(Controller.LookDirection, angle);
+
+            if (_skill_Manager.acquiredSkills.Count > 0)
+            {
+                CreateMagic(Controller.LookDirection, angle); // 현재가지고 있는 스킬이 한개 이상일 경우
+            }
         }
     }
 
@@ -64,10 +69,16 @@ public class RangeWeapon : WeaponHandler
 
     }
 
-    // === 마법 발사 ===
+    // === 기본 무기 발사 ===
     private void CreateMagicShoot(Vector2 _lookDirection, float angle)
     {
         _shoot_Manager.ShootMagic(this, SpawnPosition.position, RotateVector2(_lookDirection, angle), _magic_Codex);
+    }
+
+    // === 마법 발동 ===
+    private void CreateMagic(Vector2 _lookDirection, float angle)
+    {
+        _skill_Manager.UseSkill(SpawnPosition.position, RotateVector2(_lookDirection, angle), _skill_Manager.acquiredSkills.Count);
     }
 
 }
