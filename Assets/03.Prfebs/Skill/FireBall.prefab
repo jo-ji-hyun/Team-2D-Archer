@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8180213066318624766}
   - component: {fileID: 363543775317730149}
   - component: {fileID: 7666956064804496542}
+  - component: {fileID: -1380784243689617168}
   m_Layer: 0
   m_Name: FireBall
   m_TagString: Untagged
@@ -48,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   lifetime: 2
+  damage: 10
 --- !u!212 &363543775317730149
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -121,3 +123,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-1380784243689617168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8738154650902348572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbb67af0b243cda46b59caabed06356e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallTag: object
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
