@@ -49,6 +49,8 @@ public class FieldManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         UI.SetInteger("Fade", 0);
+
+        GameManager.Instance.StartWave();
     }
 
 }
