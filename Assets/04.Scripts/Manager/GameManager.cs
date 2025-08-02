@@ -5,10 +5,13 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public int RoomIndex;
     public Button startButton;
 
     public static int clear = 0;
+
+    public static bool gamestart = false;
+
+    public static int RoomIndex = 0;
 
     public static bool famestart = false;
 
@@ -26,6 +29,7 @@ public class GameManager : MonoBehaviour
     private StatsManager _stats_Manager;
     private ShootManager _shoot_Manager;
     private SkillManager _skill_Manager;
+    private RoomManager _room_Manager;
 
     private void Awake()
     {
@@ -39,6 +43,7 @@ public class GameManager : MonoBehaviour
         _stats_Manager = GetComponentInChildren<StatsManager>();
         _shoot_Manager = GetComponentInChildren<ShootManager>();
         _skill_Manager = GetComponentInChildren<SkillManager>();
+        _room_Manager = GetComponentInChildren<RoomManager>();
 
         player.Init(this, _stats_Manager,_enemy_Manager);
         rangeWeapon.Init(_skill_Manager);
@@ -48,12 +53,25 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-
-        if (_enemy_Manager.activeEnemies.Count == 0 )
+        if (gamestart)
         {
-            Debug.Log(_enemy_Manager.activeEnemies.Count);
+            if (_enemy_Manager.activeEnemies.Count == 0)
+            {
+                RoomIndex++;
+                gamestart = false;
+                clear = 1;
+                Debug.Log("1");
+                _room_Manager.OnRoomCleared();
+            }
         }
-
+        else
+        {
+            if (_enemy_Manager.activeEnemies.Count != 0)
+            {
+                gamestart = true;
+                Debug.Log("2");
+            }
+        }
     }
 
 
@@ -73,7 +91,7 @@ public class GameManager : MonoBehaviour
 
     public void StartWave()
     {
-        _enemy_Manager.StartWave(0);
+        _enemy_Manager.StartWave(RoomIndex);
     }
 
     void StartNextWave()
