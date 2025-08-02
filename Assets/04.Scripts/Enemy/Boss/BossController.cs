@@ -9,6 +9,10 @@ public class BossController : BossBaseController
     [SerializeField] private GameObject warningAreaPrefab;
     [SerializeField] private float meleeAttackRange = 2.5f;
     [SerializeField] private float warningDuration = 1.5f;
+
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private float rangedExplosionRadius = 2f;
+
     private bool isDying = false;
 
     public void Init(BossManager bossManager, Transform target)
@@ -36,15 +40,15 @@ public class BossController : BossBaseController
 
             yield return new WaitForSeconds(0.5f);
 
-            // ▶ 플레이어에게 돌진
+            // 플레이어에게 돌진
             yield return StartCoroutine(MoveTowardsPlayer(2f));
 
-            // ▶ 근거리 범위공격 (즉시 폭발)
+            // 근거리 범위공격 (즉시 폭발)
             yield return StartCoroutine(MeleeAreaAttack());
 
             yield return new WaitForSeconds(0.5f);
 
-            // ▶ 플레이어 반대방향으로 30도 틀어서 이동
+            // 플레이어 반대방향으로 30도 틀어서 이동
             yield return StartCoroutine(MoveAtAngleFromPlayer(1.4f));
 
             yield return new WaitForSeconds(0.5f);
@@ -55,9 +59,22 @@ public class BossController : BossBaseController
     {
         // TODO: 원거리 투사체 생성 + 일정 시간 후 폭발
         Debug.Log("보스: 원거리 범위공격");
+
+        Vector3 dropPosition = target.position;
+
+        // 1. 경고 이펙트 표시
+        GameObject warning = Instantiate(warningAreaPrefab, dropPosition, Quaternion.identity);
+        warning.transform.localScale = new Vector3(rangedExplosionRadius, rangedExplosionRadius, 1);
+
         animHandler.Skill();
-        // 예:Instantiate(projectile, firePosition, Quaternion.identity)
-        yield return new WaitForSeconds(1f); // 연출 시간
+
+        // 2. 투사체 생성 및 낙하 시작
+        Vector3 spawnPosition = dropPosition + Vector3.up * 5f; // 하늘 위에서 낙하
+        GameObject proj = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);
+        proj.GetComponent<BossProjectile>().Init(dropPosition);
+
+        Destroy(warning); // 경고 제거
+        yield return new WaitForSeconds(1f); // 후딜레이
     }
 
     private IEnumerator MeleeAreaAttack()
