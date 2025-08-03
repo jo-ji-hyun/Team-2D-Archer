@@ -7,7 +7,7 @@ public class RangeWeapon : WeaponHandler
     // === 생성 위치 ===
     [SerializeField] private Transform SpawnPosition;
 
-    // === 스피드 ===
+    // === 기본 마법 스피드 ===
     [SerializeField] private float speed = 1f;
     public float Speed { get { return speed;  } }
 

@@ -157,7 +157,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character_1
+      name: Character_3
       rect:
         serializedVersion: 2
         x: 39
@@ -178,7 +178,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_Character_0
+      name: Walk_Character_2
       rect:
         serializedVersion: 2
         x: 71
@@ -199,7 +199,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_Character_1
+      name: Walk_Character_6
       rect:
         serializedVersion: 2
         x: 199
@@ -262,10 +262,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_Character_0
+      name: Attack_Character_02
       rect:
         serializedVersion: 2
-        x: 101
+        x: 69
         y: 0
         width: 20
         height: 31
@@ -283,13 +283,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_Character_1
+      name: Attack_Character_03
       rect:
         serializedVersion: 2
-        x: 134
+        x: 100
         y: 0
         width: 26
-        height: 30
+        height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -324,6 +324,279 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Character_1
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 255
+        width: 17
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a05612b5a25f3eb45af92f8875effe3a
+      internalID: 1423239582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_2
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 223
+        width: 17
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4027755e6a9d18d409bfaa047b4e5700
+      internalID: 787634949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Character_
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 159
+        width: 17
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33d648d6bea28a94fa4ce690a4caf8fa
+      internalID: 591442381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Character_0
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 159
+        width: 17
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87e2a7aa0afff804d86653918aa23b75
+      internalID: -1540582663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Character_3
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 159
+        width: 17
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cee3348ca9acabf449fdfd301ad61793
+      internalID: 2141258195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Character_4
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 159
+        width: 17
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66c3ceb7d68f4d642869d371a2199e34
+      internalID: -1703549301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Character_5
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 159
+        width: 17
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45468fa71eee8dc4d9f9c355da31a74b
+      internalID: 1737210849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_Character_7
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 159
+        width: 17
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83a5b12b290ac0b45b436acc8e898555
+      internalID: -981952925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Character_01
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 0
+        width: 20
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1350f51c49a30f4d947881fe5bb8f38
+      internalID: -598695582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Character_04
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 0
+        width: 29
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09a147f6c6ac1124da7d673d16c7a99b
+      internalID: 1581921484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Character_05
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 0
+        width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d70339ce1530d5546bc2fd7c9a7e6bea
+      internalID: -1411209617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Character_06
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 0
+        width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6de42d248e286714090bbec41fece5b7
+      internalID: 972556199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Character_07
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 0
+        width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e69c155b88ee2841a3df8dede950b09
+      internalID: -1939757778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -335,15 +608,28 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Attack_Character_0: 790792273
-      Attack_Character_1: 1923099418
+      Attack_Character_01: -598695582
+      Attack_Character_02: 790792273
+      Attack_Character_03: 1923099418
+      Attack_Character_04: 1581921484
+      Attack_Character_05: -1411209617
+      Attack_Character_06: 972556199
+      Attack_Character_07: -1939757778
       Character_0: 296027370
-      Character_1: 1457230587
+      Character_1: 1423239582
+      Character_2: 787634949
+      Character_3: 1457230587
       Die_Character_0: 742919274
       Die_Character_1: -541318247
       Hit_Character: 1653102944
-      Walk_Character_0: 961212201
-      Walk_Character_1: -1039498084
+      Walk_Character_: 591442381
+      Walk_Character_0: -1540582663
+      Walk_Character_2: 961212201
+      Walk_Character_3: 2141258195
+      Walk_Character_4: -1703549301
+      Walk_Character_5: 1737210849
+      Walk_Character_6: -1039498084
+      Walk_Character_7: -981952925
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

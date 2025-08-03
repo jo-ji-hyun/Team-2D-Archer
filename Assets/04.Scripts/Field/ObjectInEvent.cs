@@ -12,7 +12,7 @@ public class ObjectInEvent : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("들어옴");
+            //Debug.Log("들어옴");
             SpriteRenderer sr = tree.GetComponent<SpriteRenderer>();
             sr.sortingOrder += 500;
             Material mat = sr.material;
@@ -22,7 +22,7 @@ public class ObjectInEvent : MonoBehaviour
 
         if (other.CompareTag("Enemy"))
         {
-            Debug.Log("몬스터 들어감");
+            //Debug.Log("몬스터 들어감");
             SpriteRenderer sr = tree.GetComponent<SpriteRenderer>();
             sr.sortingOrder += 500;
 
@@ -34,7 +34,7 @@ public class ObjectInEvent : MonoBehaviour
         if (other.CompareTag("Player"))
         {
 
-            Debug.Log("나감");
+            //Debug.Log("나감");
             SpriteRenderer sr = tree.GetComponent<SpriteRenderer>();
             sr.sortingOrder -= 500;
             Material mat = sr.material;
@@ -45,7 +45,7 @@ public class ObjectInEvent : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
 
-            Debug.Log("나감");
+            //Debug.Log("나감");
             SpriteRenderer sr = tree.GetComponent<SpriteRenderer>();
             sr.sortingOrder -= 500;
 

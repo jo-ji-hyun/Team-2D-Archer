@@ -12,7 +12,6 @@ public class PlayerStats
     public float attack = 5.0f;
     public float defense = 0.0f;
     public float moveSpeed = 3.0f;
-    public float attackSpeed = 1.0f;
 
     // 그 외 스탯 추가 하고 싶으면 추가.
 }

@@ -23,24 +23,28 @@ public class PlayerController : BaseController // 이동을 받고 애니도 재생해야함
         _camera = Camera.main;
 
     }
+    protected override void FixedUpdate()
+    {
+        base.FixedUpdate();
+        SetMoveSpeed(_stats_Manager.stats.moveSpeed); // BaseController에 속도를 넘겨줌
+    }
+
     public void Init(GameManager gameManager, StatsManager statsManager, EnemyManager enemyManager) // GamaManager와 StatsManager를 가져옴
     { 
         this._game_Manager = gameManager;
         this._stats_Manager = statsManager;
         this._enemy_Manager = enemyManager;
-
-        SetMoveSpeed(this._stats_Manager.stats.moveSpeed); // BaseController에 속도를 넘겨줌
     }
 
     // === 플레이어 공격 로직 ===
     protected override void HandleAction()
     {
-        if(this._stats_Manager.stats.currentHP > 0 && this._enemy_Manager.activeEnemies.Count > 0)
+        if(_stats_Manager.stats.currentHP > 0 && _enemy_Manager.activeEnemies.Count > 0)
         {
             isAttacking = true;
             _animation_Player.AttackBehavior();
         }
-        else if(this._stats_Manager.stats.currentHP > 0 || this._enemy_Manager.activeEnemies.Count <= 0)
+        else if(_stats_Manager.stats.currentHP > 0 || _enemy_Manager.activeEnemies.Count <= 0)
         {
             isAttacking = false;
         }
@@ -50,7 +54,7 @@ public class PlayerController : BaseController // 이동을 받고 애니도 재생해야함
     // === 움직이기 ===
     void OnMove(InputValue inputValue)
     {
-        if(this._stats_Manager.stats.currentHP > 0)
+        if(_stats_Manager.stats.currentHP > 0)
         {
             movementDirection = inputValue.Get<Vector2>();
             movementDirection = movementDirection.normalized;
@@ -92,14 +96,14 @@ public class PlayerController : BaseController // 이동을 받고 애니도 재생해야함
     // === 데미지를 받을시 ===
     public void TakeDamage(float dmg)
     {
-        SetPlayerAlive(this._stats_Manager.stats.currentHP); // BaseController에 hp를 넘겨줌
+        SetPlayerAlive(_stats_Manager.stats.currentHP); // BaseController에 hp를 넘겨줌
 
         // === 애니메이션 재생 ===
-        if (this._stats_Manager.stats.currentHP > 0)
+        if (_stats_Manager.stats.currentHP > 0)
         {
-            this._stats_Manager.TakeDamage((int)dmg);
+            _stats_Manager.TakeDamage((int)dmg);
         }
-        else if (this._stats_Manager.stats.currentHP <= 0)
+        else if (_stats_Manager.stats.currentHP <= 0)
         {
             _animation_Player?.CharacterDie();
         }
