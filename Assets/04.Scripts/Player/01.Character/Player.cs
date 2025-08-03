@@ -22,8 +22,8 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            LevelUP(); 
-        } // 레벨업(테스트용)
+            // LevelUP(); // 레벨업(테스트용)
+        }
     }
 
     // 레벨업
