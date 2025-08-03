@@ -40,7 +40,7 @@ public class Shoot : MonoBehaviour // === 기본 무기에 붙일거 ===
         }
 
         // ===  속도 ===
-        _rigidbody2D.velocity = _direction * _range_Weapon.Speed;
+        _rigidbody2D.velocity = _direction * _range_Weapon._magic_Codex.speed;
 
     }
 

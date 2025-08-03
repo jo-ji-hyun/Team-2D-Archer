@@ -37,11 +37,21 @@ public class SkillManager : MonoBehaviour
         Instance = this;
 
         // 모든 스킬 등록
-        allSkills.Add(new Skill(0, "FireBall", "화염구를 발사하여 적에게 피해를 준다.", 10f, 5f, fireballPrefab));
-        allSkills.Add(new Skill(1, "IceSpike", "얼음 창을 발사하여 적을 얼린다.", 8f, 7f, iceSpikePrefab));
-        allSkills.Add(new Skill(2, "LightningBolt", "번개를 소환하여 적에게 피해를 준다.", 12f, 10f, lightningBolt));
+        allSkills.Add(new Skill(0, "FireBall", "화염구를 발사하여 적에게 피해를 준다.", 10f, 5f, 2.0f, fireballPrefab));
+        allSkills.Add(new Skill(1, "IceSpike", "얼음 창을 발사하여 적을 얼린다.", 12f, 7f, 4.0f, iceSpikePrefab));
+        allSkills.Add(new Skill(2, "LightningBolt", "번개를 소환하여 적에게 피해를 준다.", 15f, 10f, 6.1f, lightningBolt));
 
-       // acquiredSkills.Add(new Skill(0, "FireBall", "화염구를 발사하여 적에게 피해를 준다.", 10f, 10f, fireballPrefab)); //확인용
+    }
+    void Update()
+    {
+        // === 매 프레임마다 모든 스킬의 쿨타임을 감소시킵니다. ===
+        for (int i = 0; i < acquiredSkills.Count; i++)
+        {
+            if (acquiredSkills[i].currentCoolTime > 0)
+            {
+                acquiredSkills[i].currentCoolTime -= Time.deltaTime;
+            }
+        }
     }
 
     // 새로운 스킬 획득
@@ -116,22 +126,22 @@ public class SkillManager : MonoBehaviour
     // === 실제 스킬 발사 ===
     public void UseSkill(RangeWeapon range, Vector2 startPosition, Vector2 direction, int skillnum)
     {
-        for (int i = 0; i < acquiredSkills.Count; i++)
+        for (int i = 0; i < skillnum; i++)
         {
-            if (skillnum - 1 == acquiredSkills[i].Index)
-            {
-                _isSkill = true;
-                GameObject magicPrefab = acquiredSkills[i].magicBulletPrefab;
-                GameObject proj = Instantiate(magicPrefab, startPosition, Quaternion.identity);
+            int listIndex = skillnum - 1;
 
-                // === 최종계산을 위해 넘겨줌 ===
-                AbilityPower = acquiredSkills[i].damage;
-                AbilitySpeed = acquiredSkills[i].speed;
-                MagicShoot magicShoot = proj.GetComponent<MagicShoot>();
+            var skillData = acquiredSkills[listIndex];
 
-                magicShoot.Init(direction, range, this._stats_Manager, this._shoot_Manager, this);
-            }
+            GameObject magicPrefab = skillData.magicBulletPrefab;
+            GameObject proj = Instantiate(magicPrefab, startPosition, Quaternion.identity);
 
+            // === 최종계산을 위해 넘겨줌 ===
+            AbilityPower = skillData.damage;
+            AbilitySpeed = skillData.speed;
+
+            MagicShoot magicShoot = proj.GetComponent<MagicShoot>();
+
+            magicShoot.Init(direction, range, this._stats_Manager, this._shoot_Manager, this);
         }
     }
 

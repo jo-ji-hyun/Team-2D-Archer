@@ -496,7 +496,7 @@ MonoBehaviour:
   allSkills: []
   acquiredSkills: []
   fireballPrefab: {fileID: 8738154650902348572, guid: 9d0ba554e6385164186b820ee7b1d38c, type: 3}
-  iceSpikePrefab: {fileID: 0}
+  iceSpikePrefab: {fileID: 2671440471566439517, guid: 82ae8e21ee432fd4c9726083b774d163, type: 3}
   lightningBolt: {fileID: 0}
   skillButtonPrefab: {fileID: 0}
   skillButtonParent: {fileID: 0}
@@ -2915,7 +2915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startButton: {fileID: 2005738089}
-  playertarget: {fileID: 0}
+  playertarget: {fileID: 31751040}
   fadeManager: {fileID: 1704156057}
 --- !u!4 &1811208969
 Transform:
