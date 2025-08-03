@@ -137,7 +137,6 @@ GameObject:
   - component: {fileID: 31751046}
   - component: {fileID: 31751045}
   - component: {fileID: 31751044}
-  - component: {fileID: 31751043}
   - component: {fileID: 31751042}
   m_Layer: 7
   m_Name: Player
@@ -169,27 +168,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 500
   m_TargetDisplay: 0
---- !u!114 &31751043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 31751040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa2d6bfdd5b88da4480f30c160278f2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Stats:
-    level: 1
-    maxHP: 100
-    currentHP: 100
-    attack: 5
-    defense: 0
-    moveSpeed: 3
-    attackSpeed: 1
-  level: 1
 --- !u!114 &31751044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3062,9 +3040,8 @@ MonoBehaviour:
     maxHP: 100
     currentHP: 100
     attack: 5
-    defense: 1
+    defense: 0
     moveSpeed: 3
-    attackSpeed: 1
 --- !u!1 &1898659374
 GameObject:
   m_ObjectHideFlags: 0
