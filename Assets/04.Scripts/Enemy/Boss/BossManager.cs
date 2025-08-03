@@ -13,22 +13,23 @@ public class BossManager : MonoBehaviour
     private BossController currentBoss;
     private Transform playerTarget;
 
-    // 실험용 강제시작
+    /* 실험용 강제시작
     private void Start()
     {
         SpawnBoss();
     }
+    */
 
     private void Awake()
     {
-        // 실험용 별개 타겟지정
+        /* 실험용 별개 타겟지정
         GameObject playerObject = GameObject.FindWithTag("Player");
 
         if (playerObject != null)
         {
             playerTarget = playerObject.transform;
         }
-
+        */
 
             if (Instance == null)
         {

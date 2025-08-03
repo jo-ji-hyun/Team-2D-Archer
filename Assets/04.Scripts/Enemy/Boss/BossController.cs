@@ -18,6 +18,7 @@ public class BossController : BossBaseController
     [SerializeField] private float fallDelay = 2f;
     [SerializeField] private float fallSpeed = 3f;
     [SerializeField] private int rangedDamage = 20;
+    [SerializeField] private Transform attackPivot;
 
     private bool isDying = false;
 
@@ -82,7 +83,9 @@ public class BossController : BossBaseController
         animHandler.Skill();
 
         // 1. 경고 범위 생성
-        GameObject warning = Instantiate(warningAreaPrefab, targetPos, Quaternion.identity);
+        Vector3 warningPos = targetPos + new Vector3(0, 2f, 0);
+        warningPos.z = 0f; // 2D일 경우 z 고정
+        GameObject warning = Instantiate(warningAreaPrefab, warningPos, Quaternion.identity);
         warning.transform.localScale = new Vector3(rangedExplosionRadius, rangedExplosionRadius, 1);
 
         // 2. 보스 발사 → 위로 상승
@@ -105,22 +108,28 @@ public class BossController : BossBaseController
         Destroy(fallProj); // 낙하 후 제거
 
         // 5. 폭발 이펙트
-        Instantiate(explosionEffectPrefab, targetPos, Quaternion.identity);
+        GameObject explosion = Instantiate(explosionEffectPrefab, targetPos, Quaternion.identity);
 
         // 6. 데미지 판정
-        Collider2D[] hits = Physics2D.OverlapCircleAll(targetPos, rangedExplosionRadius / 2f);
-        foreach (Collider2D hit in hits)
+        PolygonCollider2D polyCol = warning.GetComponent<PolygonCollider2D>();
+        if (polyCol != null)
         {
-            if (hit.CompareTag("Player"))
+            Bounds bounds = polyCol.bounds;
+            Collider2D[] hits = Physics2D.OverlapAreaAll(bounds.min, bounds.max);
+            foreach (Collider2D hit in hits)
             {
-                PlayerController player = hit.GetComponent<PlayerController>();
-                player?.TakeDamage(rangedDamage);
-                Debug.Log("보스: 플레이어에게 원거리 폭발 데미지 입힘");
+                if (hit.CompareTag("Player") && polyCol.OverlapPoint(hit.transform.position))
+                {
+                    PlayerController player = hit.GetComponent<PlayerController>();
+                    player?.TakeDamage(rangedDamage);
+                    Debug.Log("보스: 원거리 데미지 - 폴리곤 범위 안");
+                }
             }
         }
 
         // 7. 정리
         Destroy(warning);
+        Destroy(explosion, 2f);
         yield return new WaitForSeconds(1f); // 후딜레이
     }
 
@@ -128,8 +137,11 @@ public class BossController : BossBaseController
     {
         Debug.Log("보스: 근거리 범위공격 준비");
 
+        Vector3 attackCenter = attackPivot.position;
+
         // 1. 경고 이펙트 생성
-        GameObject warning = Instantiate(warningAreaPrefab, transform.position, Quaternion.identity);
+        Vector3 warningPos = attackPivot.position + new Vector3(0, 2f, 0);
+        GameObject warning = Instantiate(warningAreaPrefab, warningPos, Quaternion.identity);
         warning.transform.localScale = new Vector3(meleeAttackRange, meleeAttackRange, 1);
 
         // 2. 경고 지속시간 기다림
@@ -137,26 +149,32 @@ public class BossController : BossBaseController
 
         animHandler.Attack();
 
-        // 3. 범위 안에 있는 타겟들에게 데미지
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, meleeAttackRange / 2f);
-        foreach (Collider2D hit in hits)
+        // 3. 폭발 이펙트 생성
+        GameObject explosion = Instantiate(explosionEffectPrefab, warningPos + new Vector3(0, -2f, 0), Quaternion.identity);
+
+        // 4. 범위 안에 있는 타겟들에게 데미지
+        PolygonCollider2D polyCol = warning.GetComponent<PolygonCollider2D>();
+        if (polyCol != null)
         {
-            if (hit.CompareTag("Player"))
+            Bounds bounds = polyCol.bounds;
+            Collider2D[] hits = Physics2D.OverlapAreaAll(bounds.min, bounds.max);
+            foreach (Collider2D hit in hits)
             {
-                PlayerController player = hit.GetComponent<PlayerController>();
-                if (player != null)
+                if (hit.CompareTag("Player") && polyCol.OverlapPoint(hit.transform.position))
                 {
-                    player.TakeDamage(AtkPower);
-                    Debug.Log("보스: 플레이어에게 근거리 데미지 입힘");
+                    PlayerController player = hit.GetComponent<PlayerController>();
+                    player?.TakeDamage(AtkPower);
+                    Debug.Log("보스: 근거리 데미지 - 폴리곤 범위 안");
                 }
             }
         }
 
-        // 4. 이펙트 제거
+        // 5. 이펙트 제거
         Destroy(warning);
+        Destroy(explosion, 2f); // 2초 후 파괴
 
         // 후딜레이
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
     }
 
     private IEnumerator MoveTowardsPlayer(float duration)
