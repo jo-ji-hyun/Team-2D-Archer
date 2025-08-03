@@ -7,10 +7,6 @@ public class RangeWeapon : WeaponHandler
     // === 생성 위치 ===
     [SerializeField] private Transform SpawnPosition;
 
-    // === 현재 가지고 있는 무기 갯수 ===
-    [SerializeField] public int magicCount = 2;
-    public int MagicCount { get { return magicCount; } }
-
     // === 스피드 ===
     [SerializeField] private float speed = 1f;
     public float Speed { get { return speed;  } }
