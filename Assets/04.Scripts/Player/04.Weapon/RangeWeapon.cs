@@ -80,16 +80,33 @@ public class RangeWeapon : WeaponHandler
         }
 
         // === 현재 가지고있는 스킬이 있는 경우 && 스킬 쿨타임이 다되었을 경우 ===
-        if (_skill_Manager.acquiredSkills.Count > 0 && skillCoolTime <= 0)
-        {
-            for (int i = 0; i < 1; i++) // 나중에 멀티샷 같은거 추가시 최대 i 수치를 변경합시다.
-            {
-                float angle = minAngle + AngleSpace;
-                float randomSpread = Random.Range(-spread, spread);
-                angle += randomSpread;
+        //if (_skill_Manager.acquiredSkills.Count > 0 && skillCoolTime <= 0)
+        //{
+        //    for (int i = 0; i < 1; i++) // 나중에 멀티샷 같은거 추가시 최대 i 수치를 변경합시다.
+        //    {
+        //        float angle = minAngle + AngleSpace;
+        //        float randomSpread = Random.Range(-spread, spread);
+        //        angle += randomSpread;
 
-                CreateMagic(Controller.LookDirection, angle); // 현재가지고 있는 스킬이 한개 이상일 경우
-                skillCoolTime = 3.1f;
+        //        CreateMagic(Controller.LookDirection, angle); // 현재가지고 있는 스킬이 한개 이상일 경우
+        //        skillCoolTime = 3.1f;
+        //    }
+        //}
+        if (_skill_Manager.acquiredSkills.Count > 0)
+        {
+            for (int i = 0; i < _skill_Manager.acquiredSkills.Count; i++)
+            {
+                if (skillCoolTime <= 0) 
+                {
+                    float angle = minAngle + AngleSpace * i; // 스킬별 각도 조정
+                    float randomSpread = Random.Range(-spread, spread);
+                    angle += randomSpread;
+
+                    CreateMagic(Controller.LookDirection, angle, i + 1);
+
+                    // 스킬 쿨타임 시작
+                    skillCoolTime = 3.1f;
+                }
             }
         }
     }
@@ -108,9 +125,9 @@ public class RangeWeapon : WeaponHandler
     }
 
     // === 마법 발동 ===
-    private void CreateMagic(Vector2 _lookDirection, float angle)
+    private void CreateMagic(Vector2 _lookDirection, float angle, int idx)
     {
-        _skill_Manager.UseSkill(this, SpawnPosition.position, RotateVector2(_lookDirection, angle), _skill_Manager.acquiredSkills.Count);
+        _skill_Manager.UseSkill(this, SpawnPosition.position, RotateVector2(_lookDirection, angle), idx);
     }
 
 }
