@@ -46,7 +46,7 @@ public class Shoot : MonoBehaviour
         }
         else
         {
-            _rigidbody2D.velocity = _direction * _range_Weapon.Speed;
+            _rigidbody2D.velocity = _direction * _skill_Manager.AbilitySpeed;
             _skill_Manager._isSkill = false;
         }
     }
@@ -61,7 +61,7 @@ public class Shoot : MonoBehaviour
             EnemyResourceController enemy = collision.GetComponent<EnemyResourceController>();
             float _total_Damage = FinalMagicDamage();
 
-           // Debug.LogError($"{_total_Damage}"); // 데미지 확인용
+            Debug.LogError($"{_total_Damage}"); // 데미지 확인용
             enemy.ChangeHealth(-_total_Damage);
         }
         else if (collision.gameObject.CompareTag(wallTag)) // 장애물(Tag)과 충돌시 삭제

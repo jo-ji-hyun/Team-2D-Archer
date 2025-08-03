@@ -70,12 +70,20 @@ public class RangeWeapon : WeaponHandler
             float angle = minAngle + AngleSpace * i;
             float randomSpread = Random.Range(-spread, spread);
             angle += randomSpread;
+            speed = _magic_Codex.speed;
 
             CreateMagicShoot(Controller.LookDirection, angle); // 기본 무기 발싸
+        }
 
-            // === 현재 가지고있는 스킬이 있는 경우 && 스킬 쿨타임이 다되었을 경우 ===
-            if (_skill_Manager.acquiredSkills.Count > 0 && skillCoolTime <= 0)
+        // === 현재 가지고있는 스킬이 있는 경우 && 스킬 쿨타임이 다되었을 경우 ===
+        if (_skill_Manager.acquiredSkills.Count > 0 && skillCoolTime <= 0)
+        {
+            for (int i = 0; i < 1; i++) // 나중에 멀티샷 같은거 추가시 최대 i 수치를 변경합시다.
             {
+                float angle = minAngle + AngleSpace;
+                float randomSpread = Random.Range(-spread, spread);
+                angle += randomSpread;
+
                 CreateMagic(Controller.LookDirection, angle); // 현재가지고 있는 스킬이 한개 이상일 경우
                 skillCoolTime = 3.1f;
             }
@@ -92,14 +100,12 @@ public class RangeWeapon : WeaponHandler
     // === 기본 무기 발사 ===
     private void CreateMagicShoot(Vector2 _lookDirection, float angle)
     {
-        speed = _magic_Codex.speed;
         _shoot_Manager.ShootMagic(this, SpawnPosition.position, RotateVector2(_lookDirection, angle), _magic_Codex);
     }
 
     // === 마법 발동 ===
     private void CreateMagic(Vector2 _lookDirection, float angle)
     {
-        speed = _skill_Manager.AbilitySpeed;
         _skill_Manager.UseSkill(this, SpawnPosition.position, RotateVector2(_lookDirection, angle), _skill_Manager.acquiredSkills.Count);
     }
 
