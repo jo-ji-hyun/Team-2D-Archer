@@ -24,24 +24,6 @@ public class Player : MonoBehaviour
         {
             LevelUP(); 
         } // 레벨업(테스트용)
-
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            TakeDamage(20);
-        } // 대미지 받기(테스트용)
-
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            Stats.currentHP = 0;
-        } // 즉사 대미지(테스트용)
-    }
-    // 데미지 받기
-    public void TakeDamage(int dmg)
-    {
-        int realDamage = (int)Mathf.Max(0, dmg - Stats.defense);
-        Stats.currentHP -= realDamage;
-        if (Stats.currentHP < 0) Stats.currentHP = 0; // HP가 0 이하로 떨어지면 사망.
-        Debug.Log($"데미지 받음: {realDamage}, 현재 남은 HP: {Stats.currentHP}");
     }
 
     // 레벨업
@@ -49,7 +31,6 @@ public class Player : MonoBehaviour
     {
         if (Stats.currentHP <= 0)
         {
-            Debug.Log("플레이어가 사망했습니다."); 
             return; // 플레이어가 죽으면 레벨업을 못하게 막음.
         }
 
@@ -59,15 +40,5 @@ public class Player : MonoBehaviour
         Stats.defense += 1f; // 레벨업 시 방어력 증가
         Stats.currentHP = Stats.maxHP; // 레벨업 시 현재 HP를 최대 HP로 회복
         Debug.Log($"레벨업! 현재 레벨: {Stats.level}");
-
-        if (Stats.level == 2)
-        {
-            Skill fireballSkill = SkillManager.Instance.allSkills.Find(s => s.skillName == "FireBall");
-            if (fireballSkill != null && !SkillManager.Instance.acquiredSkills.Contains(fireballSkill))
-            {
-                SkillManager.Instance.AcquireSkill(fireballSkill);
-                Debug.Log("파이어볼 스킬을 획득했습니다");
-            }
-        }
     }
 }

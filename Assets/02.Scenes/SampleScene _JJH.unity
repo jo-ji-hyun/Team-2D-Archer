@@ -2915,7 +2915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startButton: {fileID: 2005738089}
-  playertarget: {fileID: 0}
+  playertarget: {fileID: 31751040}
   fadeManager: {fileID: 1704156057}
 --- !u!4 &1811208969
 Transform:

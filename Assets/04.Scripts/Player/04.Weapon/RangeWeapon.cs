@@ -79,33 +79,22 @@ public class RangeWeapon : WeaponHandler
             CreateMagicShoot(Controller.LookDirection, angle); // 기본 무기 발싸
         }
 
-        // === 현재 가지고있는 스킬이 있는 경우 && 스킬 쿨타임이 다되었을 경우 ===
-        //if (_skill_Manager.acquiredSkills.Count > 0 && skillCoolTime <= 0)
-        //{
-        //    for (int i = 0; i < 1; i++) // 나중에 멀티샷 같은거 추가시 최대 i 수치를 변경합시다.
-        //    {
-        //        float angle = minAngle + AngleSpace;
-        //        float randomSpread = Random.Range(-spread, spread);
-        //        angle += randomSpread;
-
-        //        CreateMagic(Controller.LookDirection, angle); // 현재가지고 있는 스킬이 한개 이상일 경우
-        //        skillCoolTime = 3.1f;
-        //    }
-        //}
+        // === 스킬을 소유할 경우 ===
         if (_skill_Manager.acquiredSkills.Count > 0)
         {
             for (int i = 0; i < _skill_Manager.acquiredSkills.Count; i++)
             {
-                if (skillCoolTime <= 0) 
+                var skillData = _skill_Manager.acquiredSkills[i];
+
+                // === 쿨타임이 다 된 스킬이 있는 경우 ===
+                if (skillData.currentCoolTime <= 0) 
                 {
                     float angle = minAngle + AngleSpace * i; // 스킬별 각도 조정
                     float randomSpread = Random.Range(-spread, spread);
                     angle += randomSpread;
 
                     CreateMagic(Controller.LookDirection, angle, i + 1);
-
-                    // 스킬 쿨타임 시작
-                    skillCoolTime = 3.1f;
+                    skillData.currentCoolTime = skillData.coolTime; // 쿨타임 초기화
                 }
             }
         }
