@@ -91,6 +91,11 @@ public class BossController : BossBaseController
         // 2. 보스 발사 → 위로 상승
         Vector3 shootUpPos = firePoint.position + Vector3.up * projectileHeight;
         GameObject riseProj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+        SpriteRenderer sr = riseProj.GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            sr.flipY = true;
+        }
 
         float riseTime = 1f;
         yield return MoveProjectile(riseProj, firePoint.position, shootUpPos, riseTime);
