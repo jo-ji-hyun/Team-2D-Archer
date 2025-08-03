@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
-    public bool isCleared = false; // 방 클리어 상태를 나타내는 변수.
-    public bool gameStarted = false; // 게임 시작 여부를 나타내는 변수.
     public void OnRoomCleared() // 방이 클리어되었을 때 호출되는 함수.
     {
-        if (isCleared) return; // 이미 방이 클리어되었으면 함수 종료.
-        isCleared = true; // 방 클리어 상태를 true로 설정.
-
         // 스킬 랜덤 획득
         SkillManager.Instance.ShowSkillChoice();
     }
@@ -36,9 +31,4 @@ public class RoomManager : MonoBehaviour
     //        onroomcleared(); // 테스트용 v키 누르면 방 클리어 함수 호출
     //    }
     //}
-
-    public void StartRoom()
-    {
-        gameStarted = true; // 게임 시작 상태를 true로 설정.
-    }
 }
