@@ -19,7 +19,7 @@ public class RangeWeapon : WeaponHandler
     [SerializeField] private float spread = 0.3f;
     public float Spread { get { return spread; } }
 
-    public float SkillCoolTime = 1.5f;
+    public float SkillCoolTime = 0f;
 
     // === 마법 참조 ===
     private ShootManager _shoot_Manager;
@@ -59,11 +59,12 @@ public class RangeWeapon : WeaponHandler
 
             if (_skill_Manager.acquiredSkills.Count > 0)
             {
-                SkillCoolTime -= Time.deltaTime;
+                
                 if (SkillCoolTime <= 0)
                 {
                     CreateMagic(Controller.LookDirection, angle); // 현재가지고 있는 스킬이 한개 이상일 경우
                     SkillCoolTime = 1.5f;
+                    SkillCoolTime -= Time.deltaTime;
                 }
 
             }
