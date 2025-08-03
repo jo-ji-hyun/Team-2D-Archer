@@ -33,21 +33,22 @@ public class Shoot : MonoBehaviour
     {
         _current_Duration += Time.deltaTime;
 
+        // === 투사체 지속시간 ===
         if (_current_Duration > 5.0f)
         {
             DestroyShoot(transform.position, false);
         }
 
+        // === 종류에 따라 속도를 다르게 설정 ===
         if (_skill_Manager._isSkill == false)
         {
-            _rigidbody2D.velocity = _direction * _range_Weapon._magic_Codex.speed;
+            _rigidbody2D.velocity = _direction * _range_Weapon.Speed;
         }
         else
         {
-            _rigidbody2D.velocity = _direction * 8f; // 임시로
+            _rigidbody2D.velocity = _direction * _range_Weapon.Speed;
             _skill_Manager._isSkill = false;
         }
-
     }
 
     // === 투사체 충돌 로직 ===

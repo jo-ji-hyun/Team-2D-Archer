@@ -19,10 +19,6 @@ public class WeaponHandler : MonoBehaviour
     [SerializeField] private float power = 1f;
     public float Power { get => power; set => power = value; }
 
-    // === 스피드 ===
-    [SerializeField] private float speed = 1f;
-    public float Speed { get => speed; set => speed = value; }
-
     // === 무기 범위 ===
     [SerializeField] private float attackRange = 10f;
     public float AttackRange { get => attackRange; set => attackRange = value; }
@@ -53,6 +49,10 @@ public class WeaponHandler : MonoBehaviour
 
     }
 
+    protected virtual void Update()
+    {
+
+    }
    
     public virtual void Attack()
     {

@@ -10,7 +10,8 @@ public class SkillManager : MonoBehaviour
 
     // === 스킬 확인 ===
     public bool _isSkill;
-    public float AbilityPower;
+    public float AbilityPower; // 스킬 데미지
+    public float AbilitySpeed;  // 스킬 속도
 
     // === 다른 매니저 정의 ===
     private StatsManager _stats_Manager;
@@ -39,8 +40,6 @@ public class SkillManager : MonoBehaviour
         allSkills.Add(new Skill(0, "FireBall", "화염구를 발사하여 적에게 피해를 준다.", 10f, 5f, fireballPrefab));
         allSkills.Add(new Skill(1, "IceSpike", "얼음 창을 발사하여 적을 얼린다.", 8f, 7f, iceSpikePrefab));
         allSkills.Add(new Skill(2, "LightningBolt", "번개를 소환하여 적에게 피해를 준다.", 12f, 10f, lightningBolt));
-
-        acquiredSkills.Add(new Skill(0, "FireBall", "화염구를 발사하여 적에게 피해를 준다.", 10f, 5f, fireballPrefab)); // 확인용추가
     }
 
     // 새로운 스킬 획득
@@ -122,9 +121,10 @@ public class SkillManager : MonoBehaviour
                 _isSkill = true;
                 GameObject magicPrefab = acquiredSkills[i].magicBulletPrefab;
                 GameObject proj = Instantiate(magicPrefab, startPosition, Quaternion.identity);
-                Debug.Log("스킬 발동");
 
+                // === 최종계산을 위해 넘겨줌 ===
                 AbilityPower = acquiredSkills[i].damage;
+                AbilitySpeed = acquiredSkills[i].speed;
                 Shoot shoot = proj.GetComponent<Shoot>();
 
                 shoot.Init(direction, range, this._stats_Manager, this._shoot_Manager, this);
@@ -132,7 +132,8 @@ public class SkillManager : MonoBehaviour
 
         }
     }
-    // 받은 매니저를 재정의
+
+    // === 받은 매니저를 재정의 ===
     public void GiveToSkillManager(StatsManager stats)
     {
         this._stats_Manager = stats;
