@@ -54,6 +54,13 @@ public class EnemyController : EnemyBaseController
     {
         base.HandleAction();
 
+        // 죽었을때 움직임 정지
+        if (isDead)
+        {
+            movementDirection = Vector2.zero;
+            return;
+        }
+
         if (target == null)
         {
             Debug.LogWarning("target이 비었음");

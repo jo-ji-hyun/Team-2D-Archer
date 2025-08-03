@@ -98,6 +98,14 @@ public class EnemyBaseController : MonoBehaviour
     {
         if (isDead) return;
         isDead = true;
+        movementDirection = Vector2.zero;
+
+        // 사망시 충돌범위 비활성화
+        Collider2D col = GetComponent<Collider2D>();
+        if (col != null)
+        {
+            col.enabled = false;
+        }
 
         _rigidbody.velocity = Vector3.zero;
         EnemyManager.Instance?.RemoveEnemy(this);

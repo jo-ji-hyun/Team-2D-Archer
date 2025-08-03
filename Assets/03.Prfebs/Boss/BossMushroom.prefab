@@ -131,8 +131,13 @@ MonoBehaviour:
   warningAreaPrefab: {fileID: 278538634492560534, guid: 617e7128be7c0ba4a804e01e6cbfb731, type: 3}
   meleeAttackRange: 2.5
   warningDuration: 1.5
+  firePoint: {fileID: 8188361908195725477}
   projectilePrefab: {fileID: 1208639916478256986, guid: d8a93e2751826d84faa002fa4fdd6266, type: 3}
+  explosionEffectPrefab: {fileID: 5868150479479404650, guid: 8d5e2e67f715fe44fa5dcc2ee58c247f, type: 3}
   rangedExplosionRadius: 2
+  projectileHeight: 5
+  fallSpeed: 3
+  rangedDamage: 20
 --- !u!114 &3052893486603235417
 MonoBehaviour:
   m_ObjectHideFlags: 0
