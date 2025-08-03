@@ -128,7 +128,7 @@ MonoBehaviour:
   AtkPower: 10
   moveSpeed: 2
   target: {fileID: 0}
-  warningAreaPrefab: {fileID: 1514757515781927674, guid: 8fed067bb1cacae4ea4c3e8918a6631b, type: 3}
+  warningAreaPrefab: {fileID: 278538634492560534, guid: 617e7128be7c0ba4a804e01e6cbfb731, type: 3}
   meleeAttackRange: 2.5
   warningDuration: 1.5
   projectilePrefab: {fileID: 1208639916478256986, guid: d8a93e2751826d84faa002fa4fdd6266, type: 3}
