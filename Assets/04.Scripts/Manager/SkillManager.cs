@@ -40,6 +40,8 @@ public class SkillManager : MonoBehaviour
         allSkills.Add(new Skill(0, "FireBall", "화염구를 발사하여 적에게 피해를 준다.", 10f, 10f, fireballPrefab));
         allSkills.Add(new Skill(1, "IceSpike", "얼음 창을 발사하여 적을 얼린다.", 8f, 7f, iceSpikePrefab));
         allSkills.Add(new Skill(2, "LightningBolt", "번개를 소환하여 적에게 피해를 준다.", 12f, 10f, lightningBolt));
+
+       // acquiredSkills.Add(new Skill(0, "FireBall", "화염구를 발사하여 적에게 피해를 준다.", 10f, 10f, fireballPrefab)); //확인용
     }
 
     // 새로운 스킬 획득

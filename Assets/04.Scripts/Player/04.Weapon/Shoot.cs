@@ -61,7 +61,7 @@ public class Shoot : MonoBehaviour
             EnemyResourceController enemy = collision.GetComponent<EnemyResourceController>();
             float _total_Damage = FinalMagicDamage();
 
-            Debug.LogError($"{_total_Damage}"); // 데미지 확인용
+            // Debug.LogError($"{_total_Damage}"); // 데미지 확인용
             enemy.ChangeHealth(-_total_Damage);
         }
         else if (collision.gameObject.CompareTag(wallTag)) // 장애물(Tag)과 충돌시 삭제
@@ -76,7 +76,7 @@ public class Shoot : MonoBehaviour
     {
         float currentDamage = _range_Weapon.Power;                      // 무기 데미지 
 
-        float magicdamage = (_skill_Manager._isSkill == true) ? _range_Weapon._magic_Codex.Damage : _skill_Manager.AbilityPower;
+        float magicdamage = (_skill_Manager._isSkill == false) ? _range_Weapon._magic_Codex.Damage : _skill_Manager.AbilityPower;
         currentDamage += magicdamage;
 
         // === 플레이어 스텟 참조 ===
