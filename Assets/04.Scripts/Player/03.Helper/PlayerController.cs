@@ -98,7 +98,6 @@ public class PlayerController : BaseController // 이동을 받고 애니도 재생해야함
         if (this._stats_Manager.stats.currentHP > 0)
         {
             this._stats_Manager.TakeDamage((int)dmg);
-            _animation_Player?.DamageSuffer();
         }
         else if (this._stats_Manager.stats.currentHP <= 0)
         {

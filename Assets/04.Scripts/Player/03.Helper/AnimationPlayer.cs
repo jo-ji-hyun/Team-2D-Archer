@@ -8,7 +8,6 @@ public class AnimationPlayer : MonoBehaviour
     private static readonly int _isStay = Animator.StringToHash("isStay");
     private static readonly int _isRun = Animator.StringToHash("isMov");
     private static readonly int _isAtk = Animator.StringToHash("isAtk");
-    private static readonly int _isSuf = Animator.StringToHash("isSuf");
     private static readonly int _isDie = Animator.StringToHash("isDie");
 
     protected Animator animator;
@@ -40,16 +39,9 @@ public class AnimationPlayer : MonoBehaviour
         animator.SetBool(_isStay, false);
     }
 
-    // === 피해를 입을시 ===
-    public void DamageSuffer()
-    {
-        animator.SetTrigger(_isSuf);
-    }
-
     // === 사망 ===
     public void CharacterDie()
     {
-        animator.SetTrigger(_isSuf);
         animator.SetTrigger(_isDie);
         animator.SetBool(_isRun, false);
     }

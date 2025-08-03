@@ -16,7 +16,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         Stats.currentHP = Stats.maxHP; // 체력 초기화, UI 갱신
-        Debug.Log("HP: " + Stats.currentHP + ", ATK: " + Stats.attack);
     }
 
     private void Update()

@@ -11,6 +11,10 @@ public class RangeWeapon : WeaponHandler
     [SerializeField] public int magicCount = 2;
     public int MagicCount { get { return magicCount; } }
 
+    // === 스피드 ===
+    [SerializeField] private float speed = 1f;
+    public float Speed { get { return speed;  } }
+
     // === 다중샷 각도 ===
     [SerializeField] private float multipleAngel = 15;
     public float MultipleAngel { get { return multipleAngel; } }
@@ -19,7 +23,8 @@ public class RangeWeapon : WeaponHandler
     [SerializeField] private float spread = 0.3f;
     public float Spread { get { return spread; } }
 
-    public float SkillCoolTime = 1.5f;
+    // === 스킬 쿨타임 ===
+    public float skillCoolTime;
 
     // === 마법 참조 ===
     private ShootManager _shoot_Manager;
@@ -32,7 +37,22 @@ public class RangeWeapon : WeaponHandler
         base.Start();
         _shoot_Manager = ShootManager.Instance;
 
+        // === 기본 무기 참조 ===
         _magic_Codex = new MagicCodex();
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        if (skillCoolTime > 0f)
+        {
+            skillCoolTime -= Time.deltaTime;
+        }
+        else
+        {
+            skillCoolTime = 0f;
+        }
     }
 
     public void Init(SkillManager skill)
@@ -55,17 +75,21 @@ public class RangeWeapon : WeaponHandler
             float angle = minAngle + AngleSpace * i;
             float randomSpread = Random.Range(-spread, spread);
             angle += randomSpread;
-            CreateMagicShoot(Controller.LookDirection, angle);
 
-            if (_skill_Manager.acquiredSkills.Count > 0)
+            CreateMagicShoot(Controller.LookDirection, angle); // 기본 무기 발싸
+        }
+
+        // === 현재 가지고있는 스킬이 있는 경우 && 스킬 쿨타임이 다되었을 경우 ===
+        if (_skill_Manager.acquiredSkills.Count > 0 && skillCoolTime <= 0)
+        {
+            for (int i = 0; i < 1; i++) // 나중에 멀티샷 같은거 추가시 최대 i 수치를 변경합시다.
             {
-                SkillCoolTime -= Time.deltaTime;
-                if (SkillCoolTime <= 0)
-                {
-                    CreateMagic(Controller.LookDirection, angle); // 현재가지고 있는 스킬이 한개 이상일 경우
-                    SkillCoolTime = 1.5f;
-                }
+                float angle = minAngle + AngleSpace;
+                float randomSpread = Random.Range(-spread, spread);
+                angle += randomSpread;
 
+                CreateMagic(Controller.LookDirection, angle); // 현재가지고 있는 스킬이 한개 이상일 경우
+                skillCoolTime = 3.1f;
             }
         }
     }

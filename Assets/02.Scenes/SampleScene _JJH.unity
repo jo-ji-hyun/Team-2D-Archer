@@ -492,6 +492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isSkill: 0
   AbilityPower: 0
+  AbilitySpeed: 0
   allSkills: []
   acquiredSkills: []
   fireballPrefab: {fileID: 8738154650902348572, guid: 9d0ba554e6385164186b820ee7b1d38c, type: 3}
@@ -1533,8 +1534,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81d5e39b38a9239478e34898e5458a5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isCleared: 0
-  gameStarted: 0
 --- !u!1 &785585740
 GameObject:
   m_ObjectHideFlags: 0
@@ -2729,59 +2728,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1486895526}
   m_CullTransparentMesh: 1
---- !u!1 &1654637975
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1654637977}
-  - component: {fileID: 1654637976}
-  m_Layer: 0
-  m_Name: SkillManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1654637976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1654637975}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b26406deb5a762f4586382f8c57178ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isSkill: 0
-  AbilityPower: 0
-  allSkills: []
-  acquiredSkills: []
-  fireballPrefab: {fileID: 8738154650902348572, guid: 9d0ba554e6385164186b820ee7b1d38c, type: 3}
-  iceSpikePrefab: {fileID: 0}
-  lightningBolt: {fileID: 0}
-  skillButtonPrefab: {fileID: 1214967395705132201, guid: 871410e67f000824b9e02dee6c1148e6, type: 3}
-  skillButtonParent: {fileID: 1138310687}
---- !u!4 &1654637977
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1654637975}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 193.66704, y: 314.09286, z: -15.520046}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1704156056
 GameObject:
   m_ObjectHideFlags: 0
@@ -3472,13 +3418,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2005738087}
-        m_TargetAssemblyTypeName: ButtonClick, Assembly-CSharp
-        m_MethodName: StartButton
+      - m_Target: {fileID: 2005738085}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3747,4 +3693,3 @@ SceneRoots:
   - {fileID: 31751049}
   - {fileID: 524851755}
   - {fileID: 703213595}
-  - {fileID: 1654637977}

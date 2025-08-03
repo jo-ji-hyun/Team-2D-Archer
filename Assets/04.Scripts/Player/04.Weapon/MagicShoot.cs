@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shoot : MonoBehaviour // === 기본 무기에 붙일거 ===
+public class MagicShoot: MonoBehaviour //  === 마법 오브젝트에 붙일거 ===
 {
     // === 충돌체 정의 === 
     [SerializeField] private string wallTag = "object"; // 장애물
@@ -39,8 +39,8 @@ public class Shoot : MonoBehaviour // === 기본 무기에 붙일거 ===
             DestroyShoot(transform.position, false);
         }
 
-        // ===  속도 ===
-        _rigidbody2D.velocity = _direction * _range_Weapon.Speed;
+        // === 속도 ===
+        _rigidbody2D.velocity = _direction * _skill_Manager.AbilitySpeed;
 
     }
 
@@ -71,10 +71,10 @@ public class Shoot : MonoBehaviour // === 기본 무기에 붙일거 ===
     {
         float currentDamage = _range_Weapon.Power;                      // 무기 데미지 
 
-        currentDamage += _range_Weapon._magic_Codex.Damage;
+        currentDamage += _skill_Manager.AbilityPower; 
 
         // === 플레이어 스텟 참조 ===
-        
+
         currentDamage += _stats_Manager.stats.attack;
 
         return currentDamage;  // 무기 데미지 + 마법 기본 데미지 + 플레이어 스텟
@@ -84,9 +84,9 @@ public class Shoot : MonoBehaviour // === 기본 무기에 붙일거 ===
     public void Init(Vector2 direction, RangeWeapon range, StatsManager statsManager, ShootManager shootManager, SkillManager skillManager)
     {
         _range_Weapon = range;
-       this._stats_Manager = statsManager;
-       this._shoot_Manager = shootManager;
-       this._skill_Manager = skillManager;
+        this._stats_Manager = statsManager;
+        this._shoot_Manager = shootManager;
+        this._skill_Manager = skillManager;
 
         this._direction = direction;
         _current_Duration = 0;
