@@ -8,10 +8,16 @@ public class BossController : BossBaseController
     private BossAnimationHandler animHandler;
     [SerializeField] private GameObject warningAreaPrefab;
     [SerializeField] private float meleeAttackRange = 2.5f;
-    [SerializeField] private float warningDuration = 1.5f;
+    [SerializeField] private float warningDuration = 2f;
 
+    [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private float rangedExplosionRadius = 2f;
+    [SerializeField] private GameObject explosionEffectPrefab;
+    [SerializeField] private float rangedExplosionRadius = 1f;
+    [SerializeField] private float projectileHeight = 5f; // 위로 얼마나 쏠지
+    [SerializeField] private float fallDelay = 2f;
+    [SerializeField] private float fallSpeed = 3f;
+    [SerializeField] private int rangedDamage = 20;
 
     private bool isDying = false;
 
@@ -55,25 +61,66 @@ public class BossController : BossBaseController
         }
     }
 
+    private IEnumerator MoveProjectile(GameObject proj, Vector3 from, Vector3 to, float duration)
+{
+    float t = 0f;
+    while (t < duration)
+    {
+        proj.transform.position = Vector3.Lerp(from, to, t / duration);
+        t += Time.deltaTime;
+        yield return null;
+    }
+    proj.transform.position = to;
+}
+
     private IEnumerator RangedAreaAttack()
     {
-        // TODO: 원거리 투사체 생성 + 일정 시간 후 폭발
         Debug.Log("보스: 원거리 범위공격");
 
-        Vector3 dropPosition = target.position;
-
-        // 1. 경고 이펙트 표시
-        GameObject warning = Instantiate(warningAreaPrefab, dropPosition, Quaternion.identity);
-        warning.transform.localScale = new Vector3(rangedExplosionRadius, rangedExplosionRadius, 1);
+        Vector3 targetPos = target.position;
 
         animHandler.Skill();
 
-        // 2. 투사체 생성 및 낙하 시작
-        Vector3 spawnPosition = dropPosition + Vector3.up * 5f; // 하늘 위에서 낙하
-        GameObject proj = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);
-        proj.GetComponent<BossProjectile>().Init(dropPosition);
+        // 1. 경고 범위 생성
+        GameObject warning = Instantiate(warningAreaPrefab, targetPos, Quaternion.identity);
+        warning.transform.localScale = new Vector3(rangedExplosionRadius, rangedExplosionRadius, 1);
 
-        Destroy(warning); // 경고 제거
+        // 2. 보스 발사 → 위로 상승
+        Vector3 shootUpPos = firePoint.position + Vector3.up * projectileHeight;
+        GameObject riseProj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+
+        float riseTime = 1f;
+        yield return MoveProjectile(riseProj, firePoint.position, shootUpPos, riseTime);
+        Destroy(riseProj); // 위로 간 후 제거
+
+        // 3. 경고 유지시간 대기
+        yield return new WaitForSeconds(warningDuration);
+
+        // 4. 위에서 낙하할 투사체 생성
+        Vector3 fallStartPos = targetPos + Vector3.up * projectileHeight;
+        GameObject fallProj = Instantiate(projectilePrefab, fallStartPos, Quaternion.identity);
+
+        float fallTime = projectileHeight / fallSpeed;
+        yield return MoveProjectile(fallProj, fallStartPos, targetPos, fallTime);
+        Destroy(fallProj); // 낙하 후 제거
+
+        // 5. 폭발 이펙트
+        Instantiate(explosionEffectPrefab, targetPos, Quaternion.identity);
+
+        // 6. 데미지 판정
+        Collider2D[] hits = Physics2D.OverlapCircleAll(targetPos, rangedExplosionRadius / 2f);
+        foreach (Collider2D hit in hits)
+        {
+            if (hit.CompareTag("Player"))
+            {
+                PlayerController player = hit.GetComponent<PlayerController>();
+                player?.TakeDamage(rangedDamage);
+                Debug.Log("보스: 플레이어에게 원거리 폭발 데미지 입힘");
+            }
+        }
+
+        // 7. 정리
+        Destroy(warning);
         yield return new WaitForSeconds(1f); // 후딜레이
     }
 
