@@ -75,7 +75,6 @@ public class RangeWeapon : WeaponHandler
             float angle = minAngle + AngleSpace * i;
             float randomSpread = Random.Range(-spread, spread);
             angle += randomSpread;
-            speed = _magic_Codex.speed;
 
             CreateMagicShoot(Controller.LookDirection, angle); // 기본 무기 발싸
         }
@@ -88,7 +87,6 @@ public class RangeWeapon : WeaponHandler
                 float angle = minAngle + AngleSpace;
                 float randomSpread = Random.Range(-spread, spread);
                 angle += randomSpread;
-                speed += _magic_Codex.speed;
 
                 CreateMagic(Controller.LookDirection, angle); // 현재가지고 있는 스킬이 한개 이상일 경우
                 skillCoolTime = 3.1f;
