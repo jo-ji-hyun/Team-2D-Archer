@@ -10,8 +10,14 @@ public class StatChoiceUI : MonoBehaviour
     [SerializeField] private Text[] nameTexts;
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private WeaponHandler weaponHandler;
+    [SerializeField] private PlayerController playerController;
 
     private List<ChoiceData> currentChoices;
+
+    private void Awake()
+    {
+        playerStats = playerController.GetStats();
+    }
 
     public void ShowChoices(List<ChoiceData> choices)
     {
@@ -76,6 +82,12 @@ public class StatChoiceUI : MonoBehaviour
 
         panel.SetActive(false);
         Time.timeScale = 1f;
+    }
+
+    public void SetUp(PlayerStats stats, WeaponHandler weapon)
+    {
+        this.playerStats = stats;
+        this.weaponHandler = weapon;
     }
 }
 

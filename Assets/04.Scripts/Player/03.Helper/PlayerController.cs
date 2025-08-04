@@ -16,6 +16,8 @@ public class PlayerController : BaseController // 이동을 받고 애니도 재생해야함
 
     private StatsManager _stats_Manager; // StatsManager 참조
 
+    public PlayerStats stats; // 플레이어의 Stats
+
     protected override void Awake()
     {
         base.Awake();
@@ -108,5 +110,10 @@ public class PlayerController : BaseController // 이동을 받고 애니도 재생해야함
             _animation_Player?.CharacterDie();
         }
         
+    }
+
+    public PlayerStats GetStats()
+    {
+        return stats;
     }
 }
