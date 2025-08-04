@@ -67,6 +67,13 @@ public class EnemyManager : MonoBehaviour
             return;
         }
 
+        // Final Stage면 보스 생성
+        if (waveIndex == 4)
+        {
+            BossManager.Instance.SetPlayerTarget(playerTarget);
+            BossManager.Instance.SpawnBoss();
+        }
+
         if (waveRoutine != null) StopCoroutine(waveRoutine);
         waveRoutine = StartCoroutine(SpawnWave(waves[waveIndex]));
     }
@@ -78,7 +85,7 @@ public class EnemyManager : MonoBehaviour
 
     private IEnumerator SpawnWave(EnemyWave wave)
     {
-        yield return new WaitForSeconds(5f); // 5초 대기
+        yield return new WaitForSeconds(4f); // 5초 대기
 
         _enemy_Spawn_Complete = false;
         foreach (var spawnInfo in wave.enemySpawns)
@@ -86,7 +93,6 @@ public class EnemyManager : MonoBehaviour
             for (int i = 0; i < spawnInfo.count; i++)
             {
                 SpawnEnemy(spawnInfo.enemyPrefab);
-                yield return new WaitForSeconds(timeBetweenSpawns);
             }
         }
 

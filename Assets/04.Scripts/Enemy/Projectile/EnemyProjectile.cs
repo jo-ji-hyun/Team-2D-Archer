@@ -27,6 +27,17 @@ public class EnemyProjectile : MonoBehaviour
 
         if (collision.CompareTag("Player"))
         {
+            // 데미지 적용
+            PlayerController player = collision.GetComponent<PlayerController>();
+            if (player != null)
+            {
+                player.TakeDamage(damage);
+            }
+            else if (collision.CompareTag("object"))
+            {
+                Destroy(gameObject); // 벽 같은 거에 부딪혀도 제거
+            }
+
             Destroy(gameObject);
         }
     }
