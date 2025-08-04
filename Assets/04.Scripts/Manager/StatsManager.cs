@@ -23,32 +23,24 @@ public class StatsManager : MonoBehaviour
         _player_UIHelper = FindAnyObjectByType<PlayerUIHelper>();
     }
 
-
     private void Start()
     {
         stats.currentHP = stats.maxHP; // 체력 초기화, UI 갱신
         Hitpoint();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            StatsUpspeed(); // 실험용
+        }
+    }
+
     // === HP표시 ===
     public void Hitpoint()
     {
         _player_UIHelper.UpdateHP(stats.currentHP, stats.maxHP);
-    }
-
-    // === 레벨업 ===
-    public void Levelup()
-    {
-        stats.level++;
-
-        // === 레벨업 보너스 ===
-        stats.maxHP += 10;                         
-        stats.attack += 1f;                          
-        stats.defense += 0.5f;
-        
-        stats.currentHP = stats.maxHP;                 
-        Debug.Log($"레벨업! 현재 레벨: {stats.level}"); // ui 추가시 나중에 지우삼
-        Hitpoint();
     }
     
     // === 플레이어가 데미지를 받을 시 ===
@@ -70,4 +62,29 @@ public class StatsManager : MonoBehaviour
         }    
     }
 
+    // === 최대체력 증가 ===
+    public void StatsUpmaxHP()
+    {
+        stats.maxHP += 10;                 // 최대 HP 증가
+        stats.currentHP = stats.maxHP;     // 현재 HP를 최대 HP로 회복
+        Hitpoint();
+    }
+    
+    // === 공격력 증가 ===
+    public void StatsUpattack()
+    {
+        stats.attack += 2.0f;                //  공격력 증가
+    }
+
+    // === 방어력 증가 ===
+    public void StatsUpdefence()
+    {
+        stats.defense += 1.0f;                //  방어력 증가
+    }
+
+    // === 이동속도 증가 ===
+    public void StatsUpspeed()
+    {
+        stats.moveSpeed += 2.0f;                //  이동속도 증가
+    }
 }

@@ -7,8 +7,8 @@ public class WeaponHandler : MonoBehaviour
     // === 공격 애니메이션 지정 & 호출 ===
     private static readonly int IsAttack = Animator.StringToHash("isAtk");
 
-    // === 난이도를 위한 무기 딜레이 ===
-    [SerializeField] private float delay = 1.0f;
+    // === 공격 속도 ===
+    private float delay = 1.0f;
     public float Delay { get => delay; set => delay = value; }
 
     // === 무기 사이즈 ===
@@ -64,4 +64,16 @@ public class WeaponHandler : MonoBehaviour
     {
         _weapon_Renderer.flipY = isLeft;
     }
+
+    // === 공격속도 증가 메서드 ===
+    public void DecreaseAttackDelay(float amount)
+    {
+        delay -= amount; // delay값이 작을수록 빠른공격
+
+        if (delay < 0.1f)
+        {
+            delay = 0.1f; // 최솟값
+        }
+    }
+
 }
