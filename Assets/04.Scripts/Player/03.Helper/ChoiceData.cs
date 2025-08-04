@@ -21,7 +21,7 @@ public class ChoiceData
     {
         if (choiceType == ChoiceType.Skill)
         {
-            return skill != null ? skill.skillName : "없음";
+            return skill != null ? skill.skillName : "";
         }
         else
         {
@@ -32,10 +32,9 @@ public class ChoiceData
                 StatType.MoveSpeed => "이동속도",
                 StatType.AttackSpeed => "공격속도",
                 StatType.HP => "최대 체력",
-                _ => "알 수 없음"
+                _ => "스탯"
             };
-
-            return $"{statType} +{value}";
+            return $"{statName} +{value}";
         }
     }
 }

@@ -118,7 +118,7 @@ public class SkillManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("SkillUI 스크립트가 프리팹에 없음");
+            return;
         }
     }
 
