@@ -137,28 +137,64 @@ public class GameManager : MonoBehaviour
     {
         List<ChoiceData> allChoices = new List<ChoiceData>();
 
-        allChoices.Add(new ChoiceData { choiceType = ChoiceType.Stat, name = "공격력 +2", statType = StatType.Attack, value = 2 });
-        allChoices.Add(new ChoiceData { choiceType = ChoiceType.Stat, name = "방어력 +2", statType = StatType.Defense, value = 1 });
-        allChoices.Add(new ChoiceData { choiceType = ChoiceType.Stat, name = "이동속도 +0.5", statType = StatType.MoveSpeed, value = 0.05f });
-        allChoices.Add(new ChoiceData { choiceType = ChoiceType.Stat, name = "공격속도 +0.1", statType = StatType.AttackSpeed, value = 0.05f });
-        allChoices.Add(new ChoiceData { choiceType = ChoiceType.Skill, name = "HP +20", statType = StatType.HP, value = 20 });
+        // === 스탯 선택지 종류들 ===
+        List<ChoiceData> baseStats = new List<ChoiceData>()
+    {
+        new ChoiceData { choiceType = ChoiceType.Stat, statType = StatType.Attack, value = 2 },
+        new ChoiceData { choiceType = ChoiceType.Stat, statType = StatType.Defense, value = 1 },
+        new ChoiceData { choiceType = ChoiceType.Stat, statType = StatType.MoveSpeed, value = 2f },
+        new ChoiceData { choiceType = ChoiceType.Stat, statType = StatType.AttackSpeed, value = 0.1f },
+        new ChoiceData { choiceType = ChoiceType.Stat, statType = StatType.HP, value = 20 },
+    };
 
+        // 중복 방지를 위해 복사
+        allChoices.AddRange(baseStats);
+
+        // === 스킬 중에서 아직 얻지 않은 것만 추가 ===
         foreach (Skill skill in SkillManager.Instance.allSkills)
         {
-            allChoices.Add(new ChoiceData
+            if (skill == null) continue;
+
+            bool alreadyHas = SkillManager.Instance.acquiredSkills.Exists(s => s.Index == skill.Index);
+            if (!alreadyHas)
             {
-                choiceType = ChoiceType.Skill,
-                skill = skill,
-                name = skill.skillName,
-            });
+                allChoices.Add(new ChoiceData
+                {
+                    choiceType = ChoiceType.Skill,
+                    skill = skill,
+                });
+            }
         }
 
         List<ChoiceData> result = new List<ChoiceData>();
-        while (result.Count < 3 && allChoices.Count > 0)
+        int safety = 100;
+
+        while (result.Count < 3 && allChoices.Count > 0 && safety-- > 0)
         {
-            int index = Random.Range(0, allChoices.Count);
-            result.Add(allChoices[index]);
-            allChoices.RemoveAt(index);
+            int idx = Random.Range(0, allChoices.Count);
+            ChoiceData candidate = allChoices[idx];
+
+            bool duplicate = result.Exists(x =>
+                (x.choiceType == ChoiceType.Stat && candidate.choiceType == ChoiceType.Stat && x.statType == candidate.statType) ||
+                (x.choiceType == ChoiceType.Skill && candidate.choiceType == ChoiceType.Skill && x.skill != null && candidate.skill != null && x.skill.Index == candidate.skill.Index)
+            );
+
+            if (!duplicate)
+            {
+                result.Add(candidate);
+            }
+
+            allChoices.RemoveAt(idx);
+        }
+
+        // === 결과 부족시 보충 ===
+        while (result.Count < 3)
+        {
+            ChoiceData fallback = baseStats[Random.Range(0, baseStats.Count)];
+            if (!result.Exists(x => x.statType == fallback.statType))
+            {
+                result.Add(fallback);
+            }
         }
 
         return result;
