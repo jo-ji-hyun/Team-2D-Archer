@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +24,8 @@ public class GameManager : MonoBehaviour
     public PlayerController player { get; private set; }
 
     public RangeWeapon rangeWeapon { get; private set; }
+
+    [SerializeField] private StatChoiceUI statChoiceUI;
 
     // === 매니저들 들고옴 ===
     private EnemyManager _enemy_Manager;
@@ -53,6 +56,8 @@ public class GameManager : MonoBehaviour
 
         ShootManager.Instance.GiveRange(_stats_Manager, _skill_Manager);
         SkillManager.Instance.GiveToSkillManager(_stats_Manager);
+
+        statChoiceUI.SetUp(player.stats, player.GetComponentInChildren<WeaponHandler>());
     }
 
     private void Update()
@@ -66,6 +71,9 @@ public class GameManager : MonoBehaviour
                 clear = 1;
                 Debug.Log("1");
                 _room_Manager.OnRoomCleared();
+
+                List<ChoiceData> randomChoices = GenerateRandomChoices();
+                statChoiceUI.ShowChoices(randomChoices);
             }
         }
         else
@@ -125,4 +133,35 @@ public class GameManager : MonoBehaviour
         playertarget.SetActive(false);
     }
 
+    private List<ChoiceData> GenerateRandomChoices()
+    {
+        List<ChoiceData> allChoices = new List<ChoiceData>();
+
+        allChoices.Add(new ChoiceData { choiceType = ChoiceType.Stat, name = "공격력 +2", statType = StatType.Attack, value = 2 });
+        allChoices.Add(new ChoiceData { choiceType = ChoiceType.Stat, name = "방어력 +2", statType = StatType.Defense, value = 1 });
+        allChoices.Add(new ChoiceData { choiceType = ChoiceType.Stat, name = "이동속도 +0.5", statType = StatType.MoveSpeed, value = 0.05f });
+        allChoices.Add(new ChoiceData { choiceType = ChoiceType.Stat, name = "공격속도 +0.1", statType = StatType.AttackSpeed, value = 0.05f });
+        allChoices.Add(new ChoiceData { choiceType = ChoiceType.Skill, name = "HP +20", statType = StatType.HP, value = 20 });
+
+        foreach (Skill skill in SkillManager.Instance.allSkills)
+        {
+            allChoices.Add(new ChoiceData
+            {
+                choiceType = ChoiceType.Skill,
+                skill = skill,
+                name = skill.skillName,
+            });
+        }
+
+        List<ChoiceData> result = new List<ChoiceData>();
+        while (result.Count < 3 && allChoices.Count > 0)
+        {
+            int index = Random.Range(0, allChoices.Count);
+            result.Add(allChoices[index]);
+            allChoices.RemoveAt(index);
+        }
+
+        return result;
+    }
 }
+

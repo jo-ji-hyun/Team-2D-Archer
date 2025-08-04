@@ -38,7 +38,7 @@ public class SkillManager : MonoBehaviour
 
         // 모든 스킬 등록
         allSkills.Add(new Skill(0, "FireBall", "화염구를 발사하여 적에게 피해를 준다.", 10f, 5f, 2.0f, fireballPrefab));
-        allSkills.Add(new Skill(1, "IceSpike", "얼음 창을 발사하여 적을 얼린다.", 12f, 7f, 4.0f, iceSpikePrefab));
+        allSkills.Add(new Skill(1, "DarkSpike", "어둠 창을 발사하여 적을 얼린다.", 12f, 7f, 4.0f, iceSpikePrefab));
         allSkills.Add(new Skill(2, "LightningBolt", "번개를 소환하여 적에게 피해를 준다.", 15f, 10f, 6.1f, lightningBolt));
 
     }
@@ -70,7 +70,6 @@ public class SkillManager : MonoBehaviour
     {
         if (SkillChoiceUI.Instance == null)
         {
-            Debug.LogError("SkillChoiceUI 인스턴스가 없습니다. SkillChoiceUI를 씬에 추가하세요.");
             return;
         }
         List<Skill> available = allSkills.FindAll(s => !acquiredSkills.Contains(s));
