@@ -2272,7 +2272,7 @@ GameObject:
   - component: {fileID: 1138310690}
   - component: {fileID: 1138310688}
   m_Layer: 5
-  m_Name: SkillChoicePanel
+  m_Name: SkillStatsChoicePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3316,13 +3316,7 @@ MonoBehaviour:
   - {fileID: 785585742}
   - {fileID: 1247763820}
   - {fileID: 2146034180}
-  playerStats:
-    level: 1
-    maxHP: 100
-    currentHP: 100
-    attack: 5
-    defense: 0
-    moveSpeed: 3
+  statsManager: {fileID: 1894842984}
   weaponHandler: {fileID: 1144252567}
   playerController: {fileID: 31751046}
 --- !u!1 &1763595195

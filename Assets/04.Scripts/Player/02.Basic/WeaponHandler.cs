@@ -51,7 +51,10 @@ public class WeaponHandler : MonoBehaviour
 
     protected virtual void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            DecreaseAttackDelay(999f); // 테스트용
+        }
     }
    
     public virtual void Attack()

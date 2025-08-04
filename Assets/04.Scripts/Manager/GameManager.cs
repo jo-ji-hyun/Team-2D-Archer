@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
         ShootManager.Instance.GiveRange(_stats_Manager, _skill_Manager);
         SkillManager.Instance.GiveToSkillManager(_stats_Manager);
 
-        statChoiceUI.SetUp(player.stats, player.GetComponentInChildren<WeaponHandler>());
+        statChoiceUI.SetUp(_stats_Manager, rangeWeapon);
     }
 
     private void Update()
