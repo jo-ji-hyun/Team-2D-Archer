@@ -57,14 +57,8 @@ public class Shoot : MonoBehaviour // === 기본 무기에 붙일거 ===
         if (enemyLayer.value == (enemyLayer.value | (1 << collision.gameObject.layer)) && _isDestroy == false ) // 몬스터(Layer)와 충돌시 삭제
         {
             StartCoroutine(nameof(DestroyAnimation));
-            // === 몬스터의 체력 변화 ===
-            EnemyResourceController enemy = collision.GetComponent<EnemyResourceController>();
-            float _total_Damage = FinalMagicDamage();
 
-            //Debug.LogError($"{_total_Damage}"); // 데미지 확인용
-            enemy.ChangeHealth(-_total_Damage);
-
-            _skill_Manager._isSkill = false;
+            EnemyTypes(collision);
         }
         else if (collision.gameObject.CompareTag(wallTag)) // 장애물(Tag)과 충돌시 삭제
         {
@@ -81,10 +75,31 @@ public class Shoot : MonoBehaviour // === 기본 무기에 붙일거 ===
         currentDamage += _range_Weapon._magic_Codex.Damage;
 
         // === 플레이어 스텟 참조 ===
-        
+
         currentDamage += _stats_Manager.stats.attack;
 
         return currentDamage;  // 무기 데미지 + 마법 기본 데미지 + 플레이어 스텟
+    }
+
+    // === 일반 몹 / 보스 몹 판별 ===
+    public void EnemyTypes(Collider2D collision)
+    {
+        float _total_Damage = FinalMagicDamage();
+
+        // === 몬스터의 체력 변화 ===
+        EnemyResourceController enemy = collision.GetComponent<EnemyResourceController>();
+
+        // Debug.LogError($"{_total_Damage}"); // 데미지 확인용
+        if (enemy != null)
+        {
+            enemy.ChangeHealth(-_total_Damage);
+        }
+
+        BossBaseController boss = collision.GetComponent<BossBaseController>();
+        if (boss != null)
+        {
+            boss.TakeDamage(_total_Damage);
+        }
     }
 
     // === 투사체 정보 설정(크기, 방향) ===

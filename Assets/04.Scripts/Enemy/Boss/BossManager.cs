@@ -13,6 +13,8 @@ public class BossManager : MonoBehaviour
     private BossController currentBoss;
     private Transform playerTarget;
 
+    public GameObject bossHpObject;
+
     /* 실험용 강제시작
     private void Start()
     {
@@ -31,7 +33,10 @@ public class BossManager : MonoBehaviour
         }
       
         */
-            if (Instance == null)
+
+        bossHpObject.SetActive(false);
+
+        if (Instance == null)
         {
             Instance = this;
         }
@@ -57,6 +62,7 @@ public class BossManager : MonoBehaviour
 
         GameObject bossObj = Instantiate(bossPrefab, bossSpawnPosition, Quaternion.identity);
         currentBoss = bossObj.GetComponent<BossController>();
+        bossHpObject.SetActive(true);
 
         if (currentBoss == null)
         {
