@@ -67,6 +67,7 @@ public class BossController : BossBaseController
     float t = 0f;
     while (t < duration)
     {
+        if (proj == null) yield break;
         proj.transform.position = Vector3.Lerp(from, to, t / duration);
         t += Time.deltaTime;
         yield return null;
@@ -91,6 +92,11 @@ public class BossController : BossBaseController
         // 2. 보스 발사 → 위로 상승
         Vector3 shootUpPos = firePoint.position + Vector3.up * projectileHeight;
         GameObject riseProj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+        SpriteRenderer sr = riseProj.GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            sr.flipY = true;
+        }
 
         float riseTime = 1f;
         yield return MoveProjectile(riseProj, firePoint.position, shootUpPos, riseTime);
@@ -114,15 +120,21 @@ public class BossController : BossBaseController
         PolygonCollider2D polyCol = warning.GetComponent<PolygonCollider2D>();
         if (polyCol != null)
         {
-            Bounds bounds = polyCol.bounds;
-            Collider2D[] hits = Physics2D.OverlapAreaAll(bounds.min, bounds.max);
-            foreach (Collider2D hit in hits)
+            ContactFilter2D filter = new ContactFilter2D();
+            filter.SetLayerMask(LayerMask.GetMask("Player")); // 또는 전체 레이어로 설정
+            filter.useTriggers = true;
+
+            Collider2D[] results = new Collider2D[10];
+            int count = polyCol.OverlapCollider(filter, results);
+
+            for (int i = 0; i < count; i++)
             {
-                if (hit.CompareTag("Player") && polyCol.OverlapPoint(hit.transform.position))
+                Collider2D hit = results[i];
+                if (hit != null && hit.CompareTag("Player"))
                 {
                     PlayerController player = hit.GetComponent<PlayerController>();
                     player?.TakeDamage(rangedDamage);
-                    Debug.Log("보스: 원거리 데미지 - 폴리곤 범위 안");
+                    Debug.Log("보스: 원거리 데미지 - 폴리곤 안에 있음");
                 }
             }
         }
@@ -156,15 +168,21 @@ public class BossController : BossBaseController
         PolygonCollider2D polyCol = warning.GetComponent<PolygonCollider2D>();
         if (polyCol != null)
         {
-            Bounds bounds = polyCol.bounds;
-            Collider2D[] hits = Physics2D.OverlapAreaAll(bounds.min, bounds.max);
-            foreach (Collider2D hit in hits)
+            ContactFilter2D filter = new ContactFilter2D();
+            filter.SetLayerMask(LayerMask.GetMask("Player")); // 또는 전체 레이어로 설정
+            filter.useTriggers = true;
+
+            Collider2D[] results = new Collider2D[10];
+            int count = polyCol.OverlapCollider(filter, results);
+
+            for (int i = 0; i < count; i++)
             {
-                if (hit.CompareTag("Player") && polyCol.OverlapPoint(hit.transform.position))
+                Collider2D hit = results[i];
+                if (hit != null && hit.CompareTag("Player"))
                 {
                     PlayerController player = hit.GetComponent<PlayerController>();
-                    player?.TakeDamage(AtkPower);
-                    Debug.Log("보스: 근거리 데미지 - 폴리곤 범위 안");
+                    player?.TakeDamage(rangedDamage);
+                    Debug.Log("보스: 근거리 데미지 - 폴리곤 안에 있음");
                 }
             }
         }

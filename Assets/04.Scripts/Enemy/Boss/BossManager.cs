@@ -22,15 +22,15 @@ public class BossManager : MonoBehaviour
 
     private void Awake()
     {
-        /* 실험용 별개 타겟지정
+        /* 실험용 타겟 강제지정
         GameObject playerObject = GameObject.FindWithTag("Player");
 
         if (playerObject != null)
         {
             playerTarget = playerObject.transform;
         }
+      
         */
-
             if (Instance == null)
         {
             Instance = this;
