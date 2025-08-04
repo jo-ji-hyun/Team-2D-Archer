@@ -16,26 +16,23 @@ public class StatChoiceUI : MonoBehaviour
 
     public void ShowChoices(List<ChoiceData> choices)
     {
+        if (choices.Count != 3)
+        {
+            return;
+        }
+
         currentChoices = choices;
         panel.SetActive(true);
         Time.timeScale = 0f;
 
         for (int i = 0; i < buttons.Length; i++)
         {
-            if (i < choices.Count)
-            {
-                int index = i;
-                buttons[i].gameObject.SetActive(true);
-                nameTexts[i].text = choices[i].GetDisplayName();
-                buttons[i].onClick.RemoveAllListeners();
-                buttons[i].onClick.AddListener(() => OnChoiceSelected(index));
-            }
-            else
-            {
-                buttons[i].gameObject.SetActive(false);
-                nameTexts[i].text = "";
-            }
-            
+            int index = i;
+            buttons[i].gameObject.SetActive(true);
+            nameTexts[i].text = choices[i].GetDisplayName();
+            buttons[i].onClick.RemoveAllListeners();
+            buttons[i].onClick.AddListener(() => OnChoiceSelected(index));
+            buttons[i].interactable = true;
         }
     }
 
