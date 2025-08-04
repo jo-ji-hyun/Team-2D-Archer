@@ -230,7 +230,7 @@ public class BossController : BossBaseController
         animHandler.Idle();
     }
 
-    private void UpdateFacingDirection()
+    private new void UpdateFacingDirection()
     {
         if (target == null) return;
 
@@ -245,7 +245,7 @@ public class BossController : BossBaseController
         }
     }
 
-    public void Die()
+    public new void Die()
     {
         if (!isDying)
         {

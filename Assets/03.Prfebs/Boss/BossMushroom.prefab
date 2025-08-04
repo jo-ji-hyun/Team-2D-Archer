@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 1970936705055967980}
   - component: {fileID: 6984507819942795142}
   - component: {fileID: 1788809123708173623}
-  - component: {fileID: 3052893486603235417}
-  - component: {fileID: 9171395410093342354}
   - component: {fileID: 6031820045530231368}
   m_Layer: 6
   m_Name: BossMushroom
@@ -140,33 +138,6 @@ MonoBehaviour:
   fallSpeed: 3
   rangedDamage: 10
   attackPivot: {fileID: 7596091540552664370}
---- !u!114 &3052893486603235417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4010490467910632654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faf30cb7d50544f46b7c80622947a28b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthChangeDelay: 0.5
---- !u!114 &9171395410093342354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4010490467910632654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 464c048c1b8518040bed20fb20bbc1b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  speed: 2
 --- !u!114 &6031820045530231368
 MonoBehaviour:
   m_ObjectHideFlags: 0
