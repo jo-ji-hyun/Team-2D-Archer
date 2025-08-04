@@ -42,7 +42,7 @@ public class EnemyController : EnemyBaseController
 
     protected float DistanceToTarget()
     {
-        return Vector2.Distance(transform.position, target.position); // ¼öÁ¤ 3 -> 2
+        return Vector2.Distance(transform.position, target.position);
     }
 
     protected Vector2 DirectionToTarget()

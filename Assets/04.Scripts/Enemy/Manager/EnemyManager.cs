@@ -169,7 +169,21 @@ public class EnemyManager : MonoBehaviour
 
     private void Update()
     {
-        
+        for (int i = activeEnemies.Count - 1; i >= 0; i--)
+        {
+            var enemy = activeEnemies[i];
+            if (enemy == null || enemy.IsDead)
+            {
+                activeEnemies.RemoveAt(i);
+                continue;
+            }
+
+            // 일반 몬스터에게만 적용되는 로직
+            if (!enemy.IsBoss)
+            {
+                // 일반 적 AI 관련 업데이트 등
+            }
+        }
     }
 
     public bool IsAllSpawned => _enemy_Spawn_Complete;

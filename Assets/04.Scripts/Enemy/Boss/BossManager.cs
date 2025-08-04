@@ -15,24 +15,9 @@ public class BossManager : MonoBehaviour
 
     public GameObject bossHpObject;
 
-    /* 실험용 강제시작
-    private void Start()
-    {
-        SpawnBoss();
-    }
-    */
 
     private void Awake()
     {
-        /* 실험용 타겟 강제지정
-        GameObject playerObject = GameObject.FindWithTag("Player");
-
-        if (playerObject != null)
-        {
-            playerTarget = playerObject.transform;
-        }
-      
-        */
 
         bossHpObject.SetActive(false);
 
@@ -77,12 +62,8 @@ public class BossManager : MonoBehaviour
         }
 
         CurrentBoss.Init(this, playerTarget);
-    }
-
-
-    public void RegisterBoss(BossController boss)
-    {
-        CurrentBoss = boss;
+        // EnemyManager에서 activeEnemies 등록
+        EnemyManager.Instance.activeEnemies.Add(CurrentBoss);
     }
 
     public void UnregisterBoss()
@@ -90,5 +71,4 @@ public class BossManager : MonoBehaviour
         CurrentBoss = null;
     }
 
-    public bool IsBossAlive => CurrentBoss != null;
 }

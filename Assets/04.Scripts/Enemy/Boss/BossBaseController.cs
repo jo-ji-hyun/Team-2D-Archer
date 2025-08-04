@@ -3,30 +3,28 @@ using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
-public abstract class BossBaseController : MonoBehaviour
+public abstract class BossBaseController : EnemyBaseController
 {
     [Header("Base Settings")]
     public float maxHP = 1000f;
     protected float currentHP;
-    public float AtkPower = 50f;
+    public float BossAtkPower = 50f;
     public float moveSpeed = 2f;
 
     [Header("References")]
     protected Transform player;
-    protected SpriteRenderer characterRenderer;
-    protected BossAnimationHandler animationHandler;
-
-    [SerializeField] protected Transform target;
+    protected new SpriteRenderer characterRenderer;
+    protected BossAnimationHandler bossAnimationHandler;
 
     // === HP바 호출 ===
     private BossUIHp _boss_UIHp;
 
-    protected virtual void Awake()
+    protected new virtual void Awake()
     {
         currentHP = maxHP;
 
         characterRenderer = GetComponentInChildren<SpriteRenderer>();
-        animationHandler = GetComponent<BossAnimationHandler>();
+        bossAnimationHandler = GetComponent<BossAnimationHandler>();
     }
 
     public virtual void Init(Transform target)
@@ -69,16 +67,9 @@ public abstract class BossBaseController : MonoBehaviour
 
     protected virtual void Die()
     {
-        animationHandler.Death();
+        bossAnimationHandler.Death();
         StopAllCoroutines();
         Destroy(gameObject, 6f); // 6초 후 오브젝트 제거
-    }
-
-    // 보스가 플레이어를 바라보는 방향을 업데이트 (보스 공용 기능)
-    protected Vector3 GetDirectionToPlayer()
-    {
-        if (player == null) return Vector3.zero;
-        return (player.position - transform.position).normalized;
     }
 
 }
