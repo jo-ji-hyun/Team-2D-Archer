@@ -129,6 +129,7 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(PlayerDeathRoutine());
         _enemy_Manager.StopWave();
+        fadeManager.GameOverFade();
     }
 
     // === 게임오버시 캐릭터를 사라지게 함 ===
