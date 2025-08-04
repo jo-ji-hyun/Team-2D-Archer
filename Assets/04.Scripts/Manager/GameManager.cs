@@ -64,16 +64,24 @@ public class GameManager : MonoBehaviour
     {
         if (gamestart)
         {
-            if (_enemy_Manager.activeEnemies.Count == 0)
-            {
-                RoomIndex++;
-                gamestart = false;
-                clear = 1;
-                Debug.Log("1");
-                _room_Manager.OnRoomCleared();
+            bool allEnemiesCleared = _enemy_Manager.activeEnemies.Count == 0;
+            bool isFinalStage = RoomIndex == 4;
+            bool bossDead = BossManager.Instance == null || BossManager.Instance.CurrentBoss == null;
 
-                List<ChoiceData> randomChoices = GenerateRandomChoices();
-                statChoiceUI.ShowChoices(randomChoices);
+            if (allEnemiesCleared)
+            {
+                if (!isFinalStage || (isFinalStage && bossDead))
+                {
+                    RoomIndex++;
+                    gamestart = false;
+                    clear = 1;
+                    Debug.Log("1");
+                    _room_Manager.OnRoomCleared();
+
+                    List<ChoiceData> randomChoices = GenerateRandomChoices();
+                    statChoiceUI.ShowChoices(randomChoices);
+                }
+                
             }
         }
         else
