@@ -22,11 +22,17 @@ public class Shoot : MonoBehaviour // === 기본 무기에 붙일거 ===
     private Rigidbody2D _rigidbody2D;
     private SpriteRenderer _sprite_Renderer;
 
+    private static readonly int _isHit = Animator.StringToHash("IsHit");
+    protected Animator animator;
+    private bool _isDestroy = false; // 투사체 비활성화
+
     private void Awake()
     {
         _sprite_Renderer = GetComponentInChildren<SpriteRenderer>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _pivot = transform.GetChild(0);
+
+        animator = GetComponentInChildren<Animator>(); // 자식에게서 가져옴
     }
 
     private void Update()
@@ -36,20 +42,21 @@ public class Shoot : MonoBehaviour // === 기본 무기에 붙일거 ===
         // === 투사체 지속시간 ===
         if (_current_Duration > 5.0f)
         {
-            DestroyShoot(transform.position, false);
+            StartCoroutine(nameof(DestroyAnimation));
         }
-
-        // ===  속도 ===
-        _rigidbody2D.velocity = _direction * _range_Weapon._magic_Codex.speed;
-
+        else
+        {
+            // ===  속도 ===
+            _rigidbody2D.velocity = _direction * _range_Weapon._magic_Codex.speed;
+        }
     }
 
     // === 투사체 충돌 로직 ===
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (enemyLayer.value == (enemyLayer.value | (1 << collision.gameObject.layer))) // 몬스터(Layer)와 충돌시 삭제
+        if (enemyLayer.value == (enemyLayer.value | (1 << collision.gameObject.layer)) && _isDestroy == false ) // 몬스터(Layer)와 충돌시 삭제
         {
-            DestroyShoot(collision.ClosestPoint(transform.position), true);
+            StartCoroutine(nameof(DestroyAnimation));
             // === 몬스터의 체력 변화 ===
             EnemyResourceController enemy = collision.GetComponent<EnemyResourceController>();
             float _total_Damage = FinalMagicDamage();
@@ -61,7 +68,7 @@ public class Shoot : MonoBehaviour // === 기본 무기에 붙일거 ===
         }
         else if (collision.gameObject.CompareTag(wallTag)) // 장애물(Tag)과 충돌시 삭제
         {
-            DestroyShoot(transform.position, true);
+            StartCoroutine(nameof(DestroyAnimation));
         }
 
     }
@@ -100,8 +107,23 @@ public class Shoot : MonoBehaviour // === 기본 무기에 붙일거 ===
             _pivot.localRotation = Quaternion.Euler(0, 0, 0);
     }
 
+    // === 애니메이션을 위한 코루틴 ===
+    private IEnumerator DestroyAnimation()
+    {
+        _isDestroy = true;
+        // === 멈추고 충돌 방지 ===
+        _rigidbody2D.velocity = Vector2.zero;
+
+        animator.SetBool(_isHit, true);
+
+        yield return new WaitForSeconds(1.0f);
+
+        DestroyShoot(transform.position);
+        animator.SetBool(_isHit, false);
+    }
+
     // === 파괴 로직 ===
-    private void DestroyShoot(Vector3 position, bool createFx)
+    private void DestroyShoot(Vector3 position)
     {
         Destroy(this.gameObject);
     }

@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 2644908189837604899}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0.3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -77,22 +77,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 346e21d692fbdd549b138513ffa7dd9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 1
   weaponSize: 2
   power: 1
-  speed: 1
   attackRange: 10
   target:
     serializedVersion: 2
     m_Bits: 64
   SpawnPosition: {fileID: 959088237783861275}
-  magicCount: 2
-  magicIndex: 0
-  magicSize: 3
-  duration: 5
-  spread: 1
-  shotNumber: 1
+  speed: 1
   multipleAngel: 15
+  spread: 1
+  skillCoolTime: 0
+  _magic_Codex:
+    magicIndex: 0
+    magicSize: 3
+    duration: 5
+    speed: 3
+    shotNumber: 1
+    Damage: 2
 --- !u!1 &7157243327521163397
 GameObject:
   m_ObjectHideFlags: 0

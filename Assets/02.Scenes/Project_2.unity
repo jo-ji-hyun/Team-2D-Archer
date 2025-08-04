@@ -3152,10 +3152,10 @@ MonoBehaviour:
   timeBetweenSpawns: 0.3
   spawnAreas:
   - serializedVersion: 2
-    x: 0
-    y: 0
-    width: 2
-    height: 2
+    x: -2.5
+    y: -2
+    width: 5
+    height: 4
   gizmoColor: {r: 1, g: 0, b: 0, a: 0.3}
   activeEnemies: []
 --- !u!1 &1935513874
