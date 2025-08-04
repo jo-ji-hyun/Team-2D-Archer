@@ -72,12 +72,21 @@ public class GameManager : MonoBehaviour
                 {
                     RoomIndex++;
                     gamestart = false;
-                    clear = 1;
                     Debug.Log("1");
-                    SkillManager.Instance.ShowSkillChoice();
 
-                    List<ChoiceData> randomChoices = GenerateRandomChoices();
-                    statChoiceUI.ShowChoices(randomChoices);
+                    if (RoomIndex < 5)
+                    {
+                        clear = 1;
+                        SkillManager.Instance.ShowSkillChoice();
+
+                        List<ChoiceData> randomChoices = GenerateRandomChoices();
+                        statChoiceUI.ShowChoices(randomChoices);
+                    }
+                    else
+                    {
+                        BossManager.Instance.bossHpObject.SetActive(false);
+                        fadeManager.Clear();
+                    }
                 }
                 
             }
