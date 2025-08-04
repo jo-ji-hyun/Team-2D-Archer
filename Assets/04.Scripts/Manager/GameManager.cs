@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     public RangeWeapon rangeWeapon { get; private set; }
 
+    [SerializeField] private StatChoiceUI statChoiceUI;
+
     // === 매니저들 들고옴 ===
     private EnemyManager _enemy_Manager;
     private StatsManager _stats_Manager;
