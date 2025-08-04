@@ -11,7 +11,7 @@ public class BaseController : MonoBehaviour
     [SerializeField] private SpriteRenderer character_Renderer;
     [SerializeField] private Transform weapon_Pivot;
 
-    // === 캐릭터 생존 상태
+    // === 캐릭터 생존 상태 ===
     protected bool _current_Player = true;
 
     // === 움직임 제어 ===
