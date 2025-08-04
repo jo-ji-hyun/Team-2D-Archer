@@ -27,6 +27,9 @@ public class EnemyBaseController : MonoBehaviour
 
     protected bool isDead = false;
 
+    public bool IsBoss { get; protected set; } = false;
+    public bool IsDead => isDead; // 외부에서 읽기 전용 속성
+
     protected bool isAttacking;
     public float timeSinceLastAttack = float.MaxValue;
 
@@ -41,6 +44,7 @@ public class EnemyBaseController : MonoBehaviour
     public virtual void Init(EnemyManager manager, Transform player)
     {
         this.enemyManager = manager;
+        this.target = player;
     }
 
     protected virtual void DealDamageToTarget()
@@ -59,7 +63,7 @@ public class EnemyBaseController : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        if (isDead) return; // 사망 시 추가행동 방지
+        if (isDead || IsBoss) return; // 사망 시 추가행동 방지, 보스 추가명령 방지
 
         Movment(movementDirection);
         if (knockbackDuration > 0.0f)
@@ -76,6 +80,8 @@ public class EnemyBaseController : MonoBehaviour
 
     private void Movment(Vector2 direction)
     {
+        if (IsBoss) return; // 보스는 이동 로직 무시
+
         direction = direction * statHandler.Speed;
         if (knockbackDuration > 0.0f)
         {

@@ -37,6 +37,10 @@ public class Shoot : MonoBehaviour // === 기본 무기에 붙일거 ===
 
     private void Update()
     {
+        if(_isDestroy == true)
+        {
+            return;
+        }
         _current_Duration += Time.deltaTime;
 
         // === 투사체 지속시간 ===
