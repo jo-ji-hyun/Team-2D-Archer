@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public enum ChoiceType { Skill, Stat }
 
@@ -18,6 +19,13 @@ public class ChoiceData
 
     public string GetDisplayName()
     {
-        return choiceType == ChoiceType.Skill ? skill.skillName : name;
+        if (choiceType == ChoiceType.Skill)
+        {
+            return skill != null ? skill.skillName : "스킬 없음";
+        }
+        else
+        {
+            return $"{statType} +{value}";
+        }
     }
 }
