@@ -17,6 +17,9 @@ public abstract class BossBaseController : MonoBehaviour
 
     [SerializeField] protected Transform target;
 
+    // === HPπŸ »£√‚ ===
+    private PlayerUIHelper _boss_UIHelper;
+
     protected virtual void Awake()
     {
         currentHP = maxHP;

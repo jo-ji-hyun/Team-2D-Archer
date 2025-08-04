@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
 
     public void StartWave()
     {
-        _enemy_Manager.StartWave(RoomIndex);
+        _enemy_Manager.StartWave(4);
     }
 
     void StartNextWave()
