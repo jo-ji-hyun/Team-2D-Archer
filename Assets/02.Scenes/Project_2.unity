@@ -2027,8 +2027,8 @@ GameObject:
   - component: {fileID: 1138310687}
   - component: {fileID: 1138310691}
   - component: {fileID: 1138310690}
-  - component: {fileID: 1138310689}
   - component: {fileID: 1138310688}
+  - component: {fileID: 1138310692}
   m_Layer: 5
   m_Name: SkillChoicePanel
   m_TagString: Untagged
@@ -2070,27 +2070,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &1138310689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1138310686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbcf5c8c82cfdd1478c767cffefaa332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panel: {fileID: 1138310686}
-  buttons:
-  - {fileID: 1935513877}
-  - {fileID: 505028226}
-  - {fileID: 349778272}
-  nameTexts:
-  - {fileID: 785585742}
-  - {fileID: 1247763820}
-  - {fileID: 2146034180}
 --- !u!114 &1138310690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2129,6 +2108,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1138310686}
   m_CullTransparentMesh: 1
+--- !u!114 &1138310692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138310686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91d85c9eff5c57b4c9d9fc0e9289801a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 1138310686}
+  buttons:
+  - {fileID: 1935513877}
+  - {fileID: 505028226}
+  - {fileID: 349778272}
+  nameTexts:
+  - {fileID: 785585742}
+  - {fileID: 1247763820}
+  - {fileID: 2146034180}
+  playerStats:
+    level: 1
+    maxHP: 100
+    currentHP: 100
+    attack: 5
+    defense: 0
+    moveSpeed: 3
+  weaponHandler: {fileID: 0}
 --- !u!1 &1222417938
 GameObject:
   m_ObjectHideFlags: 0
@@ -2911,6 +2919,7 @@ MonoBehaviour:
   startButton: {fileID: 2005738089}
   playertarget: {fileID: 31751040}
   fadeManager: {fileID: 1704156057}
+  statChoiceUI: {fileID: 1138310692}
 --- !u!4 &1811208969
 Transform:
   m_ObjectHideFlags: 0

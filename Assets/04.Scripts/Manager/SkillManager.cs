@@ -70,7 +70,6 @@ public class SkillManager : MonoBehaviour
     {
         if (SkillChoiceUI.Instance == null)
         {
-            Debug.LogError("SkillChoiceUI 인스턴스가 없습니다. SkillChoiceUI를 씬에 추가하세요.");
             return;
         }
         List<Skill> available = allSkills.FindAll(s => !acquiredSkills.Contains(s));
