@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7649737817095566629}
-  - component: {fileID: 3223174852128381049}
+  - component: {fileID: 410390112701755811}
   m_Layer: 0
   m_Name: Area
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 5256626365623398066}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &3223174852128381049
+--- !u!60 &410390112701755811
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -65,7 +65,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -77,11 +77,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.020080477, y: 1.1338701}
-      - {x: -1.9015338, y: 0.007809341}
-      - {x: -0.53025454, y: -0.80901706}
-      - {x: 0.018871188, y: -1.1158471}
-      - {x: 1.9416947, y: 0.00780952}
+    - - {x: 0.015184164, y: 1.1290656}
+      - {x: -1.9076598, y: 0.005333364}
+      - {x: -0.56500894, y: -0.7862409}
+      - {x: 0.010786533, y: -1.1127006}
+      - {x: 1.9304361, y: 0.005333543}
   m_UseDelaunayMesh: 0
 --- !u!1 &6044935770997424528
 GameObject:

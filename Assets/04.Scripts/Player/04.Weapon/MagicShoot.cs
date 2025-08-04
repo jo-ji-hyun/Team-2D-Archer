@@ -36,7 +36,7 @@ public class MagicShoot: MonoBehaviour //  === 마법 오브젝트에 붙일거 ===
         // === 투사체 지속시간 ===
         if (_current_Duration > 5.0f)
         {
-            DestroyShoot(transform.position, false);
+            DestroyShoot(transform.position);
         }
 
         // === 속도 ===
@@ -49,21 +49,36 @@ public class MagicShoot: MonoBehaviour //  === 마법 오브젝트에 붙일거 ===
     {
         if (enemyLayer.value == (enemyLayer.value | (1 << collision.gameObject.layer))) // 몬스터(Layer)와 충돌시 삭제
         {
-            DestroyShoot(collision.ClosestPoint(transform.position), true);
-            // === 몬스터의 체력 변화 ===
-            EnemyResourceController enemy = collision.GetComponent<EnemyResourceController>();
-            float _total_Damage = FinalMagicDamage();
+            DestroyShoot(transform.position);
 
-            //Debug.LogError($"{_total_Damage}"); // 데미지 확인용
-            enemy.ChangeHealth(-_total_Damage);
-
-            _skill_Manager._isSkill = false;
+            EnemyTypes(collision);
         }
         else if (collision.gameObject.CompareTag(wallTag)) // 장애물(Tag)과 충돌시 삭제
         {
-            DestroyShoot(transform.position, true);
+            DestroyShoot(transform.position);
         }
 
+    }
+
+    // === 일반 몹 / 보스 몹 판별 ===
+    public void EnemyTypes(Collider2D collision)
+    {
+        float _total_Damage = FinalMagicDamage();
+
+        // === 몬스터의 체력 변화 ===
+        EnemyResourceController enemy = collision.GetComponent<EnemyResourceController>();
+
+        // Debug.LogError($"{_total_Damage}"); // 데미지 확인용
+        if (enemy != null)
+        {
+            enemy.ChangeHealth(-_total_Damage);
+        }
+
+        BossBaseController boss = collision.GetComponent<BossBaseController>();
+        if (boss != null)
+        {
+            boss.TakeDamage(_total_Damage);
+        }
     }
 
     // === 최종 마법 데미지 ===
@@ -101,7 +116,7 @@ public class MagicShoot: MonoBehaviour //  === 마법 오브젝트에 붙일거 ===
     }
 
     // === 파괴 로직 ===
-    private void DestroyShoot(Vector3 position, bool createFx)
+    private void DestroyShoot(Vector3 position)
     {
         Destroy(this.gameObject);
     }

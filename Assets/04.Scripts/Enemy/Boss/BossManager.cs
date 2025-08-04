@@ -10,7 +10,7 @@ public class BossManager : MonoBehaviour
     [SerializeField] private GameObject bossPrefab;
     [SerializeField] private Vector2 bossSpawnPosition;
 
-    private BossController currentBoss;
+    public BossController CurrentBoss { get; private set; }
     private Transform playerTarget;
 
     public GameObject bossHpObject;
@@ -61,10 +61,10 @@ public class BossManager : MonoBehaviour
         }
 
         GameObject bossObj = Instantiate(bossPrefab, bossSpawnPosition, Quaternion.identity);
-        currentBoss = bossObj.GetComponent<BossController>();
+        CurrentBoss = bossObj.GetComponent<BossController>();
         bossHpObject.SetActive(true);
 
-        if (currentBoss == null)
+        if (CurrentBoss == null)
         {
             Debug.LogWarning("BossManager: BossController 컴포넌트가 존재하지 않습니다.");
             return;
@@ -76,13 +76,19 @@ public class BossManager : MonoBehaviour
             return;
         }
 
-        currentBoss.Init(this, playerTarget);
+        CurrentBoss.Init(this, playerTarget);
+    }
+
+
+    public void RegisterBoss(BossController boss)
+    {
+        CurrentBoss = boss;
     }
 
     public void UnregisterBoss()
     {
-        currentBoss = null;
+        CurrentBoss = null;
     }
 
-    public bool IsBossAlive => currentBoss != null;
+    public bool IsBossAlive => CurrentBoss != null;
 }

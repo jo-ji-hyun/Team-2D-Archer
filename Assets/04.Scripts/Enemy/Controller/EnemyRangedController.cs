@@ -12,7 +12,7 @@ public class EnemyRangedController : EnemyBaseController
     private float lastFireTime = -999f;
 
     // Init 메서드 오버라이드
-    public void Init(EnemyManager enemyManager, Transform target)
+    public override void Init(EnemyManager enemyManager, Transform target)
     {
         this.enemyManager = enemyManager;
         this.target = target;

@@ -34,7 +34,7 @@ public class EnemyController : EnemyBaseController
         timeSinceLastAttack += Time.deltaTime;
     }
 
-    public void Init(EnemyManager enemyManager, Transform target)
+    public override void Init(EnemyManager enemyManager, Transform target)
     {
         this.enemyManager = enemyManager;
         this.target = target;
