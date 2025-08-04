@@ -62,15 +62,6 @@ public class GameManager : MonoBehaviour
     {
         if (gamestart)
         {
-            if (_enemy_Manager.activeEnemies.Count == 0)
-            {
-                RoomIndex++;
-                gamestart = false;
-                clear = 1;
-                Debug.Log("1");
-                SkillManager.Instance.ShowSkillChoice();
-            }
-
             bool allEnemiesCleared = _enemy_Manager.activeEnemies.Count == 0;
             bool isFinalStage = RoomIndex == 4;
             bool bossDead = BossManager.Instance == null || BossManager.Instance.CurrentBoss == null;
