@@ -73,9 +73,9 @@ public class WeaponHandler : MonoBehaviour
     {
         delay -= amount; // delay값이 작을수록 빠른공격
 
-        if (delay < 0.1f)
+        if (delay < 0.5f)
         {
-            delay = 0.1f; // 최솟값
+            delay = 0.5f; // 최솟값
         }
     }
 

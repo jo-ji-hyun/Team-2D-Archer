@@ -37,9 +37,9 @@ public class SkillManager : MonoBehaviour
         Instance = this;
 
         // 모든 스킬 등록
-        allSkills.Add(new Skill(0, "FireBall", "화염구를 발사하여 적에게 피해를 준다.", 10f, 5f, 2.0f, fireballPrefab));
-        allSkills.Add(new Skill(1, "DarkSpike", "어둠 창을 발사하여 적을 얼린다.", 12f, 7f, 4.0f, iceSpikePrefab));
-        allSkills.Add(new Skill(2, "LightningBolt", "번개를 소환하여 적에게 피해를 준다.", 15f, 10f, 6.1f, lightningBolt));
+        allSkills.Add(new Skill(0, "파이어 볼", "화염구를 발사하여 적에게 피해를 준다.", 10f, 5f, 2.0f, fireballPrefab));
+        allSkills.Add(new Skill(1, "다크 스피어", "어둠 창을 발사하여 적을 얼린다.", 12f, 7f, 4.0f, iceSpikePrefab));
+        allSkills.Add(new Skill(2, "라이트닝", "번개를 소환하여 적에게 피해를 준다.", 15f, 10f, 6.1f, lightningBolt));
 
     }
     void Update()
@@ -118,7 +118,7 @@ public class SkillManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("SkillUI 스크립트가 프리팹에 없음");
+            return;
         }
     }
 

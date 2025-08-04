@@ -65,7 +65,7 @@ public class StatsManager : MonoBehaviour
     // === 최대체력 증가 ===
     public void StatsUpmaxHP()
     {
-        stats.maxHP += 10;                 // 최대 HP 증가
+        stats.maxHP += 20;                 // 최대 HP 증가
         stats.currentHP = stats.maxHP;     // 현재 HP를 최대 HP로 회복
         Hitpoint();
     }
@@ -85,6 +85,6 @@ public class StatsManager : MonoBehaviour
     // === 이동속도 증가 ===
     public void StatsUpspeed()
     {
-        stats.moveSpeed += 2.0f;                //  이동속도 증가
+        stats.moveSpeed += 1.0f;                //  이동속도 증가
     }
 }
