@@ -27,9 +27,6 @@ public abstract class BossBaseController : MonoBehaviour
 
         characterRenderer = GetComponentInChildren<SpriteRenderer>();
         animationHandler = GetComponent<BossAnimationHandler>();
-
-        _boss_UIHp = FindAnyObjectByType<BossUIHp>();
-        _boss_UIHp.UpdateHP(currentHP, maxHP);
     }
 
     public virtual void Init(Transform target)
@@ -40,6 +37,12 @@ public abstract class BossBaseController : MonoBehaviour
     protected virtual void Update()
     {
         UpdateFacingDirection();
+
+        if(_boss_UIHp == null)
+        {
+            _boss_UIHp = FindAnyObjectByType<BossUIHp>();
+            _boss_UIHp.UpdateHP(currentHP, maxHP);
+        }
     }
 
     protected void UpdateFacingDirection()
