@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public abstract class BossBaseController : MonoBehaviour
@@ -18,13 +19,17 @@ public abstract class BossBaseController : MonoBehaviour
     [SerializeField] protected Transform target;
 
     // === HP바 호출 ===
-    private PlayerUIHelper _boss_UIHelper;
+    private BossUIHp _boss_UIHp;
 
     protected virtual void Awake()
     {
         currentHP = maxHP;
+
         characterRenderer = GetComponentInChildren<SpriteRenderer>();
         animationHandler = GetComponent<BossAnimationHandler>();
+
+        _boss_UIHp = FindAnyObjectByType<BossUIHp>();
+        _boss_UIHp.UpdateHP(currentHP, maxHP);
     }
 
     public virtual void Init(Transform target)
@@ -47,6 +52,9 @@ public abstract class BossBaseController : MonoBehaviour
     public virtual void TakeDamage(float amount)
     {
         currentHP -= amount;
+
+        _boss_UIHp.UpdateHP(currentHP, maxHP); // 체력바 변동
+
         if (currentHP <= 0)
         {
             Die();
