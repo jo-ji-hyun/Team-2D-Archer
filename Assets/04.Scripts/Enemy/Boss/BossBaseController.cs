@@ -56,11 +56,14 @@ public abstract class BossBaseController : MonoBehaviour
     {
         currentHP -= amount;
 
-        _boss_UIHp.UpdateHP(currentHP, maxHP); // 체력바 변동
-
         if (currentHP <= 0)
         {
+            _boss_UIHp.UpdateHP(0, maxHP); // 체력바 변동
             Die();
+        }
+        else
+        {
+            _boss_UIHp.UpdateHP(currentHP, maxHP); // 체력바 변동
         }
     }
 

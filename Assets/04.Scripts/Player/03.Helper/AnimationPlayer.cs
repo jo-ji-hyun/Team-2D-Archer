@@ -39,6 +39,12 @@ public class AnimationPlayer : MonoBehaviour
         animator.SetBool(_isStay, false);
     }
 
+    // === °ø°Ý¸ØÃß±â ===
+    public void StopAttackBehavior()
+    {
+        animator.SetBool(_isAtk,false);
+    }
+
     // === »ç¸Á ===
     public void CharacterDie()
     {
