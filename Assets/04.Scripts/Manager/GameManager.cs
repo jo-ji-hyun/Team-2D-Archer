@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     private ShootManager _shoot_Manager;
     private SkillManager _skill_Manager;
     private RoomManager _room_Manager;
+    private BGMManager _bgm_Manager;
 
     private void Awake()
     {
@@ -47,6 +48,8 @@ public class GameManager : MonoBehaviour
         _shoot_Manager = GetComponentInChildren<ShootManager>();
         _skill_Manager = GetComponentInChildren<SkillManager>();
         _room_Manager = GetComponentInChildren<RoomManager>();
+
+        _bgm_Manager = FindObjectOfType<BGMManager>();
 
         player.Init(this, _stats_Manager,_enemy_Manager);
         rangeWeapon.Init(_skill_Manager);
@@ -95,6 +98,7 @@ public class GameManager : MonoBehaviour
     {
         StartWave();
         fadeManager.ButtonOff();
+        _bgm_Manager.PlayBGM(1);
     }
 
 
