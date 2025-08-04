@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
     private StatsManager _stats_Manager;
     private ShootManager _shoot_Manager;
     private SkillManager _skill_Manager;
-    private RoomManager _room_Manager;
     private BGMManager _bgm_Manager;
 
     private void Awake()
@@ -47,7 +46,6 @@ public class GameManager : MonoBehaviour
         _stats_Manager = GetComponentInChildren<StatsManager>();
         _shoot_Manager = GetComponentInChildren<ShootManager>();
         _skill_Manager = GetComponentInChildren<SkillManager>();
-        _room_Manager = GetComponentInChildren<RoomManager>();
 
         _bgm_Manager = FindObjectOfType<BGMManager>();
 
@@ -70,7 +68,7 @@ public class GameManager : MonoBehaviour
                 gamestart = false;
                 clear = 1;
                 Debug.Log("1");
-                _room_Manager.OnRoomCleared();
+                SkillManager.Instance.ShowSkillChoice();
 
                 List<ChoiceData> randomChoices = GenerateRandomChoices();
                 statChoiceUI.ShowChoices(randomChoices);
