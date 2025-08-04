@@ -23,6 +23,12 @@ public class BossController : BossBaseController
 
     private bool isDying = false;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        IsBoss = true;
+    }
+
     public void Init(BossManager bossManager, Transform target)
     {
         this.bossManager = bossManager;
@@ -183,7 +189,7 @@ public class BossController : BossBaseController
                 if (hit != null && hit.CompareTag("Player"))
                 {
                     PlayerController player = hit.GetComponent<PlayerController>();
-                    player?.TakeDamage(rangedDamage);
+                    player?.TakeDamage(BossAtkPower);
                     Debug.Log("보스: 근거리 데미지 - 폴리곤 안에 있음");
                 }
             }
@@ -268,6 +274,7 @@ public class BossController : BossBaseController
         yield return new WaitForSeconds(6f); // 애니메이션 연출 시간 대기
 
         bossManager?.UnregisterBoss();
+        EnemyManager.Instance.RemoveEnemy(this);
         Destroy(gameObject);
     }
 }
