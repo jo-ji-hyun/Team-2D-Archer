@@ -2930,6 +2930,7 @@ Transform:
   - {fileID: 1898659375}
   - {fileID: 277508398}
   - {fileID: 759907524}
+  - {fileID: 2007098577}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1850694564
@@ -3142,10 +3143,10 @@ MonoBehaviour:
   timeBetweenSpawns: 0.3
   spawnAreas:
   - serializedVersion: 2
-    x: 0
-    y: 0
-    width: 2
-    height: 2
+    x: -2.5
+    y: -2
+    width: 5
+    height: 4
   gizmoColor: {r: 1, g: 0, b: 0, a: 0.3}
   activeEnemies: []
 --- !u!1 &1935513874
@@ -3461,6 +3462,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2005738085}
   m_CullTransparentMesh: 1
+--- !u!1 &2007098576
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2007098577}
+  - component: {fileID: 2007098578}
+  m_Layer: 0
+  m_Name: BossManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2007098577
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007098576}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1811208969}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2007098578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007098576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6258e1f7847d2479d9f750fa4686c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossPrefab: {fileID: 4010490467910632654, guid: 2aa488744e212ea44a9e2d1feb7f89d9, type: 3}
+  bossSpawnPosition: {x: 0, y: 0}
 --- !u!1 &2059035914
 GameObject:
   m_ObjectHideFlags: 0
