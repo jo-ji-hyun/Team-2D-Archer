@@ -15,7 +15,6 @@ public class SkillChoiceUI : MonoBehaviour
     void Awake()
     {
         Instance = this; // 싱글톤 인스턴스 설정
-        Debug.Log("SkillChoiceUI Awake가 호출됨");
         panel.SetActive(false); // 초기에는 패널을 숨김
     }
 
