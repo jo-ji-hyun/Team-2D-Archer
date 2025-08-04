@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8610251357882461123}
   - component: {fileID: 2926196248034815434}
   m_Layer: 0
-  m_Name: Ice Spike
+  m_Name: DarkSpear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
