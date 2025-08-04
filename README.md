@@ -1,3 +1,4 @@
+(Assets/07.Git/titleimage.png)
 # Legend of RedHood
 Legend of Archer를 모델로 만든 게임 
 ## 기능
