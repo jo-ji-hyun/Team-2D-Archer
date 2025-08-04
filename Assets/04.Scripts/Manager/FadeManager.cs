@@ -9,6 +9,8 @@ public class FadeManager : MonoBehaviour
     public GameObject UI2;
     public GameObject UI3;
     public GameObject UI4;
+    public GameObject UI_GameOver;
+    public GameObject UI_Clear;
 
     public GameObject MainCamera;
     public GameObject TitleCamera;
@@ -50,5 +52,15 @@ public class FadeManager : MonoBehaviour
         MainCamera.SetActive(true);
         TitleCamera.SetActive(false);
 
+    }
+
+    public void GameOverFade()
+    {
+        UI_GameOver.SetActive(true);
+    }
+
+    public void Clear()
+    {
+        UI_Clear.SetActive(true);
     }
 }

@@ -72,12 +72,21 @@ public class GameManager : MonoBehaviour
                 {
                     RoomIndex++;
                     gamestart = false;
-                    clear = 1;
                     Debug.Log("1");
-                    SkillManager.Instance.ShowSkillChoice();
 
-                    List<ChoiceData> randomChoices = GenerateRandomChoices();
-                    statChoiceUI.ShowChoices(randomChoices);
+                    if (RoomIndex < 5)
+                    {
+                        clear = 1;
+                        SkillManager.Instance.ShowSkillChoice();
+
+                        List<ChoiceData> randomChoices = GenerateRandomChoices();
+                        statChoiceUI.ShowChoices(randomChoices);
+                    }
+                    else
+                    {
+                        BossManager.Instance.bossHpObject.SetActive(false);
+                        fadeManager.Clear();
+                    }
                 }
                 
             }
@@ -129,6 +138,7 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(PlayerDeathRoutine());
         _enemy_Manager.StopWave();
+        fadeManager.GameOverFade();
     }
 
     // === 게임오버시 캐릭터를 사라지게 함 ===
