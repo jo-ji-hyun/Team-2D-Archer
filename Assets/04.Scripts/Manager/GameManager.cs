@@ -72,7 +72,6 @@ public class GameManager : MonoBehaviour
                 {
                     RoomIndex++;
                     gamestart = false;
-                    Debug.Log("1");
 
                     if (RoomIndex < 5)
                     {
@@ -96,7 +95,6 @@ public class GameManager : MonoBehaviour
             if (_enemy_Manager.activeEnemies.Count != 0)
             {
                 gamestart = true;
-                Debug.Log("2");
             }
         }
     }

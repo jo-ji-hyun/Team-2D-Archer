@@ -40,12 +40,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7778663219502190305}
-  - component: {fileID: 2697373707501960910}
   - component: {fileID: 7666956064804496542}
   - component: {fileID: 4527018280924679133}
   - component: {fileID: 2013096822690225408}
-  - component: {fileID: -7591219530211190110}
   - component: {fileID: 252692058965336113}
+  - component: {fileID: 989075120972879128}
   m_Layer: 0
   m_Name: FireBall
   m_TagString: Untagged
@@ -69,22 +68,6 @@ Transform:
   - {fileID: 7874401824343993897}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2697373707501960910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8738154650902348572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e44fa230287cc9047a5513d6f337354a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wallTag: object
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!95 &7666956064804496542
 Animator:
   serializedVersion: 5
@@ -178,20 +161,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.24649471, y: 0.26336434}
   m_EdgeRadius: 0
---- !u!114 &-7591219530211190110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8738154650902348572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bddd471508003742ab2d8ac5abd112f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  damage: 10
 --- !u!212 &252692058965336113
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -244,3 +213,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &989075120972879128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8738154650902348572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e44fa230287cc9047a5513d6f337354a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallTag: object
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64

@@ -60,7 +60,6 @@ public class SkillManager : MonoBehaviour
         if (!acquiredSkills.Contains(skill))
         {
             acquiredSkills.Add(skill);
-            Debug.Log($"½ºÅ³ È¹µæ : {skill.skillName}");
             CreateSkillButton(skill);
         }
     }
@@ -94,7 +93,6 @@ public class SkillManager : MonoBehaviour
             int rand = Random.Range(0, available.Count);
             Skill selected = available[rand];
             acquiredSkills.Add(selected);
-            Debug.Log($"½ºÅ³ È¹µæ: {selected.skillName} - {selected.description}");
             CreateSkillButton(selected);
         }
         else
@@ -108,7 +106,6 @@ public class SkillManager : MonoBehaviour
     {
         if (skillButtonPrefab == null || skillButtonParent == null) return;
 
-        Debug.Log("[Skill]½ºÅ³ ¹öÆ° »ý¼º: " + skill.skillName);
         GameObject btnObj = Instantiate(skillButtonPrefab, skillButtonParent);
         SkillUI skillUI = btnObj.GetComponent<SkillUI>();
         if (skillUI != null)
