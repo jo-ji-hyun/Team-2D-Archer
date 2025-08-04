@@ -12,7 +12,8 @@ public class BossController : BossBaseController
 
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private GameObject explosionEffectPrefab;
+    [SerializeField] private GameObject rangedExplosionEffectPrefab;
+    [SerializeField] private GameObject meleeExplosionEffectPrefab;
     [SerializeField] private float rangedExplosionRadius = 1f;
     [SerializeField] private float projectileHeight = 5f; // 위로 얼마나 쏠지
     [SerializeField] private float fallDelay = 2f;
@@ -114,7 +115,7 @@ public class BossController : BossBaseController
         Destroy(fallProj); // 낙하 후 제거
 
         // 5. 폭발 이펙트
-        GameObject explosion = Instantiate(explosionEffectPrefab, targetPos, Quaternion.identity);
+        GameObject explosion = Instantiate(rangedExplosionEffectPrefab, targetPos, Quaternion.identity);
 
         // 6. 데미지 판정
         PolygonCollider2D polyCol = warning.GetComponent<PolygonCollider2D>();
@@ -139,9 +140,10 @@ public class BossController : BossBaseController
             }
         }
 
-        // 7. 정리
-        Destroy(warning);
+        // 7. 정리      
         Destroy(explosion, 2f);
+        Destroy(warning);
+
         yield return new WaitForSeconds(1f); // 후딜레이
     }
 
@@ -162,7 +164,7 @@ public class BossController : BossBaseController
         animHandler.Attack();
 
         // 3. 폭발 이펙트 생성
-        GameObject explosion = Instantiate(explosionEffectPrefab, warningPos + new Vector3(0, -2f, 0), Quaternion.identity);
+        GameObject explosion = Instantiate(meleeExplosionEffectPrefab, warningPos + new Vector3(0, -2f, 0), Quaternion.identity);
 
         // 4. 범위 안에 있는 타겟들에게 데미지
         PolygonCollider2D polyCol = warning.GetComponent<PolygonCollider2D>();
@@ -188,8 +190,8 @@ public class BossController : BossBaseController
         }
 
         // 5. 이펙트 제거
-        Destroy(warning);
         Destroy(explosion, 2f); // 2초 후 파괴
+        Destroy(warning);
 
         // 후딜레이
         yield return new WaitForSeconds(1f);

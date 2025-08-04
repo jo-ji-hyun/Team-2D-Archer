@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6984507819942795142}
   - component: {fileID: 1788809123708173623}
   - component: {fileID: 6031820045530231368}
+  - component: {fileID: 341424821836251404}
   m_Layer: 6
   m_Name: BossMushroom
   m_TagString: Enemy
@@ -97,7 +98,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.008015394, y: -1.2282559}
+  m_Offset: {x: 0.008015394, y: -0.9580224}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -108,7 +109,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0160308, y: 1.2045586}
+  m_Size: {x: 1.0160308, y: 1.7450255}
   m_EdgeRadius: 0
 --- !u!114 &1788809123708173623
 MonoBehaviour:
@@ -131,7 +132,8 @@ MonoBehaviour:
   warningDuration: 2
   firePoint: {fileID: 8188361908195725477}
   projectilePrefab: {fileID: 1208639916478256986, guid: d8a93e2751826d84faa002fa4fdd6266, type: 3}
-  explosionEffectPrefab: {fileID: 5868150479479404650, guid: 8d5e2e67f715fe44fa5dcc2ee58c247f, type: 3}
+  rangedExplosionEffectPrefab: {fileID: 5868150479479404650, guid: 8d5e2e67f715fe44fa5dcc2ee58c247f, type: 3}
+  meleeExplosionEffectPrefab: {fileID: 2433282508537954060, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312, type: 3}
   rangedExplosionRadius: 1.1
   projectileHeight: 5
   fallDelay: 2
@@ -150,6 +152,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e2fa1080287a404e93cdf793e9e47fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &341424821836251404
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4010490467910632654}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.00000011920929, y: -0.53403276}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.3860478, y: 2.5827956}
+  m_EdgeRadius: 0
 --- !u!1 &5066561314720607381
 GameObject:
   m_ObjectHideFlags: 0
