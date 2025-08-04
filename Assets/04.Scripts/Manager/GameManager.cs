@@ -148,8 +148,8 @@ public class GameManager : MonoBehaviour
     {
         new ChoiceData { choiceType = ChoiceType.Stat, statType = StatType.Attack, value = 2 },
         new ChoiceData { choiceType = ChoiceType.Stat, statType = StatType.Defense, value = 1 },
-        new ChoiceData { choiceType = ChoiceType.Stat, statType = StatType.MoveSpeed, value = 2f },
-        new ChoiceData { choiceType = ChoiceType.Stat, statType = StatType.AttackSpeed, value = 0.1f },
+        new ChoiceData { choiceType = ChoiceType.Stat, statType = StatType.MoveSpeed, value = 1f },
+        new ChoiceData { choiceType = ChoiceType.Stat, statType = StatType.AttackSpeed, value = 0.5f },
         new ChoiceData { choiceType = ChoiceType.Stat, statType = StatType.HP, value = 20 },
     };
 
