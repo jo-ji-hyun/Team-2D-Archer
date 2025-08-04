@@ -49,7 +49,7 @@ public class PlayerController : BaseController // 이동을 받고 애니도 재생해야함
         else if(_stats_Manager.stats.currentHP > 0 || _enemy_Manager.activeEnemies.Count <= 0)
         {
             isAttacking = false;
-            _animation_Player.Stay();
+            _animation_Player.StopAttackBehavior();
         }
     }
 

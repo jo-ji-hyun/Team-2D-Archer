@@ -56,11 +56,14 @@ public abstract class BossBaseController : MonoBehaviour
     {
         currentHP -= amount;
 
-        _boss_UIHp.UpdateHP(currentHP, maxHP); // 체력바 변동
-
         if (currentHP <= 0)
         {
+            _boss_UIHp.UpdateHP(0, maxHP); // 체력바 변동
             Die();
+        }
+        else
+        {
+            _boss_UIHp.UpdateHP(currentHP, maxHP); // 체력바 변동
         }
     }
 
@@ -68,7 +71,7 @@ public abstract class BossBaseController : MonoBehaviour
     {
         animationHandler.Death();
         StopAllCoroutines();
-        Destroy(gameObject, 6f); // 2초 후 오브젝트 제거
+        Destroy(gameObject, 6f); // 6초 후 오브젝트 제거
     }
 
     // 보스가 플레이어를 바라보는 방향을 업데이트 (보스 공용 기능)
@@ -78,8 +81,4 @@ public abstract class BossBaseController : MonoBehaviour
         return (player.position - transform.position).normalized;
     }
 
-    public bool IsDead()
-    {
-        return currentHP <= 0;
-    }
 }
