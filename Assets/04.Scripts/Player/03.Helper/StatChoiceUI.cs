@@ -8,16 +8,11 @@ public class StatChoiceUI : MonoBehaviour
     [SerializeField] private GameObject panel;
     [SerializeField] private Button[] buttons;
     [SerializeField] private Text[] nameTexts;
-    [SerializeField] private PlayerStats playerStats;
+    [SerializeField] private StatsManager statsManager;
     [SerializeField] private WeaponHandler weaponHandler;
     [SerializeField] private PlayerController playerController;
 
     private List<ChoiceData> currentChoices;
-
-    private void Awake()
-    {
-        playerStats = playerController.GetStats();
-    }
 
     public void ShowChoices(List<ChoiceData> choices)
     {
@@ -53,25 +48,24 @@ public class StatChoiceUI : MonoBehaviour
             switch (choice.statType)
             {
                 case StatType.Attack:
-                    playerStats.attack += choice.value;
+                    statsManager.StatsUpattack();
                     weaponHandler.Power += choice.value;
                     break;
 
                 case StatType.Defense:
-                    playerStats.defense += choice.value;
+                    statsManager.StatsUpdefence();
                     break;
 
                 case StatType.MoveSpeed:
-                    playerStats.moveSpeed += choice.value;
+                    statsManager.StatsUpspeed();
                     break;
 
                 case StatType.AttackSpeed:
-                    weaponHandler.Delay -= Mathf.Max(0, 05f, weaponHandler.Delay - choice.value);
+                    weaponHandler.DecreaseAttackDelay(choice.value);
                     break;
 
                 case StatType.HP:
-                    playerStats.maxHP += (int)choice.value;
-                    playerStats.currentHP = playerStats.maxHP;
+                    statsManager.StatsUpmaxHP();
                     break;
             }
         }
@@ -84,9 +78,9 @@ public class StatChoiceUI : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void SetUp(PlayerStats stats, WeaponHandler weapon)
+    public void SetUp(StatsManager statsManager, WeaponHandler weapon)
     {
-        this.playerStats = stats;
+        this.statsManager = statsManager;
         this.weaponHandler = weapon;
     }
 }
