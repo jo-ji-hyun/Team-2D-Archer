@@ -47,7 +47,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4010490467910632654}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -123,10 +123,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1c38a0832d893429a09b4dbcb85f2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 1000
-  AtkPower: 10
-  moveSpeed: 2
+  characterRenderer: {fileID: 0}
+  statHandler: {fileID: 0}
   target: {fileID: 0}
+  AtkPower: 10
+  timeSinceLastAttack: 3.4028235e+38
+  maxHP: 1000
+  BossAtkPower: 50
+  moveSpeed: 2
   warningAreaPrefab: {fileID: 278538634492560534, guid: 617e7128be7c0ba4a804e01e6cbfb731, type: 3}
   meleeAttackRange: 1.1
   warningDuration: 2
@@ -136,7 +140,6 @@ MonoBehaviour:
   meleeExplosionEffectPrefab: {fileID: 2433282508537954060, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312, type: 3}
   rangedExplosionRadius: 1.1
   projectileHeight: 5
-  fallDelay: 2
   fallSpeed: 3
   rangedDamage: 10
   attackPivot: {fileID: 7596091540552664370}
