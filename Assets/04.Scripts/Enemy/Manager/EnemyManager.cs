@@ -22,8 +22,6 @@ public class EnemyManager : MonoBehaviour
 
     [Header("Wave Settings")]
     [SerializeField] private List<EnemyWave> waves = new List<EnemyWave>();
-    [SerializeField] private float timeBetweenSpawns = 0.2f;
-
     [Header("Spawn Area Settings")]
     [SerializeField] private List<Rect> spawnAreas; // 적을 생성할 영역 리스트
     [SerializeField] private Color gizmoColor = new Color(1, 0, 0, 0.3f); // 기즈모 색상

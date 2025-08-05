@@ -11,7 +11,7 @@ public class Potal : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Æ÷Å»");
+           // Debug.Log("Æ÷Å»");
 
             UI.UIFade();
 

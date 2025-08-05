@@ -25,9 +25,9 @@ public class SkillManager : MonoBehaviour
     // 플레이어가 보유한 스킬 목록
     public List<Skill> acquiredSkills = new List<Skill>();
 
-    public GameObject fireballPrefab; // 파이어볼 프리팹
-    public GameObject iceSpikePrefab;  // 아이스 스피어 프리팹
-    public GameObject lightningBolt;   // 라이트볼 프리팹
+    public GameObject fireballPrefab;    // 파이어볼 프리팹
+    public GameObject DarkSpearPrefab;   // 다크 스피어 프리팹
+    public GameObject lightningBolt;     // 라이트볼 프리팹
 
     public GameObject skillButtonPrefab; // 스킬 버튼 프리팹 (UI)
     public Transform  skillButtonParent; // 스킬 버튼 부모 (UI)
@@ -38,7 +38,7 @@ public class SkillManager : MonoBehaviour
 
         // 모든 스킬 등록
         allSkills.Add(new Skill(0, "파이어 볼", "화염구를 발사하여 적에게 피해를 준다.", 10f, 5f, 2.0f, fireballPrefab));
-        allSkills.Add(new Skill(1, "다크 스피어", "어둠 창을 발사하여 적을 얼린다.", 12f, 7f, 4.0f, iceSpikePrefab));
+        allSkills.Add(new Skill(1, "다크 스피어", "어둠 창을 발사하여 적을 얼린다.", 12f, 7f, 4.0f, DarkSpearPrefab));
         allSkills.Add(new Skill(2, "라이트닝", "번개를 소환하여 적에게 피해를 준다.", 15f, 10f, 6.1f, lightningBolt));
 
     }
@@ -60,7 +60,6 @@ public class SkillManager : MonoBehaviour
         if (!acquiredSkills.Contains(skill))
         {
             acquiredSkills.Add(skill);
-            Debug.Log($"스킬 획득 : {skill.skillName}");
             CreateSkillButton(skill);
         }
     }
@@ -94,7 +93,6 @@ public class SkillManager : MonoBehaviour
             int rand = Random.Range(0, available.Count);
             Skill selected = available[rand];
             acquiredSkills.Add(selected);
-            Debug.Log($"스킬 획득: {selected.skillName} - {selected.description}");
             CreateSkillButton(selected);
         }
         else
@@ -108,7 +106,6 @@ public class SkillManager : MonoBehaviour
     {
         if (skillButtonPrefab == null || skillButtonParent == null) return;
 
-        Debug.Log("[Skill]스킬 버튼 생성: " + skill.skillName);
         GameObject btnObj = Instantiate(skillButtonPrefab, skillButtonParent);
         SkillUI skillUI = btnObj.GetComponent<SkillUI>();
         if (skillUI != null)

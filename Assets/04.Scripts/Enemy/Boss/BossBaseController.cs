@@ -13,7 +13,7 @@ public abstract class BossBaseController : EnemyBaseController
 
     [Header("References")]
     protected Transform player;
-    protected new SpriteRenderer characterRenderer;
+   // protected new SpriteRenderer characterRenderer;
     protected BossAnimationHandler bossAnimationHandler;
 
     // === HPπŸ »£√‚ ===

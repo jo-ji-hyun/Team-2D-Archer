@@ -16,7 +16,6 @@ public class BossController : BossBaseController
     [SerializeField] private GameObject meleeExplosionEffectPrefab;
     [SerializeField] private float rangedExplosionRadius = 1f;
     [SerializeField] private float projectileHeight = 5f; // 위로 얼마나 쏠지
-    [SerializeField] private float fallDelay = 2f;
     [SerializeField] private float fallSpeed = 3f;
     [SerializeField] private int rangedDamage = 20;
     [SerializeField] private Transform attackPivot;
@@ -84,7 +83,6 @@ public class BossController : BossBaseController
 
     private IEnumerator RangedAreaAttack()
     {
-        Debug.Log("보스: 원거리 범위공격");
 
         Vector3 targetPos = target.position;
 
@@ -141,7 +139,6 @@ public class BossController : BossBaseController
                 {
                     PlayerController player = hit.GetComponent<PlayerController>();
                     player?.TakeDamage(rangedDamage);
-                    Debug.Log("보스: 원거리 데미지 - 폴리곤 안에 있음");
                 }
             }
         }
@@ -155,7 +152,6 @@ public class BossController : BossBaseController
 
     private IEnumerator MeleeAreaAttack()
     {
-        Debug.Log("보스: 근거리 범위공격 준비");
 
         Vector3 attackCenter = attackPivot.position;
 
@@ -190,7 +186,6 @@ public class BossController : BossBaseController
                 {
                     PlayerController player = hit.GetComponent<PlayerController>();
                     player?.TakeDamage(BossAtkPower);
-                    Debug.Log("보스: 근거리 데미지 - 폴리곤 안에 있음");
                 }
             }
         }
@@ -206,7 +201,6 @@ public class BossController : BossBaseController
     private IEnumerator MoveTowardsPlayer(float duration)
     {
         animHandler.Move();
-        Debug.Log("보스: 플레이어에게 접근");
         float t = 0f;
         while (t < duration)
         {
@@ -222,7 +216,6 @@ public class BossController : BossBaseController
     private IEnumerator MoveAtAngleFromPlayer(float duration)
     {
         animHandler.Move();
-        Debug.Log("보스: 플레이어 반대 방향으로 도망");
 
         // 플레이어를 등진 방향 계산
         Vector3 awayDir = (transform.position - target.position).normalized;
@@ -270,7 +263,6 @@ public class BossController : BossBaseController
             animHandler.Death(); // 죽는 애니메이션 시작
         }
 
-        Debug.Log("보스: 죽는 애니메이션 재생 중 (6초 대기)");
         yield return new WaitForSeconds(6f); // 애니메이션 연출 시간 대기
 
         bossManager?.UnregisterBoss();
