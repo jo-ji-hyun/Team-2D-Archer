@@ -1,4 +1,4 @@
-![타이틀 이미지](Assets/07.Git/titleimage.png)
+![타이틀 이미지](Assets/07.Git/1.gif)
 # Legend of RedHood
 Legend of Archer를 모델로 만든 게임 
 
@@ -15,9 +15,12 @@ Unity 버전 2022.03.17f1
 W A S D = 이동
 
 적이 있으면 마우스 방향으로 자동 공격
+![타이틀 이미지](Assets/07.Git/2.gif)
 
 스테이지 클리어시 선택지가 등장하며 캐릭터를 강화해서 보스에게 도전합니다.
 
+사망시 게임 오버가 나타납니다.
+![타이틀 이미지](Assets/07.Git/6.gif)
 ### 진행
 타이틀 => 던전 => 보스
 
